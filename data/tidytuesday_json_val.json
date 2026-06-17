@@ -1,0 +1,1911 @@
+[
+    {
+        "date_posted": "2023-02-28",
+        "project_name": "African Language Sentiment",
+        "project_source": [
+            "https://r4ds.io/join",
+            "https://arxiv.org/pdf/2302.08956.pdf",
+            "https://github.com/shmuhammad2004",
+            "https://github.com/afrisenti-semeval/afrisent-semeval-2023"
+        ],
+        "description": "The data this week comes fromAfriSenti: Sentiment Analysis dataset for 14 African languagesvia@shmuhammad2004(the corresponding author on theassociated paper, and an active member of theR4DS Online Learning Community Slack). This repository contains data for the SemEval 2023 Shared Task 12: Sentiment Analysis in African Languages (AfriSenti-SemEval). The source repository also includes sentiment lexicons for several languages.",
+        "data_source_url": "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-02-28",
+        "data_dictionary": [
+            {
+                "variable": [
+                    "language_iso_code",
+                    "tweet",
+                    "label",
+                    "intended_use"
+                ],
+                "class": [
+                    "character",
+                    "character",
+                    "character",
+                    "character"
+                ],
+                "description": [
+                    "The unique code used to identify the language",
+                    "The text content of a tweet",
+                    "A sentiment label of positive, negative, or neutral assigned by a native speaker of that language",
+                    "Whether the data came from the dev, test, or train set for that language"
+                ]
+            },
+            {
+                "variable": [
+                    "language_iso_code",
+                    "language"
+                ],
+                "class": [
+                    "character",
+                    "character"
+                ],
+                "description": [
+                    "The unique code used to identify the language",
+                    "The name of the language"
+                ]
+            },
+            {
+                "variable": [
+                    "language_iso_code",
+                    "script"
+                ],
+                "class": [
+                    "character",
+                    "character"
+                ],
+                "description": [
+                    "The unique code used to identify the language",
+                    "The script used to write the language"
+                ]
+            },
+            {
+                "variable": [
+                    "language_iso_code",
+                    "country"
+                ],
+                "class": [
+                    "character",
+                    "character"
+                ],
+                "description": [
+                    "The unique code used to identify the language",
+                    "A country in which the language is spoken"
+                ]
+            },
+            {
+                "variable": [
+                    "country",
+                    "region"
+                ],
+                "class": [
+                    "character",
+                    "character"
+                ],
+                "description": [
+                    "A country in which the language is spoken",
+                    "The region of Africa in which that country is categorized. Note that Mozambique is categorized as \\\"East Africa\\\", \\\"Southern Africa\\\", and \\\"Southeastern Africa\\\""
+                ]
+            }
+        ],
+        "data": {
+            "file_name": [
+                "afrisenti.csv",
+                "country_regions.csv",
+                "language_countries.csv",
+                "language_scripts.csv",
+                "languages.csv"
+            ],
+            "file_url": [
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-02-28/afrisenti.csv",
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-02-28/country_regions.csv",
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-02-28/language_countries.csv",
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-02-28/language_scripts.csv",
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-02-28/languages.csv"
+            ]
+        },
+        "data_load": {
+            "file_name": [
+                "afrisenti.csv",
+                "country_regions.csv",
+                "language_countries.csv",
+                "language_scripts.csv",
+                "languages.csv"
+            ],
+            "file_url": [
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-28/afrisenti.csv",
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-28/country_regions.csv",
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-28/language_countries.csv",
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-28/language_scripts.csv",
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-28/languages.csv"
+            ]
+        }
+    },
+    {
+        "date_posted": "2023-05-02",
+        "project_name": "The Portal Project",
+        "project_source": [
+            "https://www.weecology.org/",
+            "https://weecology.github.io/portalr/",
+            "https://portal.weecology.org/",
+            "https://datacarpentry.org/ecology-workshop/",
+            "https://www.data-retriever.org/"
+        ],
+        "description": "The data this week comes from thePortal Project. This is a long-term ecological research site studying the dynamics of desert rodents, plants, ants and weather in Arizona. The Portal Project is a long-term ecological study being conducted near Portal, AZ. Since 1977, the site has been used to study the interactions among rodents, ants and plants and their respective responses to climate. To study the interactions among organisms, they experimentally manipulate access to 24 study plots. This study has produced over 100 scientific papers and is one of the longest running ecological studies in the U.S. TheWeecology research groupmonitors rodents, plants, ants, and weather. All data from the Portal Project are made openly available in near real-time so that they can provide the maximum benefit to scientific research and outreach. The core dataset is managed using an automated living data workflow run using GitHub and Continuous Analysis. This dataset focuses on the rodent data. Full data is available through these resources: The Portal Project data can also be accessed through the Data Retriever, a package manager for data. Data Retriever A teaching focused version of the dataset is also maintained with some of the complexities of the data removed to make it easy to use for computational training purposes. This dataset serves as the core dataset for theData Carpentry Ecologymaterial and has been downloaded almost 50,000 times. Thanks to @ethanwhite for the data cleaning script. This script downloads the data using the{portalr}package. It filters for the species and plot data, and years greater than 1977.",
+        "data_source_url": "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-05-02",
+        "data_dictionary": [
+            {
+                "variable": [
+                    "plot",
+                    "treatment"
+                ],
+                "class": [
+                    "double",
+                    "character"
+                ],
+                "description": [
+                    "Plot number",
+                    "Treatment type"
+                ]
+            },
+            {
+                "variable": [
+                    "species",
+                    "scientificname",
+                    "taxa",
+                    "commonname",
+                    "censustarget",
+                    "unidentified",
+                    "rodent",
+                    "granivore",
+                    "minhfl",
+                    "meanhfl",
+                    "maxhfl",
+                    "minwgt",
+                    "meanwgt",
+                    "maxwgt",
+                    "juvwgt"
+                ],
+                "class": [
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double"
+                ],
+                "description": [
+                    "Species",
+                    "Scientific Name",
+                    "Taxa",
+                    "Common Name",
+                    "Target species (0 or 1)",
+                    "Unidentified (0 or 1)",
+                    "Rodent (0 or 1)",
+                    "Granivore (0 or 1)",
+                    "Minimum hindfoot length",
+                    "Mean hindfoot length",
+                    "Maximum hindfoot length",
+                    "Minimum weight",
+                    "Mean weight",
+                    "Maximum weight",
+                    "Juvenile weight"
+                ]
+            },
+            {
+                "variable": [
+                    "censusdate",
+                    "month",
+                    "day",
+                    "year",
+                    "treatment",
+                    "plot",
+                    "stake",
+                    "species",
+                    "sex",
+                    "reprod",
+                    "age",
+                    "testes",
+                    "vagina",
+                    "pregnant",
+                    "nipples",
+                    "lactation",
+                    "hfl",
+                    "wgt",
+                    "tag",
+                    "note2",
+                    "ltag",
+                    "note3"
+                ],
+                "class": [
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "character",
+                    "double",
+                    "double",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "double",
+                    "double",
+                    "character",
+                    "character",
+                    "character",
+                    "character"
+                ],
+                "description": [
+                    "Census date",
+                    "Month",
+                    "Day",
+                    "Year",
+                    "Treatment type",
+                    "Plot number",
+                    "Stake number",
+                    "Species code",
+                    "Sex",
+                    "Reproductive condition",
+                    "Age",
+                    "Testes (Scrotal, Recent, or Minor)",
+                    "Vagina (Swollen, Plugged, or Both)",
+                    "Pregnant",
+                    "Nipples (Enlarged, Swollen, or Both)",
+                    "Lactating",
+                    "Hindfoot length",
+                    "Weight",
+                    "Primary individual identifier",
+                    "Newly tagged individual for 'tag'",
+                    "Secondary tag information when ear tags were used in both ears",
+                    "Newly tagged individual for 'ltag'"
+                ]
+            }
+        ],
+        "data": {
+            "file_name": [
+                "plots.csv",
+                "species.csv",
+                "surveys.csv"
+            ],
+            "file_url": [
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-05-02/plots.csv",
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-05-02/species.csv",
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-05-02/surveys.csv"
+            ]
+        },
+        "data_load": {
+            "file_name": [
+                "plots.csv",
+                "species.csv",
+                "surveys.csv"
+            ],
+            "file_url": [
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-02/plots.csv",
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-02/species.csv",
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-02/surveys.csv"
+            ]
+        }
+    },
+    {
+        "date_posted": "2023-04-04",
+        "project_name": "Premier League Match Data 2021-2022",
+        "project_source": [
+            "https://www.kaggle.com/datasets/evangower/premier-league-match-data",
+            "https://theathletic.com/3459766/2022/07/29/liverpool-manchester-city-premier-league-fouls-yellow-card/",
+            "https://github.com/evangower",
+            "https://www.kaggle.com/code/evangower/who-wins-the-epl-if-games-end-at-half-time/"
+        ],
+        "description": "The data this week comes from thePremier League Match Data 2021-2022viaEvan Goweron Kaggle. You can explore match day statistics of every game and every team during the 2021-22 season of the English Premier League Data. Data includes teams playing, date, referee, and stats for home and away side such as fouls, shots, cards, and more! Also included is a dataset of the weekly rankings for the season. The data was collected from the official website of the Premier League. Evan then cleaned the data using google sheets. Evan did an analysis ofWho wins the EPL if games end at half time?and there'san article from the Athleticabout fouls conceded per yellow card article. No data cleaning",
+        "data_source_url": "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-04-04",
+        "data_dictionary": [
+            {
+                "variable": [
+                    "Date",
+                    "HomeTeam",
+                    "AwayTeam",
+                    "FTHG",
+                    "FTAG",
+                    "FTR",
+                    "HTHG",
+                    "HTAG",
+                    "HTR",
+                    "Referee",
+                    "HS",
+                    "AS",
+                    "HST",
+                    "AST",
+                    "HF",
+                    "AF",
+                    "HC",
+                    "AC",
+                    "HY",
+                    "AY",
+                    "HR",
+                    "AR"
+                ],
+                "class": [
+                    "character",
+                    "character",
+                    "character",
+                    "double",
+                    "double",
+                    "character",
+                    "double",
+                    "double",
+                    "character",
+                    "character",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double"
+                ],
+                "description": [
+                    "The date when the match was played",
+                    "The home team",
+                    "The away team",
+                    "Full time home goals",
+                    "Full time away goals",
+                    "Full time result",
+                    "Halftime home goals",
+                    "Halftime away goals",
+                    "Halftime results",
+                    "Referee of the match",
+                    "Number of shots taken by the home team",
+                    "Number of shots taken by the away team",
+                    "Number of shots on target by the home team",
+                    "Number of shots on target by the away team",
+                    "Number of fouls by the home team",
+                    "Number of fouls by the away team",
+                    "Number of corners taken by the home team",
+                    "Number of corners taken by the away team",
+                    "Number of yellow cards received by the home team",
+                    "Number of yellow cards received by the away team",
+                    "Number of red cards received by the home team",
+                    "Number of red cards received by the away team"
+                ]
+            }
+        ],
+        "data": {
+            "file_name": [
+                "soccer21-22.csv"
+            ],
+            "file_url": [
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-04-04/soccer21-22.csv"
+            ]
+        },
+        "data_load": {
+            "file_name": [
+                "soccer21-22.csv"
+            ],
+            "file_url": [
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-04/soccer21-22.csv"
+            ]
+        }
+    },
+    {
+        "date_posted": "2023-02-07",
+        "project_name": "Big Tech Stock Prices",
+        "project_source": [
+            "https://github.com/rfordatascience/tidytuesday/issues/509",
+            "https://www.morningstar.com/articles/1129535/5-charts-on-big-tech-stocks-collapse",
+            "https://www.kaggle.com/datasets/evangower/big-tech-stock-prices"
+        ],
+        "description": "The data this week comes from Yahoo Finance viaKaggle(byEvan Gower). This dataset consists of the daily stock prices and volume of 14 different tech companies, including Apple (AAPL), Amazon (AMZN), Alphabet (GOOGL), and Meta Platforms (META) and more! A number of articles have examined the collapse of \"Big Tech\" stock prices, includingthis article from morningstar.com. Note: Allstock_symbols have 3271 prices, except META (2688) and TSLA (3148) because they were not publicly traded for part of the period examined.",
+        "data_source_url": "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-02-07",
+        "data_dictionary": [
+            {
+                "variable": [
+                    "stock_symbol",
+                    "date",
+                    "open",
+                    "high",
+                    "low",
+                    "close",
+                    "adj_close",
+                    "volume"
+                ],
+                "class": [
+                    "character",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double"
+                ],
+                "description": [
+                    "stock_symbol",
+                    "date",
+                    "The price at market open.",
+                    "The highest price for that day.",
+                    "The lowest price for that day.",
+                    "The price at market close, adjusted for splits.",
+                    "The closing price after adjustments for all applicable splits and dividend distributions. Data is adjusted using appropriate split and dividend multipliers, adhering to Center for Research in Security Prices (CRSP) standards.",
+                    "The number of shares traded on that day."
+                ]
+            },
+            {
+                "variable": [
+                    "stock_symbol",
+                    "company"
+                ],
+                "class": [
+                    "character",
+                    "character"
+                ],
+                "description": [
+                    "stock_symbol",
+                    "Full name of the company."
+                ]
+            }
+        ],
+        "data": {
+            "file_name": [
+                "big_tech_companies.csv",
+                "big_tech_stock_prices.csv"
+            ],
+            "file_url": [
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-02-07/big_tech_companies.csv",
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-02-07/big_tech_stock_prices.csv"
+            ]
+        },
+        "data_load": {
+            "file_name": [
+                "big_tech_companies.csv",
+                "big_tech_stock_prices.csv"
+            ],
+            "file_url": [
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-07/big_tech_companies.csv",
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-07/big_tech_stock_prices.csv"
+            ]
+        }
+    },
+    {
+        "date_posted": "2023-03-21",
+        "project_name": "Programming Languages",
+        "project_source": [
+            "https://github.com/rfordatascience/tidytuesday/issues/530",
+            "https://pldb.com/posts/does-every-programming-language-support-line-comments.html",
+            "https://pldb.com/csv.html",
+            "https://pldb.com/index.html",
+            "https://pldb.com/posts/index.html"
+        ],
+        "description": "The data this week comes from theProgramming Language DataBase. Thanks toJesus M. Castagnettofor the suggestion! The PLDB has ablogwith numerous articles exploring the data, such asDoes every programming language have line comments?. The data is user-submitted, so you might want to confirm the accuracy of anything particularly surprising that you find before stating it with certainty! Thefull data dictionaryis available from PLDB.com.",
+        "data_source_url": "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-03-21",
+        "data_dictionary": [
+            {
+                "variable": [
+                    "pldb_id",
+                    "title",
+                    "description",
+                    "type",
+                    "appeared",
+                    "creators",
+                    "website",
+                    "domain_name",
+                    "domain_name_registered",
+                    "reference",
+                    "isbndb",
+                    "book_count",
+                    "semantic_scholar",
+                    "language_rank",
+                    "github_repo",
+                    "github_repo_stars",
+                    "github_repo_forks",
+                    "github_repo_updated",
+                    "github_repo_subscribers",
+                    "github_repo_created",
+                    "github_repo_description",
+                    "github_repo_issues",
+                    "github_repo_first_commit",
+                    "github_language",
+                    "github_language_tm_scope",
+                    "github_language_type",
+                    "github_language_ace_mode",
+                    "github_language_file_extensions",
+                    "github_language_repos",
+                    "wikipedia",
+                    "wikipedia_daily_page_views",
+                    "wikipedia_backlinks_count",
+                    "wikipedia_summary",
+                    "wikipedia_page_id",
+                    "wikipedia_appeared",
+                    "wikipedia_created",
+                    "wikipedia_revision_count",
+                    "wikipedia_related",
+                    "features_has_comments",
+                    "features_has_semantic_indentation",
+                    "features_has_line_comments",
+                    "line_comment_token",
+                    "last_activity",
+                    "number_of_users",
+                    "number_of_jobs",
+                    "origin_community",
+                    "central_package_repository_count",
+                    "file_type",
+                    "is_open_source"
+                ],
+                "class": [
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "double",
+                    "character",
+                    "character",
+                    "character",
+                    "double",
+                    "character",
+                    "double",
+                    "double",
+                    "integer",
+                    "double",
+                    "character",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "character",
+                    "double",
+                    "double",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "double",
+                    "character",
+                    "double",
+                    "double",
+                    "character",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "character",
+                    "logical",
+                    "logical",
+                    "logical",
+                    "character",
+                    "double",
+                    "double",
+                    "double",
+                    "character",
+                    "double",
+                    "character",
+                    "logical"
+                ],
+                "description": [
+                    "A standardized, uniquified version of the language name, used as an ID on the PLDB site.",
+                    "The official title of the language.",
+                    "Description of the repo on GitHub.",
+                    "Which category in PLDB's subjective ontology does this entity fit into.",
+                    "What year was the language publicly released and/or announced?",
+                    "Name(s) of the original creators of the language delimited by \\\" and \\\"",
+                    "URL of the official homepage for the language project.",
+                    "If the project website is on its own domain.",
+                    "When was this domain first registered?",
+                    "A link to more info about this entity.",
+                    "Books about this language from ISBNdb.",
+                    "Computed; the number of books found for this language at isbndb.com",
+                    "Papers about this language from Semantic Scholar.",
+                    "Computed; A rank for the language, taking into account various online rankings. The computation for this column is not currently clear.",
+                    "URL of the official GitHub repo for the project if it hosted there.",
+                    "How many stars of the repo?",
+                    "How many forks of the repo?",
+                    "What year was the last commit made?",
+                    "How many subscribers to the repo?",
+                    "When was the Github repo for this entity created?",
+                    "Description of the repo on GitHub.",
+                    "How many isses on the repo?",
+                    "What year the first commit made in this git repo?",
+                    "GitHub has a set of supported languages as defined here",
+                    "The TextMate scope that represents this programming language.",
+                    "Either data, programming, markup, prose, or nil.",
+                    "A String name of the Ace Mode used for highlighting whenever a file is edited. This must match one of the filenames in http://git.io/3XO_Cg. Use \\\"text\\\" if a mode does not exist.",
+                    "An Array of associated extensions (the first one is considered the primary extension, the others should be listed alphabetically).",
+                    "How many repos for this language does GitHub report?",
+                    "URL of the entity on Wikipedia, if and only if it has a page dedicated to it.",
+                    "How many page views per day does this Wikipedia page get? Useful as a signal for rankings. Available via WP api.",
+                    "How many pages on WP link to this page?",
+                    "What is the text summary of the language from the Wikipedia page?",
+                    "Waht is the internal ID for this entity on WP?",
+                    "When does Wikipedia claim this entity first appeared?",
+                    "When was the Wikipedia page for this entity created?",
+                    "How many revisions does this page have?",
+                    "What languages does Wikipedia have as related?",
+                    "Does this language have a comment character?",
+                    "Does indentation have semantic meaning in this language?",
+                    "Does this language support inline comments (as opposed to comments that must span an entire line)?",
+                    "Defined as a token that can be placed anywhere on a line and starts a comment that cannot be stopped except by a line break character or end of file.",
+                    "Computed; The most recent of any year field in the PLDB for this language.",
+                    "Computed; \\\"Crude user estimate from a linear model.",
+                    "Computed; The estimated number of job openings for programmers in this language.",
+                    "In what community(ies) did the language first originate?",
+                    "Number of packages in a central repository. If this value is not known, it is set to 0 (so \\\"0\\\" can mean \\\"no repository exists\\\", \\\"the repository exists but is empty\\\" (unlikely), or \\\"we do not know if a repository exists\\\". This value is definitely incorrect for R.",
+                    "What is the file encoding for programs in this language?",
+                    "Is it an open source project?"
+                ]
+            }
+        ],
+        "data": {
+            "file_name": [
+                "languages.csv"
+            ],
+            "file_url": [
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-03-21/languages.csv"
+            ]
+        },
+        "data_load": {
+            "file_name": [
+                "languages.csv"
+            ],
+            "file_url": [
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-03-21/languages.csv"
+            ]
+        }
+    },
+    {
+        "date_posted": "2023-05-23",
+        "project_name": "Central Park Squirrel Census",
+        "project_source": [
+            "https://data.cityofnewyork.us/Environment/2018-Central-Park-Squirrel-Census-Squirrel-Data/vfnx-vebw",
+            "https://www.thesquirrelcensus.com/"
+        ],
+        "description": "Squirrel data! The data this week comes from the2018 Central Park Squirrel Census. The Squirrel Censusis a multimedia science, design, and storytelling project focusing on the Eastern gray (Sciurus carolinensis). They count squirrels and present their findings to the public. The dataset contains squirrel data for each of the 3,023 sightings, including location coordinates, age, primary and secondary fur color, elevation, activities, communications, and interactions between squirrels and with humans. No data cleaning",
+        "data_source_url": "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-05-23",
+        "data_dictionary": [
+            {
+                "variable": [
+                    "X",
+                    "Y",
+                    "Unique Squirrel ID",
+                    "Hectare",
+                    "Shift",
+                    "Date",
+                    "Hectare Squirrel Number",
+                    "Age",
+                    "Primary Fur Color",
+                    "Highlight Fur Color",
+                    "Combination of Primary and Highlight Color",
+                    "Color notes",
+                    "Location",
+                    "Above Ground Sighter Measurement",
+                    "Specific Location",
+                    "Running",
+                    "Chasing",
+                    "Climbing",
+                    "Eating",
+                    "Foraging",
+                    "Other Activities",
+                    "Kuks",
+                    "Quaas",
+                    "Moans",
+                    "Tail flags",
+                    "Tail twitches",
+                    "Approaches",
+                    "Indifferent",
+                    "Runs from",
+                    "Other Interactions",
+                    "Lat/Long"
+                ],
+                "class": [
+                    "double",
+                    "double",
+                    "character",
+                    "character",
+                    "character",
+                    "double",
+                    "double",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "logical",
+                    "logical",
+                    "logical",
+                    "logical",
+                    "logical",
+                    "character",
+                    "logical",
+                    "logical",
+                    "logical",
+                    "logical",
+                    "logical",
+                    "logical",
+                    "logical",
+                    "logical",
+                    "character",
+                    "character"
+                ],
+                "description": [
+                    "Longitude coordinate for squirrel sighting point",
+                    "Latitude coordinate for squirrel sighting point",
+                    "Identification tag for each squirrel sightings. The tag is comprised of \\\"Hectare ID\\\" + \\\"Shift\\\" + \\\"Date\\\" + \\\"Hectare Squirrel Number.\\\"",
+                    "ID tag, which is derived from the hectare grid used to divide and count the park area. One axis that runs predominantly north-to-south is numerical (1-42), and the axis that runs predominantly east-to-west is roman characters (A-I).",
+                    "Value is either \\\"AM\\\" or \\\"PM,\\\" to communicate whether or not the sighting session occurred in the morning or late afternoon.",
+                    "Concatenation of the sighting session day and month.",
+                    "Number within the chronological sequence of squirrel sightings for a discrete sighting session.",
+                    "Value is either \\\"Adult\\\" or \\\"Juvenile.\\\"",
+                    "Primary Fur Color - value is either \\\"Gray,\\\" \\\"Cinnamon\\\" or \\\"Black.\\\"",
+                    "Discrete value or string values comprised of \\\"Gray,\\\" \\\"Cinnamon\\\" or \\\"Black.\\\"",
+                    "A combination of the previous two columns; this column gives the total permutations of primary and highlight colors observed.",
+                    "Sighters occasionally added commentary on the squirrel fur conditions. These notes are provided here.",
+                    "Value is either \\\"Ground Plane\\\" or \\\"Above Ground.\\\" Sighters were instructed to indicate the location of where the squirrel was when first sighted.",
+                    "For squirrel sightings on the ground plane, fields were populated with a value of \\\"FALSE.\\\"",
+                    "Sighters occasionally added commentary on the squirrel location. These notes are provided here.",
+                    "Squirrel was seen running.",
+                    "Squirrel was seen chasing another squirrel.",
+                    "Squirrel was seen climbing a tree or other environmental landmark.",
+                    "Squirrel was seen eating.",
+                    "Squirrel was seen foraging for food.",
+                    "Other activities squirrels were observed doing.",
+                    "Squirrel was heard kukking, a chirpy vocal communication used for a variety of reasons.",
+                    "Squirrel was heard quaaing, an elongated vocal communication which can indicate the presence of a ground predator such as a dog.",
+                    "Squirrel was heard moaning, a high-pitched vocal communication which can indicate the presence of an air predator such as a hawk.",
+                    "Squirrel was seen flagging its tail. Flagging is a whipping motion used to exaggerate squirrel's size and confuse rivals or predators. Looks as if the squirrel is scribbling with tail into the air.",
+                    "Squirrel was seen twitching its tail. Looks like a wave running through the tail, like a breakdancer doing the arm wave. Often used to communicate interest, curiosity.",
+                    "Squirrel was seen approaching human, seeking food.",
+                    "Squirrel was indifferent to human presence.",
+                    "Squirrel was seen running from humans, seeing them as a threat.",
+                    "Sighter notes on other types of interactions between squirrels and humans.",
+                    "Latitude and longitude"
+                ]
+            }
+        ],
+        "data": {
+            "file_name": [
+                "squirrel_data.csv"
+            ],
+            "file_url": [
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-05-23/squirrel_data.csv"
+            ]
+        },
+        "data_load": {
+            "file_name": [
+                "squirrel_data.csv"
+            ],
+            "file_url": [
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-23/squirrel_data.csv"
+            ]
+        }
+    },
+    {
+        "date_posted": "2023-01-17",
+        "project_name": "Art History",
+        "project_source": [
+            "https://research.repository.duke.edu/concern/datasets/q811kk70n?locale=en",
+            "https://github.com/hollandstam1/thesis",
+            "https://saralemus7.github.io/arthistory/",
+            "https://github.com/saralemus7/arthistory"
+        ],
+        "description": "The data this week comes from thearthistory data package This dataset contains data that was used for Holland Stam's thesis work, titledQuantifying art historical narratives. The data was collected to assess the demographic representation of artists through editions of Janson's History of Art and Gardner's Art Through the Ages, two of the most popular art history textbooks used in the American education system. In this package specifically, both artist-level and work-level data was collected along with variables regarding the artists' demographics and numeric metrics for describing how much space they or their work took up in each edition of each textbook. This package contains three datasets: Acknowledging arthistory Citation Lemus S, Stam H (2022). arthistory: Art History Textbook Data.https://github.com/saralemus7/arthistory,https://saralemus7.github.io/arthistory/. Examples of analyses are included inHolland Stam's thesisin Quarto files. No data cleaning",
+        "data_source_url": "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-01-17",
+        "data_dictionary": [
+            {
+                "variable": [
+                    "artist_name",
+                    "edition_number",
+                    "year",
+                    "artist_nationality",
+                    "artist_nationality_other",
+                    "artist_gender",
+                    "artist_race",
+                    "artist_ethnicity",
+                    "book",
+                    "space_ratio_per_page_total",
+                    "artist_unique_id",
+                    "moma_count_to_year",
+                    "whitney_count_to_year",
+                    "artist_race_nwi"
+                ],
+                "class": [
+                    "character",
+                    "double",
+                    "double",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "character"
+                ],
+                "description": [
+                    "The name of each artist",
+                    "The edition number of the textbook from either Janson's History or Art or Gardner's Art Through the Ages.",
+                    "The year of publication for a given edition of Janson or Gardner.",
+                    "The nationality of a given artist.",
+                    "The nationality of the artist. Of the total count of artists through all editions of Janson's History of Art and Gardner's Art Through the Ages, 77.32% account for French, Spanish, British, American and German. Therefore, the categorical strings of this variable are French, Spanish, British, American, German and Other",
+                    "The gender of the artist",
+                    "The race of the artist",
+                    "The ethnicity of the artist",
+                    "Which book, either Janson or Gardner the particular artist at that particular time was included.",
+                    "The area in centimeters squared of both the text and the figure of a particular artist in a given edition of Janson's History of Art divided by the area in centimeters squared of a single page of the respective edition. This variable is continuous.",
+                    "The unique identifying number assigned to artists across books is denoted in alphabetical order. This variable is discrete.",
+                    "The total count of exhibitions ever held by the Museum of Modern Art (MoMA) of a particular artist at a given year of publication. This variable is discrete.",
+                    "The count of exhibitions held by The Whitney of a particular artist at a particular moment of time, as highlighted by year. This variable in discrete.",
+                    "The non-white indicator for artist race, meaning if an artist's race is denoted as either white or non-white."
+                ]
+            }
+        ],
+        "data": {
+            "file_name": [
+                "artists.csv"
+            ],
+            "file_url": [
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-01-17/artists.csv"
+            ]
+        },
+        "data_load": {
+            "file_name": [
+                "artists.csv"
+            ],
+            "file_url": [
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-17/artists.csv"
+            ]
+        }
+    },
+    {
+        "date_posted": "2023-07-04",
+        "project_name": "Historical Markers",
+        "project_source": [
+            "http://www.geonames.org/",
+            "https://www.hmdb.org/geolists.asp?c=United%20States%20of%20America",
+            "https://www.hmdb.org/stats.asp",
+            "https://www.hmdb.org/",
+            "https://github.com/rfordatascience/tidytuesday/issues/574#issuecomment-1601050053"
+        ],
+        "description": "The data this week comes from theHistorical Marker Database USA Index. Learn more about the markers on theHMDb.org site, which includes a number of articles, includingDatabase Counts and Statistics. We included a dataset of places that donothave entries in the Historical Markers Database. You might try to combine that with information fromgeonames.org(code: HSTS) to find markers that need to be submitted. Thanks toJesus M. Castagnettofor the geonames tip!",
+        "data_source_url": "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-07-04",
+        "data_dictionary": [
+            {
+                "variable": [
+                    "marker_id",
+                    "marker_no",
+                    "title",
+                    "subtitle",
+                    "addl_subtitle",
+                    "year_erected",
+                    "erected_by",
+                    "latitude_minus_s",
+                    "longitude_minus_w",
+                    "street_address",
+                    "city_or_town",
+                    "section_or_quarter",
+                    "county_or_parish",
+                    "state_or_prov",
+                    "location",
+                    "missing",
+                    "link"
+                ],
+                "class": [
+                    "double",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "integer",
+                    "character",
+                    "double",
+                    "double",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "character"
+                ],
+                "description": [
+                    "Unique ID for this marker in the HMdb.",
+                    "Number of this marker in the state numbering scheme.",
+                    "Main title of the marker.",
+                    "Subtitle of the marker, if any.",
+                    "Additional subtitle text.",
+                    "The year in which the marker was erected.",
+                    "The organization which erected the marker.",
+                    "The latitude of the marker.",
+                    "The longitude of the marker.",
+                    "The street address of the marker, if available.",
+                    "The city, town, etc in which the marker is located.",
+                    "The section of the city, town, etc, when available.",
+                    "The county, parish, or similar designation in which the marker appears.",
+                    "The state, province, territory, etc in which the marker appears.",
+                    "A description of the marker's location.",
+                    "Whether the marker is \\\"Reported missing\\\" or \\\"Confirmed missing\\\". NA values indicate that the marker has neither been reported missing nor confirmed as missing.",
+                    "The HMDb link to the marker. Links include additional details, such as photos and topic lists to which this marker belongs."
+                ]
+            },
+            {
+                "variable": [
+                    "county",
+                    "state"
+                ],
+                "class": [
+                    "character",
+                    "character"
+                ],
+                "description": [
+                    "County or equivalent.",
+                    "State or territory."
+                ]
+            }
+        ],
+        "data": {
+            "file_name": [
+                "historical_markers.csv",
+                "no_markers.csv"
+            ],
+            "file_url": [
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-07-04/historical_markers.csv",
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-07-04/no_markers.csv"
+            ]
+        },
+        "data_load": {
+            "file_name": [
+                "historical_markers.csv",
+                "no_markers.csv"
+            ],
+            "file_url": [
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-04/historical_markers.csv",
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-04/no_markers.csv"
+            ]
+        }
+    },
+    {
+        "date_posted": "2023-02-14",
+        "project_name": "Hollywood Age Gaps",
+        "project_source": [
+            "https://www.data-is-plural.com/archive/2018-02-07-edition/",
+            "https://tidytues.day/2021/2021-03-09",
+            "https://hollywoodagegap.com/"
+        ],
+        "description": "The data this week comes fromHollywood Age GapviaData Is Plural. An informational site showing the age gap between movie love interests. The data follows certain rules: The two (or more) actors play actual love interests (not just friends, coworkers, or some other non-romantic type of relationship) The youngest of the two actors is at least 17 years old Not animated characters We previously provided a dataset about theBechdel Test. It might be interesting to see whether there is any correlation between these datasets! The Bechdel Test dataset also included additional information about the films that were used in that dataset. Note: The age gaps dataset includes \"gender\" columns, which always contain the values \"man\" or \"woman\". These values appear to indicate how thecharactersin each film identify. Some of these values do not match how theactoridentifies. We apologize if any characters are misgendered in the data!",
+        "data_source_url": "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-02-14",
+        "data_dictionary": [
+            {
+                "variable": [
+                    "movie_name",
+                    "release_year",
+                    "director",
+                    "age_difference",
+                    "couple_number",
+                    "actor_1_name",
+                    "actor_2_name",
+                    "character_1_gender",
+                    "character_2_gender",
+                    "actor_1_birthdate",
+                    "actor_2_birthdate",
+                    "actor_1_age",
+                    "actor_2_age"
+                ],
+                "class": [
+                    "character",
+                    "integer",
+                    "character",
+                    "integer",
+                    "integer",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "date",
+                    "date",
+                    "integer",
+                    "integer"
+                ],
+                "description": [
+                    "Name of the film",
+                    "Release year",
+                    "Director of the film",
+                    "Age difference between the characters in whole years",
+                    "An identifier for the couple in case multiple couples are listed for this film",
+                    "The name of the older actor in this couple",
+                    "The name of the younger actor in this couple",
+                    "The gender of the older character, as identified by the person who submitted the data for this couple",
+                    "The gender of the younger character, as identified by the person who submitted the data for this couple",
+                    "The birthdate of the older member of the couple",
+                    "The birthdate of the younger member of the couple",
+                    "The age of the older actor when the film was released",
+                    "The age of the younger actor when the film was released"
+                ]
+            }
+        ],
+        "data": {
+            "file_name": [
+                "age_gaps.csv"
+            ],
+            "file_url": [
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-02-14/age_gaps.csv"
+            ]
+        },
+        "data_load": {
+            "file_name": [
+                "age_gaps.csv"
+            ],
+            "file_url": [
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-14/age_gaps.csv"
+            ]
+        }
+    },
+    {
+        "date_posted": "2023-08-15",
+        "project_name": "Spam E-mail",
+        "project_source": [
+            "https://vincentarelbundock.github.io/Rdatasets/index.html",
+            "https://archive.ics.uci.edu/dataset/94/spambase",
+            "https://search.r-project.org/CRAN/refmans/kernlab/html/spam.html",
+            "https://vincentarelbundock.github.io/Rdatasets/doc/DAAG/spam7.html"
+        ],
+        "description": "The data this week comes from Vincent Arel-Bundock's Rdatasets package(https://vincentarelbundock.github.io/Rdatasets/index.html). Rdatasets is a collection of 2246 datasets which were originally distributed alongside the statistical software environment R and some of its add-on packages. The goal is to make these data more broadly accessible for teaching and statistical software development. We're working with thespam emaildataset. This is a subset of thespam e-mail database. This is a dataset collected at Hewlett-Packard Labs by Mark Hopkins, Erik Reeber, George Forman, and Jaap Suermondt and shared with theUCI Machine Learning Repository. The dataset classifies 4601 e-mails as spam or non-spam, with additional variables indicating the frequency of certain words and characters in the e-mail. First column was removed.",
+        "data_source_url": "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-08-15",
+        "data_dictionary": [
+            {
+                "variable": [
+                    "crl.tot",
+                    "dollar",
+                    "bang",
+                    "money",
+                    "n000",
+                    "make",
+                    "yesno"
+                ],
+                "class": [
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "character"
+                ],
+                "description": [
+                    "Total length of uninterrupted sequences of capitals",
+                    "Occurrences of the dollar sign, as percent of total number of characters",
+                    "Occurrences of ‘!’, as percent of total number of characters",
+                    "Occurrences of ‘money’, as percent of total number of characters",
+                    "Occurrences of the string ‘000’, as percent of total number of words",
+                    "Occurrences of ‘make’, as a percent of total number of words",
+                    "Outcome variable, a factor with levels 'n' not spam, 'y' spam"
+                ]
+            }
+        ],
+        "data": {
+            "file_name": [
+                "spam.csv"
+            ],
+            "file_url": [
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-08-15/spam.csv"
+            ]
+        },
+        "data_load": {
+            "file_name": [
+                "spam.csv"
+            ],
+            "file_url": [
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-08-15/spam.csv"
+            ]
+        }
+    },
+    {
+        "date_posted": "2023-03-07",
+        "project_name": "Numbats in Australia",
+        "project_source": [
+            "/rfordatascience/tidytuesday/blob/master/data/2023/2023-03-07/data/numbats.csv",
+            "https://www.ala.org.au",
+            "https://github.com/numbats/numbats-tidytuesday",
+            "https://bie.ala.org.au/species/https://biodiversity.org.au/afd/taxa/6c72d199-f0f1-44d3-8197-224a2f7cff5f"
+        ],
+        "description": "The data this week comes from theAtlas of Living Australia. Thanks to Di Cook forpreparing this week's dataset! ThisNumbat page at the Atlas of Living Australiatalks about these endangered species in greater detail. Acsvfile of numbat sightings is provided. The code to refresh the data is below. Questions that would be interesting to answer are:",
+        "data_source_url": "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-03-07",
+        "data_dictionary": [
+            {
+                "variable": [
+                    "decimalLatitude",
+                    "decimalLongitude",
+                    "eventDate",
+                    "scientificName",
+                    "taxonConceptID",
+                    "recordID",
+                    "dataResourceName",
+                    "year",
+                    "month",
+                    "wday",
+                    "hour",
+                    "day",
+                    "dryandra",
+                    "prcp",
+                    "tmax",
+                    "tmin"
+                ],
+                "class": [
+                    "double",
+                    "double",
+                    "datetime",
+                    "factor",
+                    "factor",
+                    "character",
+                    "factor",
+                    "integer",
+                    "factor",
+                    "factor",
+                    "integer",
+                    "date",
+                    "logical",
+                    "double",
+                    "double",
+                    "double"
+                ],
+                "description": [
+                    "decimalLatitude",
+                    "decimalLongitude",
+                    "eventDate",
+                    "Either \\\"Myrmecobius fasciatus\\\" or \\\"Myrmecobius fasciatus rufus\\\"",
+                    "The URL for this (sub)species",
+                    "recordID",
+                    "dataResourceName",
+                    "The 4-digit year of the event (when available)",
+                    "The 3-letter month abbreviation of the event (when available)",
+                    "The 3-letter weekday abbreviation of the event (when available)",
+                    "The hour of the event (when available)",
+                    "The date of the event (when available)",
+                    "whether the observation was in Dryandra Woodland",
+                    "Precipitation on that day in Dryandra Woodland (when relevant), in millimeters",
+                    "Maximum temperature on that day in Dryandra Woodland (when relevant), in degrees Celsius",
+                    "Minimum temperature on that day in Dryandra Woodland (when relevant), in degrees Celsius"
+                ]
+            }
+        ],
+        "data": {
+            "file_name": [
+                "numbats.csv"
+            ],
+            "file_url": [
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-03-07/numbats.csv"
+            ]
+        },
+        "data_load": {
+            "file_name": [
+                "numbats.csv"
+            ],
+            "file_url": [
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-03-07/numbats.csv"
+            ]
+        }
+    },
+    {
+        "date_posted": "2023-11-28",
+        "project_name": "Doctor Who Episodes",
+        "project_source": [
+            "https://en.wikipedia.org/wiki/List_of_Doctor_Who_episodes_(2005%E2%80%93present)",
+            "https://github.com/KittJonathan/datardis/tree/main/misc",
+            "https://cran.r-project.org/package=datardis",
+            "https://github.com/KittJonathan/datardis"
+        ],
+        "description": "Doctor Who is an extremely long-running British television program. The show was revived in 2005, and has proven very popular since then. To celebrate this year's 60th anniversary of Doctor Who, we have three datasets. The data this week comes from Wikipedia's [List of Doctor Who episodes](https://en.wikipedia.org/wiki/List_of_Doctor_Who_episodes_(2005%E2%80%93present)via the{datardis} packagebyJonathan Kitt. Thank you to Jonathan for compiling and sharing this data! As of 2023-11-24, the data only includes episodes from the \"revived\" era. For an added challenge, consider submitting a pull request to the {datardis} package to update thedata-extraction scriptsto also fetch the \"classic\" era data! Clean data from the{datardis} package.",
+        "data_source_url": "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-11-28",
+        "data_dictionary": [
+            {
+                "variable": [
+                    "era",
+                    "season_number",
+                    "serial_title",
+                    "story_number",
+                    "episode_number",
+                    "episode_title",
+                    "type",
+                    "first_aired",
+                    "production_code",
+                    "uk_viewers",
+                    "rating",
+                    "duration"
+                ],
+                "class": [
+                    "character",
+                    "double",
+                    "character",
+                    "character",
+                    "double",
+                    "character",
+                    "character",
+                    "double",
+                    "character",
+                    "double",
+                    "double",
+                    "double"
+                ],
+                "description": [
+                    "Whether the episode is in the \\\"classic\\\" or \\\"revived\\\" era. All data in this dataset is within the \\\"revived\\\" era.",
+                    "The season number within the era. Note that some episodes are outside of a season.",
+                    "Serial title if available",
+                    "Story number",
+                    "Episode number in season",
+                    "Episode title",
+                    "\\\"episode\\\" or \\\"special\\\"",
+                    "Date the episode first aired in the U.K.",
+                    "Episode's production code if available",
+                    "Number of U.K. viewers (millions)",
+                    "Episode's rating",
+                    "Episode's duration in minutes"
+                ]
+            },
+            {
+                "variable": [
+                    "story_number",
+                    "director"
+                ],
+                "class": [
+                    "character",
+                    "character"
+                ],
+                "description": [
+                    "Story number",
+                    "Episode's director"
+                ]
+            },
+            {
+                "variable": [
+                    "story_number",
+                    "writer"
+                ],
+                "class": [
+                    "character",
+                    "character"
+                ],
+                "description": [
+                    "Story number",
+                    "Episode's writer"
+                ]
+            }
+        ],
+        "data": {
+            "file_name": [
+                "drwho_directors.csv",
+                "drwho_episodes.csv",
+                "drwho_writers.csv"
+            ],
+            "file_url": [
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-11-28/drwho_directors.csv",
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-11-28/drwho_episodes.csv",
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-11-28/drwho_writers.csv"
+            ]
+        },
+        "data_load": {
+            "file_name": [
+                "drwho_directors.csv",
+                "drwho_episodes.csv",
+                "drwho_writers.csv"
+            ],
+            "file_url": [
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-11-28/drwho_directors.csv",
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-11-28/drwho_episodes.csv",
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-11-28/drwho_writers.csv"
+            ]
+        }
+    },
+    {
+        "date_posted": "2023-11-14",
+        "project_name": "Diwali Sales Data",
+        "project_source": [
+            "https://www.kaggle.com/code/bhushanshelke69/diwali-data-exploration",
+            "https://github.com/vikasvachheta08/Diwali_Sales_Analysis_Using_Python",
+            "https://www.kaggle.com/datasets/saadharoon27/diwali-sales-dataset"
+        ],
+        "description": "This week is Diwali, the festival of lights! The data this week comes fromsales datafor a retail store during the Diwali festival period in India. The data is shared on Kaggle by Saad Haroon. This week we're sharing Python data analysis examples! There's a few out there, but these ones fromBrushan ShelkeorVikas Vachheta(see the Diwali_Sales_Analysis.ipynb file for the code) are some data exploration analyses. Data was downloaded fromKaggle, and theStatusandunnamed1columns removed.",
+        "data_source_url": "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-11-14",
+        "data_dictionary": [
+            {
+                "variable": [
+                    "User_ID",
+                    "Cust_name",
+                    "Product_ID",
+                    "Gender",
+                    "Age Group",
+                    "Age",
+                    "Marital_Status",
+                    "State",
+                    "Zone",
+                    "Occupation",
+                    "Product_Category",
+                    "Orders",
+                    "Amount"
+                ],
+                "class": [
+                    "double",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "double",
+                    "double",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "double",
+                    "double"
+                ],
+                "description": [
+                    "User identification number",
+                    "Customer name",
+                    "Product identification number",
+                    "Gender of the customer (e.g. Male, Female)",
+                    "Age group of the customer",
+                    "Age of the customer",
+                    "Marital status of the customer (e.g. Married, Single)",
+                    "State of the customer",
+                    "Geographic zone of the customer",
+                    "Occupation of the customer",
+                    "Category of the product",
+                    "Number of orders made by the customer",
+                    "Amount in Indian rupees spent by the customer"
+                ]
+            }
+        ],
+        "data": {
+            "file_name": [
+                "diwali_sales_data.csv"
+            ],
+            "file_url": [
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-11-14/diwali_sales_data.csv"
+            ]
+        },
+        "data_load": {
+            "file_name": [
+                "diwali_sales_data.csv"
+            ],
+            "file_url": [
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-11-14/diwali_sales_data.csv"
+            ]
+        }
+    },
+    {
+        "date_posted": "2023-12-12",
+        "project_name": "Holiday Movies",
+        "project_source": [
+            "https://networkdatascience.ceu.edu/article/2019-12-16/christmas-movies",
+            "https://developer.imdb.com/non-commercial-datasets/"
+        ],
+        "description": "Happy holidays! This week we're exploring \"holiday\" movies: movies with \"holiday\", \"Christmas\", \"Hanukkah\", or \"Kwanzaa\" (or variants thereof) in their title! The data this week comes from theInternet Movie Database. We don't have an article using exactly this dataset, but you might get inspiration from thisChristmas Moviesblog post by Milán Janosov at Central European University.",
+        "data_source_url": "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-12-12",
+        "data_dictionary": [
+            {
+                "variable": [
+                    "tconst",
+                    "title_type",
+                    "primary_title",
+                    "original_title",
+                    "year",
+                    "runtime_minutes",
+                    "genres",
+                    "simple_title",
+                    "average_rating",
+                    "num_votes",
+                    "christmas",
+                    "hanukkah",
+                    "kwanzaa",
+                    "holiday"
+                ],
+                "class": [
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "double",
+                    "double",
+                    "character",
+                    "character",
+                    "double",
+                    "double",
+                    "logical",
+                    "logical",
+                    "logical",
+                    "logical"
+                ],
+                "description": [
+                    "alphanumeric unique identifier of the title",
+                    "the type/format of the title (movie, video, or tvMovie)",
+                    "the more popular title / the title used by the filmmakers on promotional materials at the point of release",
+                    "original title, in the original language",
+                    "the release year of a title",
+                    "primary runtime of the title, in minutes",
+                    "includes up to three genres associated with the title (comma-delimited)",
+                    "the title in lowercase, with punctuation removed, for easier filtering and grouping",
+                    "weighted average of all the individual user ratings on IMDb",
+                    "number of votes the title has received on IMDb (titles with fewer than 10 votes were not included in this dataset)",
+                    "whether the title includes \\\"christmas\\\", \\\"xmas\\\", \\\"x mas\\\", etc",
+                    "whether the title includes \\\"hanukkah\\\", \\\"chanukah\\\", etc",
+                    "whether the title includes \\\"kwanzaa\\\"",
+                    "whether the title includes the word \\\"holiday\\\""
+                ]
+            },
+            {
+                "variable": [
+                    "tconst",
+                    "genres"
+                ],
+                "class": [
+                    "character",
+                    "character"
+                ],
+                "description": [
+                    "alphanumeric unique identifier of the title",
+                    "genres associated with the title, one row per genre"
+                ]
+            }
+        ],
+        "data": {
+            "file_name": [
+                "holiday_movie_genres.csv",
+                "holiday_movies.csv"
+            ],
+            "file_url": [
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-12-12/holiday_movie_genres.csv",
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-12-12/holiday_movies.csv"
+            ]
+        },
+        "data_load": {
+            "file_name": [
+                "holiday_movie_genres.csv",
+                "holiday_movies.csv"
+            ],
+            "file_url": [
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-12-12/holiday_movie_genres.csv",
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-12-12/holiday_movies.csv"
+            ]
+        }
+    },
+    {
+        "date_posted": "2024-02-13",
+        "project_name": "Valentine's Day Consumer Data",
+        "project_source": [
+            "https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-01-25",
+            "https://nrf.com/research-insights/holiday-data-and-trends/valentines-day/valentines-day-data-center",
+            "https://www.kaggle.com/datasets/infinator/happy-valentines-day-2022",
+            "https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-01-18"
+        ],
+        "description": "Happy Valentine's Day! This week we're exploringValentine's Day survey data. The National Retail Federation in the United States conducts surveys and has created aValentine's Day Data Centerso you can explore the data on how consumers celebrate. The NRF has surveyed consumers about how they plan to celebrate Valentine’s Day annually for over a decade. Take a deeper dive into the data from the last 10 years, and use the interactive charts to explore a demographic breakdown of total spending, average spending, types of gifts planned and spending per type of gift. The NRF has continued to collect data. The data for this week is from 2010 to 2022, as organized by Suraj Das for a Kaggle dataset. In the historical surveys gender was collected as only 'Men' and 'Women', which does not accurately include all genders. If you're looking for other Valentine's Day type datasets, check out previous datasets onchocolateorboard games(a good Valentine's Day activity!). Data was downloaded fromSunja aa Kaggle dataset. Data from historical_gift_trends_per_person_spending.csv, historical_spending_average_expected_spending.csv and historical_spending_percent_celebrating.csv were combined into historical_spending.csv. Data from planned_gifts_age.csv and spending_or_celebrating_age_1.csv were combined into gifts_age.csv. Data from planned_gifts_gender.csv and spending_or_celebrating_gender_1.csv were combined into gifts_gender.csv. Percentage signs and dollar signs were removed from all numerical values.",
+        "data_source_url": "https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-02-13",
+        "data_dictionary": [
+            {
+                "variable": [
+                    "Year",
+                    "PercentCelebrating",
+                    "PerPerson",
+                    "Candy",
+                    "Flowers",
+                    "Jewelry",
+                    "GreetingCards",
+                    "EveningOut",
+                    "Clothing",
+                    "GiftCards"
+                ],
+                "class": [
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double"
+                ],
+                "description": [
+                    "Year",
+                    "Percent of people celebrating Valentines Day",
+                    "Average amount each person is spending",
+                    "Average amount spending on candy",
+                    "Average amount spending on flowers",
+                    "Average amount spending on jewelry",
+                    "Average amount spending on greeting cards",
+                    "Average amount spending on an evening out",
+                    "Average amount spending on clothing",
+                    "Average amount spending on gift cards"
+                ]
+            },
+            {
+                "variable": [
+                    "Age",
+                    "SpendingCelebrating",
+                    "Candy",
+                    "Flowers",
+                    "Jewelry",
+                    "GreetingCards",
+                    "EveningOut",
+                    "Clothing",
+                    "GiftCards"
+                ],
+                "class": [
+                    "character",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double"
+                ],
+                "description": [
+                    "Age",
+                    "Percent spending money on or celebrating Valentines Day",
+                    "Average percent spending on candy",
+                    "Average percent spending on flowers",
+                    "Average percent spending on jewelry",
+                    "Average percent spending on greeting cards",
+                    "Average percent spending on an evening out",
+                    "Average percent spending on clothing",
+                    "Average percent spending on gift cards"
+                ]
+            },
+            {
+                "variable": [
+                    "Gender",
+                    "SpendingCelebrating",
+                    "Candy",
+                    "Flowers",
+                    "Jewelry",
+                    "GreetingCards",
+                    "EveningOut",
+                    "Clothing",
+                    "GiftCards"
+                ],
+                "class": [
+                    "character",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double",
+                    "double"
+                ],
+                "description": [
+                    "Gender only including Men or Women",
+                    "Percent spending money on or celebrating Valentines Day",
+                    "Average percent spending on candy",
+                    "Average percent spending on flowers",
+                    "Average percent spending on jewelry",
+                    "Average percent spending on greeting cards",
+                    "Average percent spending on an evening out",
+                    "Average percent spending on clothing",
+                    "Average percent spending on gift cards"
+                ]
+            }
+        ],
+        "data": {
+            "file_name": [
+                "gifts_age.csv",
+                "gifts_gender.csv",
+                "historical_spending.csv"
+            ],
+            "file_url": [
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-02-13/gifts_age.csv",
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-02-13/gifts_gender.csv",
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-02-13/historical_spending.csv"
+            ]
+        },
+        "data_load": {
+            "file_name": [
+                "gifts_age.csv",
+                "gifts_gender.csv",
+                "historical_spending.csv"
+            ],
+            "file_url": [
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-02-13/gifts_age.csv",
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-02-13/gifts_gender.csv",
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-02-13/historical_spending.csv"
+            ]
+        }
+    },
+    {
+        "date_posted": "2023-08-08",
+        "project_name": "Hot Ones Episodes",
+        "project_source": [
+            "https://en.wikipedia.org/wiki/List_of_Hot_Ones_episodes",
+            "https://github.com/borstell",
+            "https://github.com/rfordatascience/tidytuesday/issues/591",
+            "https://en.wikipedia.org/wiki/Hot_Ones"
+        ],
+        "description": "The data this week comes from Wikipedia articles:Hot OnesandList of Hot Ones episodes. Thank you toCarl Börstellfor thesuggestion and cleaning script! Hot Ones is an American YouTube talk show, created by Chris Schonberger, hosted by Sean Evans and produced by First We Feast and Complex Media. Its basic premise involves celebrities being interviewed by Evans over a platter of increasingly spicy chicken wings.",
+        "data_source_url": "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-08-08",
+        "data_dictionary": [
+            {
+                "variable": [
+                    "season",
+                    "episode_overall",
+                    "episode_season",
+                    "title",
+                    "original_release",
+                    "guest",
+                    "guest_appearance_number",
+                    "finished"
+                ],
+                "class": [
+                    "integer",
+                    "integer",
+                    "integer",
+                    "character",
+                    "date",
+                    "character",
+                    "integer",
+                    "logical"
+                ],
+                "description": [
+                    "The season number.",
+                    "The overall count of this episode, from 1-300.",
+                    "The count of this episode within this season.",
+                    "The title of the episode.",
+                    "The date on which the episode was originally available on YouTube.",
+                    "The name of the guest.",
+                    "The number of appearances by this guest so far as of this date.",
+                    "Whether the guest finished trying all of the sauces."
+                ]
+            },
+            {
+                "variable": [
+                    "season",
+                    "sauce_number",
+                    "sauce_name",
+                    "scoville"
+                ],
+                "class": [
+                    "integer",
+                    "integer",
+                    "character",
+                    "integer"
+                ],
+                "description": [
+                    "The season number.",
+                    "The number of this sauce, from 1 (least hot) to 10 (hottest).",
+                    "The name of the sauce.",
+                    "The rating of the sauce in Scoville heat units."
+                ]
+            },
+            {
+                "variable": [
+                    "season",
+                    "episodes",
+                    "note",
+                    "original_release",
+                    "last_release"
+                ],
+                "class": [
+                    "integer",
+                    "integer",
+                    "character",
+                    "date",
+                    "date"
+                ],
+                "description": [
+                    "The season number.",
+                    "The count of episodes in this season.",
+                    "Notes about this season.",
+                    "The date of the first episode in this season.",
+                    "The date of the last episode of this season (if that episode has aired at the time of scraping)."
+                ]
+            }
+        ],
+        "data": {
+            "file_name": [
+                "episodes.csv",
+                "sauces.csv",
+                "seasons.csv"
+            ],
+            "file_url": [
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-08-08/episodes.csv",
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-08-08/sauces.csv",
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-08-08/seasons.csv"
+            ]
+        },
+        "data_load": {
+            "file_name": [
+                "episodes.csv",
+                "sauces.csv",
+                "seasons.csv"
+            ],
+            "file_url": [
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-08-08/episodes.csv",
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-08-08/sauces.csv",
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-08-08/seasons.csv"
+            ]
+        }
+    },
+    {
+        "date_posted": "2023-07-25",
+        "project_name": "Scurvy",
+        "project_source": [
+            "https://github.com/higgi13425/medicaldata/tree/master/data-raw",
+            "https://htmlpreview.github.io/?https://github.com/higgi13425/medicaldata/blob/master/man/description_docs/scurvy_desc.html",
+            "https://higgi13425.github.io/medicaldata/"
+        ],
+        "description": "The data this week comes from themedicaldata R package. This is a data package from Peter Higgins, with 19 medical datasets for teaching Reproducible Medical Research with R. We're using thescurvy dataset. Source: This data set is from a study published in 1757 in A Treatise on the Scurvy in Three Parts, by James Lind. This data set contains 12 participants with scurvy. In 1757, it was not known that scurvy is a manifestation of vitamin C deficiency. A variety of remedies had been anecdotally reported, but Lind was the first to test different regimens of acidic substances (including citrus fruits) against each other in a randomized, controlled trial. 6 distinct therapies were tested in 12 seamen with symptomatic scurvy, who were selected for similar severity. Six days of therapy were provided, and endpoints were reported in the text at the end of 6 days. These include rotting of the gums, skin sores, weakness of the knees, and lassitude, which are described in terms of severity. These have been translated into Likert scales from 0(none) to 3(severe). A dichotomous endpoint, fitness for duty, was also reported. Scurvy was a common affliction of seamen on long voyages, leading to mouth sores, skin lesions, weakness of the knees, and lassitude. Scurvy could be fatal on long voyages. James Lind reported the treatment of 12 seamen with scurvy in 1757, in _A Treatise on the Scurvy in Three Parts). This 476 page bloviation can be found scanned to the Google Books website A Treatise on the Scurvy. Pages 149-153 are a rare gem among what can be generously described as 400+ pages of evidence-free blathering, and these 4 pages may represent the first report of a controlled clinical trial. Lind was the ship’s surgeon on board the HMS Salisbury, and had a number of scurvy-affected seamen at his disposal. Many remedies had been described and advocated for, with no more than anecdotal evidence. On May 20, 1747, Lind decided to try the 6 therapies on the Salisbury in a comparative study in 12 affected seamen. He selected 12 with roughly similar severity, with notable skin and mouth sores, weakness of the knees, and significant lassitude, making them unfit for duty. They each received the standard shipboard diet of gruel and mutton broth, supplemented with occasional biscuits and puddings. Each treatment was a dietary supplement (including citrus fruits) or a medicinal. This data frame was reconstructed from Lind’s account as recorded on these 4 pages, with his estimates of severity translated to a 4 point Likert scale (0-3) for each of the symptoms he described at his chosen endpoint on day 6. A somewhat fanciful study_id variable was added, along with detailed descriptions of the dosing schedule of each treatment. Of note, there is some dispute about whether this was truly the first clinical trial, or whether it actually happened, as there are no contemporaneous corroborating accounts. See link about the historical debate. Lind reported that the seamen treated with 2 lemons and an orange daily did best, followed by those treated with cider. Those treated with elixir of vitriol only had improvement in mouth sores. One imagines that acidic substances (like dilute sulfuric acid, vinegar, cider, and citrus fruits) might have been rather painful on these mouth sores. Unfortunately, the burial of the 4 valuable pages of data in 476 pages of noise, a publication delay of 10 years, and Lind’s half-hearted conclusions (he was focused on acidity), meant that it took until 1795 before the British Navy mandated daily limes for seamen. The first column was removed from the scurvy.csv file available athttps://github.com/higgi13425/medicaldata/tree/master/data-raw.",
+        "data_source_url": "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-07-25",
+        "data_dictionary": [
+            {
+                "variable": [
+                    "study_id",
+                    "treatment",
+                    "dosing_regimen_for_scurvy",
+                    "gum_rot_d6",
+                    "skin_sores_d6",
+                    "weakness_of_the_knees_d6",
+                    "lassitude_d6",
+                    "fit_for_duty_d6"
+                ],
+                "class": [
+                    "double",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "character",
+                    "character"
+                ],
+                "description": [
+                    "Participant ID",
+                    "Treatment; cider, dilute_sulfuric_acid, vinegar, sea_water, citrus, purgative_mixture",
+                    "Dosing Regimen; 1 quart per day; 25 drops of elixir of vitriol, three times a day; two spoonfuls, three times daily; half pint daily; two lemons and an orange daily; a nutmeg-sized paste of garlic, mustard seed, horseradish, balsam of Peru, and gum myrrh three times a day",
+                    "Gum Rot on Day 6; 0_none, 1_mild, 2_moderate, 3_severe",
+                    "Skin Sores on Day 6; 0_none, 1_mild, 2_moderate, 3_severe",
+                    "Weakness of the Knees on Day 6; 0_none, 1_mild, 2_moderate, 3_severe",
+                    "Lassitude on Day 6; 0_none, 1_mild, 2_moderate, 3_severe",
+                    "Fit for Duty on Day 6; 0_no, 1_yes"
+                ]
+            }
+        ],
+        "data": {
+            "file_name": [
+                "scurvy.csv"
+            ],
+            "file_url": [
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-07-25/scurvy.csv"
+            ]
+        },
+        "data_load": {
+            "file_name": [
+                "scurvy.csv"
+            ],
+            "file_url": [
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-25/scurvy.csv"
+            ]
+        }
+    },
+    {
+        "date_posted": "2023-11-07",
+        "project_name": "US House Election Results",
+        "project_source": [
+            "https://electionlab.mit.edu/",
+            "https://electionlab.mit.edu/articles/new-report-how-we-voted-2022",
+            "https://docs.posit.co/ide/user/ide/guide/tools/copilot.html",
+            "https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/IG0UN2"
+        ],
+        "description": "It's election day in the United States! To celebrate, the data this week comes from theMIT Election Data and Science Lab(MEDSL). Hat tip this week to theRStudio GitHub Copilot integration, which suggested the MEDSL. From the MEDSL's reportNew Report: How We Voted in 2022: The Survey of the Performance of American Elections (SPAE) provides information about how Americans experienced voting in the most recent federal election. The survey has been conducted after federal elections since 2008, and is the only public opinion project in the country that is dedicated explicitly to understanding how voters themselves experience the election process. We're specifically providing data on House elections from 1976-2022. Check out theMEDSL websitefor additional datasets and tools. Be sure to cite the MEDSL in your work: Clean data and dictionary downloaded from theHarvard Dataverse",
+        "data_source_url": "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-11-07",
+        "data_dictionary": [
+            {
+                "variable": [
+                    "year",
+                    "state",
+                    "state_po",
+                    "state_fips",
+                    "state_cen",
+                    "state_ic",
+                    "office",
+                    "district",
+                    "stage",
+                    "runoff",
+                    "special",
+                    "candidate",
+                    "party",
+                    "writein",
+                    "mode",
+                    "candidatevotes",
+                    "totalvotes",
+                    "unofficial",
+                    "version",
+                    "fusion_ticket"
+                ],
+                "class": [
+                    "double",
+                    "character",
+                    "character",
+                    "double",
+                    "double",
+                    "double",
+                    "character",
+                    "character",
+                    "character",
+                    "logical",
+                    "logical",
+                    "character",
+                    "character",
+                    "logical",
+                    "character",
+                    "double",
+                    "double",
+                    "logical",
+                    "double",
+                    "logical"
+                ],
+                "description": [
+                    "year in which election was held",
+                    "state name",
+                    "U.S. postal code state abbreviation",
+                    "State FIPS code",
+                    "U.S. Census state code",
+                    "ICPSR state code",
+                    "U.S. House (constant)",
+                    "district number. At-large districts are coded as 0 (zero)",
+                    "electoral stage (gen = general elections, pri = primary elections)",
+                    "runoff election",
+                    "special election",
+                    "name of the candidate as it appears in the House Clerk report",
+                    "party of the candidate (always entirely lowercase) (Parties are as they appear in the House Clerk report. In states that allow candidates to appear on multiple party lines, separate vote totals are indicated for each party. Therefore, for analysis that involves candidate totals, it will be necessary to aggregate across all party lines within a district. For analysis that focuses on two-party vote totals, it will be necessary to account for major party candidates who receive votes under multiple party labels. Minnesota party labels are given as they appear on the Minnesota ballots. Future versions of this file will include codes for candidates who are endorsed by major parties, regardless of the party label under which they receive votes.)",
+                    "vote totals associated with write-in candidates",
+                    "mode of voting; states with data that doesn't break down returns by mode are marked as \\\"total\\\"",
+                    "votes received by this candidate for this particular party",
+                    "total number of votes cast for this election",
+                    "TRUE/FALSE indicator for unofficial result (to be updated later); this appears only for 2018 data in some cases",
+                    "date when this dataset was finalized",
+                    "A TRUE/FALSE indicator as to whether the given candidate is running on a fusion party ticket, which will in turn mean that a candidate will appear multiple times, but by different parties, for a given election. States with fusion tickets include Connecticut, New Jersey, New York, and South Carolina."
+                ]
+            }
+        ],
+        "data": {
+            "file_name": [
+                "house.csv"
+            ],
+            "file_url": [
+                "https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-11-07/house.csv"
+            ]
+        },
+        "data_load": {
+            "file_name": [
+                "house.csv"
+            ],
+            "file_url": [
+                "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-11-07/house.csv"
+            ]
+        }
+    }
+]
