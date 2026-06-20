@@ -1,7 +1,29 @@
+---
+title: Metadata Hierarchy Explorer
+emoji: 🌿
+colorFrom: green
+colorTo: blue
+sdk: streamlit
+app_file: demo.py
+pinned: false
+license: mit
+---
+
 # Metadata Hierarchy Construction — TFM
 
 Master's thesis prototype: automatic hierarchy construction from data-dictionary metadata.
 Three algorithms are implemented for comparison.
+
+## Live demo
+
+The deployed app opens on a **pre-built results viewer** (`demo.py`) showing the
+AI-MIND and HCP hierarchies for all three approaches — no upload needed. Use the
+sidebar to switch approach/dataset and the Level-of-Detail controls to adjust depth.
+
+To **build a hierarchy from your own CSV**, open the **Baseline**, **Approach 1**, or
+**Approach 2** page from the left sidebar and upload a file. (Approach 2's optional
+local-LLM label refinement runs only on a local machine with Ollama; in the cloud it
+falls back to the deterministic pipeline automatically.)
 
 ## Approaches
 
