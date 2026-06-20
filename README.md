@@ -3,8 +3,8 @@ title: Metadata Hierarchy Explorer
 emoji: 🌿
 colorFrom: green
 colorTo: blue
-sdk: streamlit
-app_file: demo.py
+sdk: docker
+app_port: 7860
 pinned: false
 license: mit
 ---
