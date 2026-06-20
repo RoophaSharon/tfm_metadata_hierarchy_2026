@@ -46,8 +46,8 @@ PREBUILT = {
             "facets":    ROOT / "approach_1" / "ai-mind-variable-descriptions_in__approach1_facets.json",
         },
         "HCP": {
-            "hierarchy": ROOT / "approach_1" / "keybert" / "HCP_S1200_DataDictionary_Oct_30_2023_approach1_hierarchy.json",
-            "facets":    ROOT / "approach_1" / "keybert" / "HCP_S1200_DataDictionary_Oct_30_2023_approach1_facets.json",
+            "hierarchy": ROOT / "approach_1" / "HCP_S1200_DataDictionary_Oct_30_2023_approach1_hierarchy.json",
+            "facets":    ROOT / "approach_1" / "HCP_S1200_DataDictionary_Oct_30_2023_approach1_facets.json",
         },
     },
     "Approach 2": {
@@ -211,7 +211,7 @@ def plot_sunburst(nodes: list, color: str, max_depth: int = DEFAULT_DEPTH):
                                  font=dict(size=13), x=0.5))
     return fig
 
-def plot_treemap(nodes: list, color: str):
+def plot_treemap(nodes: list, color: str, max_depth: int = DEFAULT_DEPTH):
     nodes = _filter_dissolved(nodes)
     pm = _parent_map(nodes)
     vm = _tree_value_map(nodes, pm)
@@ -228,7 +228,7 @@ def plot_treemap(nodes: list, color: str):
     fig = go.Figure(go.Treemap(
         ids=ids, labels=labels, parents=parents, values=values,
         branchvalues="total", hovertext=hover, hoverinfo="text",
-        textinfo="label+value",
+        textinfo="label+value", maxdepth=max_depth,
         marker=dict(colorscale=color, line=dict(width=1, color="white"))))
     fig.update_layout(height=700, margin=dict(l=10, r=10, t=10, b=10))
     return fig
@@ -360,6 +360,33 @@ def plot_node_link(nodes: list, max_depth: int, show_hidden: bool, show_leaf_lab
     return fig
 
 # ─────────────────────────────────────────────────────────────────────────────
+# STATS / SAFE RENDERING
+# ─────────────────────────────────────────────────────────────────────────────
+def _tree_depth(nodes: list) -> int:
+    """Max depth of the rendered single-parent tree (root = depth 0)."""
+    nodes = _filter_dissolved(nodes)
+    m = {int(n["id"]): n for n in nodes}
+    best = {"d": 0}
+    def rec(nid, d):
+        best["d"] = max(best["d"], d)
+        for c in m.get(int(nid), {}).get("related", []):
+            if int(c) in m:
+                rec(int(c), d + 1)
+    rec(0, 0)
+    return best["d"]
+
+def safe_render_depth(nodes: list, requested: int) -> int:
+    """Plotly sunburst/treemap silently blank when asked to draw too many sectors
+    at once (large hierarchies like HCP). Cap the *initial* render depth — the
+    chart stays fully drillable by clicking, so no data is lost."""
+    n = len(_filter_dissolved(nodes))
+    if n > 400:
+        return min(requested, 3)
+    if n > 150:
+        return min(requested, 4)
+    return requested
+
+# ─────────────────────────────────────────────────────────────────────────────
 # IO
 # ─────────────────────────────────────────────────────────────────────────────
 @st.cache_data(show_spinner=False)
@@ -367,11 +394,36 @@ def _load_json(path_str: str):
     with open(path_str, encoding="utf-8") as f:
         return json.load(f)
 
+def _read_bytes(path_str: str) -> bytes:
+    with open(path_str, "rb") as f:
+        return f.read()
+
+@st.cache_data(show_spinner=False)
+def _outputs_zip(root_str: str) -> bytes:
+    """Zip the entire bundled outputs/ folder for one-click download."""
+    import io, zipfile
+    root = Path(root_str)
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zf:
+        for p in sorted(root.rglob("*")):
+            if p.is_file():
+                zf.write(p, arcname=p.relative_to(root.parent).as_posix())
+    return buf.getvalue()
+
 def count_nodes(nodes: list) -> tuple[int, int]:
     nodes = _filter_dissolved(nodes)
     leaves = sum(1 for n in nodes if n.get("type") == "attribute")
     aggs = sum(1 for n in nodes if n.get("type") == "aggregation")
     return leaves, aggs
+
+def concept_aligned_pct(nodes: list) -> float | None:
+    """% of aggregation nodes that carry a concept/provenance label (Approach 1)."""
+    aggs = [n for n in _filter_dissolved(nodes) if n.get("type") == "aggregation"]
+    if not aggs:
+        return None
+    aligned = sum(1 for n in aggs
+                  if n.get("provenance") or n.get("concept") or n.get("source_evidence"))
+    return 100.0 * aligned / len(aggs) if aligned else None
 
 # ─────────────────────────────────────────────────────────────────────────────
 # SIDEBAR
@@ -413,6 +465,51 @@ c1, c2, c3 = st.columns(3)
 c1.metric("Leaf Variables", leaves)
 c2.metric("Aggregation Nodes", aggs)
 c3.metric("Total Nodes", leaves + aggs)
+
+# ── Build summary (collapsed) ────────────────────────────────────────────────
+facet_path = paths.get("facets")
+n_facets = None
+if facet_path is not None and facet_path.exists():
+    try:
+        n_facets = len(_load_json(str(facet_path)))
+    except Exception:
+        n_facets = None
+
+with st.expander("ℹ️ Build summary", expanded=False):
+    bs1, bs2, bs3, bs4 = st.columns(4)
+    bs1.metric("Variables", leaves)
+    bs2.metric("Internal nodes", aggs)
+    bs3.metric("Tree depth", _tree_depth(raw_nodes))
+    bs4.metric("Facets", n_facets if n_facets is not None else "—")
+    pct = concept_aligned_pct(raw_nodes)
+    if pct is not None:
+        st.caption(f"Concept-aligned aggregation nodes: **{pct:.1f}%**")
+    st.caption(
+        f"Source file: `{hier_path.name}` · "
+        f"Approach: **{approach}** · Dataset: **{dataset}**. "
+        "Tree topology and labels are reproduced exactly from the pre-built "
+        "thesis output (the algorithms are not re-run in this viewer)."
+    )
+
+# ── Downloads ────────────────────────────────────────────────────────────────
+d1, d2, d3 = st.columns(3)
+with d1:
+    st.download_button("⬇️ Hierarchy JSON", data=_read_bytes(str(hier_path)),
+                       file_name=hier_path.name, mime="application/json",
+                       use_container_width=True)
+with d2:
+    if facet_path is not None and facet_path.exists():
+        st.download_button("⬇️ Facets JSON", data=_read_bytes(str(facet_path)),
+                           file_name=facet_path.name, mime="application/json",
+                           use_container_width=True)
+    else:
+        st.button("⬇️ Facets JSON", disabled=True, use_container_width=True,
+                  help="This approach/dataset has no facet tree.")
+with d3:
+    st.download_button("⬇️ All outputs (ZIP)", data=_outputs_zip(str(ROOT)),
+                       file_name="metadata_hierarchy_outputs.zip",
+                       mime="application/zip", use_container_width=True)
+
 st.markdown("---")
 
 # ── Level-of-Detail controls (above chart — matches the apps) ────────────────
@@ -450,15 +547,22 @@ st.divider()
 display_nodes = compress_one_child_chains(raw_nodes) if compress_chains else raw_nodes
 
 if viz_mode == "Sunburst (drill-down)":
-    st.plotly_chart(plot_sunburst(display_nodes, color, depth), use_container_width=True)
+    eff = safe_render_depth(display_nodes, depth)
+    if eff < depth:
+        st.caption(f"Large hierarchy — showing {eff} levels initially to render "
+                   "reliably. **Click any sector to drill deeper.**")
+    st.plotly_chart(plot_sunburst(display_nodes, color, eff), use_container_width=True)
 elif viz_mode == "Treemap":
-    st.plotly_chart(plot_treemap(display_nodes, color), use_container_width=True)
+    eff = safe_render_depth(display_nodes, depth)
+    if eff < depth:
+        st.caption(f"Large hierarchy — showing {eff} levels initially to render "
+                   "reliably. **Click a tile to drill deeper.**")
+    st.plotly_chart(plot_treemap(display_nodes, color, eff), use_container_width=True)
 else:
     st.plotly_chart(plot_node_link(display_nodes, depth, show_hidden, show_leaf_labels),
                     use_container_width=True)
 
 # ── Facets (Approach 1 only) ─────────────────────────────────────────────────
-facet_path = paths.get("facets")
 if facet_path is not None and facet_path.exists():
     st.markdown("---")
     st.subheader("🔀 Parallel facets")

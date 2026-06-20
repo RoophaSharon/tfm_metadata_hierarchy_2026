@@ -111,6 +111,57 @@ _STOP = {
     'using','use','based','given','defined','number','value','values','score',
 }
 
+# ─── KeyBERT / labelling configuration ───────────────────────────────────────
+# These tune the KeyBERT label synthesizer used in the hybrid scorer.
+#
+# USE_NOUN_PHRASES — True: candidate phrases are NLTK POS-tagged noun phrases
+#   (needs the 'averaged_perceptron_tagger' corpus); False: plain n-gram candidates
+#   from tokens. False is robust for short CANTAB/AI-MIND descriptions and avoids the
+#   extra NLTK dependency.
+USE_NOUN_PHRASES  = False
+# USE_CTFIDF — True: multiply KeyBERT cosine relevance by corpus IDF so dataset-wide
+#   boilerplate (low IDF) is down-weighted; False: plain cosine-to-centroid.
+USE_CTFIDF        = True
+# KEYBERT_DIVERSITY — MMR redundancy penalty weight. 0 = pure argmax cosine-to-centroid
+#   (pick the single most relevant phrase); 0.5 = standard MMR diversification.
+KEYBERT_DIVERSITY = 0
+
+# ─── Title-SEEDED KeyBERT label-scorer weights ───────────────────────────────
+# Concept labels are FORMED FROM THE DESCRIPTIONS (KeyBERT candidate phrases over the
+# cluster's member descriptions). The pre-colon title is a ranking SEED/anchor, not the
+# label itself: LABEL_W_TITLE controls how strongly it biases the choice toward the
+# human-canonical phrasing (this is "Guided/Seeded KeyBERT"). Set LABEL_W_TITLE=0 for a
+# pure-description ablation. Magnitudes are relative (need not sum to 1).
+LABEL_W_RELEVANCE = 0.45   # cosine(candidate, cluster centroid)  — description fit (α)
+LABEL_W_TITLE     = 0.35   # cosine(candidate, pre-colon title)   — title influence (β)
+LABEL_W_CONTRAST  = 0.15   # discriminativeness vs sibling clusters (γ)
+# NOTE: node labels are formed from DESCRIPTIONS + pre-colon TITLE only. External
+# ontology sources (Cognitive Atlas / Wikidata / WordNet / PubMed) inform the embedding
+# space / semantic understanding but are never used to name a node — so there is no
+# external-grounding term in the label score.
+
+# Corpus IDF over description n-grams; populated in build_concept_hierarchy() and
+# consumed by _keybert_label when USE_CTFIDF=True.
+_CORPUS_IDF: dict = {}
+
+# Active dataset domain; set in build_concept_hierarchy(), read by the hybrid label
+# scorer's external-grounding signal (Cognitive Atlas vs Wikidata routing).
+_ACTIVE_DOMAIN: str = 'general'
+
+# Label boilerplate: web/URL artifacts and Likert response-scale tokens that leak from
+# data-dictionary descriptions (e.g. HCP FreeSurfer rows embed Neurolex URLs; survey rows
+# embed "strongly agree" scales). These are stripped from KeyBERT candidates AND from the
+# embedding text so they can neither name a node nor distort clustering. Domain-agnostic
+# documentation/scale tokens only — not concept vocabulary.
+_LABEL_BOILERPLATE = {
+    'http', 'https', 'href', 'www', 'org', 'com', 'net', 'wiki', 'url', 'link',
+    'neurolex', 'connectomedb', 'humanconnectome', 'definition', 'category',
+    'sa', 'sd', 'strongly', 'agree', 'disagree', 'neither', 'somewhat',
+}
+# Inline URLs in free text (http://…, www.…/…) — removed from the embedding text.
+_URL_RE = re.compile(r'(https?://\S+|www\.\S+|\b\w+\.(?:org|com|net|gov|edu)\b/?\S*)',
+                     re.IGNORECASE)
+
 # ─────────────────────────────────────────────────────────────────────────────
 # FILE LOADING
 # ─────────────────────────────────────────────────────────────────────────────
@@ -308,6 +359,9 @@ def build_canonical(df, cfg, source):
         if not sem_parts:
             sem_parts = list(leaf_parts) if leaf_parts else []
         semantic_text = ' '.join(sem_parts) if sem_parts else text
+        # Strip inline URLs (HCP FreeSurfer rows embed Neurolex links) so web tokens
+        # cannot dominate either the embedding (clustering) or the KeyBERT label.
+        semantic_text = _URL_RE.sub(' ', semantic_text)
         rows.append({
             '_source_file':    source,
             '_row_index':      int(i),
@@ -342,33 +396,21 @@ def build_canonical(df, cfg, source):
 # ─────────────────────────────────────────────────────────────────────────────
 def precompute_stat_cond_facets(can):
     """
-    Pre-compute _facet_stat and _facet_cond on can.
-    Called before build_concept_hierarchy so that _cluster_and_label can use
-    these columns to insert Statistic and Condition sub-tiers.
-    No hardcoding: all patterns are learned from the data descriptions.
+    Pre-compute _facet_cond on can (numeric experimental conditions only).
+    Called before build_concept_hierarchy so that _cluster_and_label can use it to
+    insert Condition sub-tiers.
+
+    NOTE: the statistic tier (Mean / Median / SD / …) is NO LONGER computed here.
+    It used to come from a hardcoded statistic vocabulary regex, which (a) is domain
+    hardcoding and (b) is not derived from the data's own concept titles. Statistic
+    depth is now produced data-drivenly by _nest_by_measure(), which discovers the
+    shared measure phrase and keeps the residual (Mean/Median/SD) as children — no
+    word list. Condition detection below stays: it is structural (a digit in the
+    code validated against the description text), not a hardcoded vocabulary.
     [CAS] Castanet parallel facets · [HIE] HiExpan sub-set discovery
     """
     can = can.copy()
     sem_col = '_semantic_text' if '_semantic_text' in can.columns else '_text'
-
-    # ── Statistic type: detected from description text ─────────────────────────
-    _stat_re = re.compile(
-        r'\b(mean|average|median|standard deviation|std|percent|proportion|'
-        r'probability|total|sum|count|maximum|minimum|range|variance|'
-        r'coefficient|ratio|rate|frequency)\b', re.IGNORECASE
-    )
-    _stat_norm = {
-        'average': 'Mean', 'std': 'Standard Deviation', 'proportion': 'Percent',
-        'sum': 'Total', 'count': 'Total', 'frequency': 'Rate',
-    }
-    def _extract_stat(row):
-        hits = _stat_re.findall(str(row.get(sem_col, row.get('_text', ''))).lower())
-        if not hits:
-            return ''
-        h = hits[0].lower()
-        return _stat_norm.get(h, h.title())
-    stat_col = can.apply(_extract_stat, axis=1)
-    can['_facet_stat'] = stat_col.where(stat_col != '', '')
 
     # ── Condition: digit in variable code VALIDATED by description text ──────────
     # [FIX2][GON] Gonçalves et al. (ESWC 2019): structural code alignment must be
@@ -1756,8 +1798,11 @@ _MIN_FACET_GROUP = 2  # minimum variables per facet sub-group
 def _do_facet_subsplit(sub_can, parent_id, current_path,
                        nodes, leaf_to_id, ensure_path_fn):
     """
-    [F4][CAS] Split by _facet_stat first, then delegate to _do_cond_subsplit.
-    If fewer than 2 valid stat groups, skip stat and go straight to cond.
+    [F4][CAS] Facet sub-split by _facet_cond (numeric condition) only.
+    The statistic tier is no longer inserted here — it came from a hardcoded
+    statistic vocabulary and is now produced data-drivenly by _nest_by_measure().
+    Kept defensive: if a legacy _facet_stat column is present it is still honoured,
+    but precompute_stat_cond_facets() no longer produces one.
     """
     # A facet tier that merely repeats the parent concept label (e.g. a "Total"
     # statistic under a "Total" concept) is redundant — skip it.
@@ -1858,6 +1903,133 @@ def _do_cond_subsplit(sub_can, parent_id, current_path,
 #   4. [F4] For each concept cluster: facet sub-split by Statistic → Condition
 #   5. Store concept assignment back on each variable in can
 # ─────────────────────────────────────────────────────────────────────────────
+def _noun_phrases(text, max_words=4):
+    """
+    Grammatical noun phrases via NLTK POS tagging (used when USE_NOUN_PHRASES=True).
+    Returns [] if NLTK / the tagger is unavailable, so the caller falls back to
+    n-grams. Phrases are contiguous runs of adjectives/nouns up to max_words long.
+    """
+    try:
+        import nltk
+        for _pkg in ('averaged_perceptron_tagger', 'punkt'):
+            try:
+                nltk.data.find(f'taggers/{_pkg}' if 'tagger' in _pkg else f'tokenizers/{_pkg}')
+            except LookupError:
+                nltk.download(_pkg, quiet=True)
+        toks = nltk.word_tokenize(str(text))
+        tags = nltk.pos_tag(toks)
+    except Exception:
+        return []
+    phrases, cur = [], []
+    for w, t in tags:
+        if t.startswith('NN') or t.startswith('JJ'):
+            cur.append(w)
+            if len(cur) > max_words:
+                cur = cur[-max_words:]
+        else:
+            if len(cur) >= 1:
+                phrases.append(' '.join(cur))
+            cur = []
+    if cur:
+        phrases.append(' '.join(cur))
+    return [p for p in phrases if len(p) >= 3]
+
+
+def _keybert_label(member_texts, cluster_centroid, embedder, ancestor_words=None,
+                   corpus_centroid=None, used_labels=None, max_words=4,
+                   gen_weight=0.0, diversity=KEYBERT_DIVERSITY, cap=500):
+    """
+    KeyBERT-style extractive labeller. Extract candidate phrases from the cluster's
+    DESCRIPTIONS, embed them, and pick by:
+        score = (1 − diversity)·cos(phrase, cluster_centroid)
+              −      diversity ·cos(phrase, mean candidate phrase)   # MMR redundancy
+    With diversity=0 this is plain cosine-to-centroid (argmax relevance). When
+    USE_CTFIDF=True the relevance is modulated by corpus IDF so boilerplate (low IDF)
+    is suppressed. Candidates come from noun phrases (USE_NOUN_PHRASES=True) or
+    n-grams. Extractive — never hallucinates a label. Returns a title-cased string.
+    """
+    ancestor_words = ancestor_words or set()
+    used = {str(u).lower() for u in (used_labels or [])}
+    cand = set()
+    for t in member_texts:
+        raw = re.sub(r'\([^)]*\)', ' ', str(t))            # drop parentheticals
+        nps = _noun_phrases(raw, max_words) if USE_NOUN_PHRASES else []
+        if nps:
+            for p in nps:
+                toks = [w for w in p.lower().split()
+                        if w not in _STOP and w not in ancestor_words]
+                if toks:
+                    cand.add(' '.join(toks))
+        else:
+            toks = [w for w in re.findall(r'[a-z][a-z\-]+', raw.lower())
+                    if w not in _STOP and w not in ancestor_words]
+            for nlen in range(1, max_words + 1):
+                for i in range(len(toks) - nlen + 1):
+                    cand.add(' '.join(toks[i:i + nlen]))
+    # Junk filter: drop used labels, pure-number phrases, immediately-repeated words.
+    cand = [c for c in cand if len(c) >= 4 and c.lower() not in used
+            and not c.replace(' ', '').isdigit()
+            and not re.search(r'\b(\w+)\s+\1\b', c.lower())]
+    if not cand:
+        return ''
+    cand = cand[:cap]
+    embs = np.asarray(embedder.encode(cand), dtype=float)
+    sims = cosine_similarity([cluster_centroid], embs)[0]          # relevance
+    if USE_CTFIDF and _CORPUS_IDF:
+        mx = max(_CORPUS_IDF.values()) or 1.0
+        idf = np.array([min(1.0, _CORPUS_IDF.get(c.lower(), mx) / mx) for c in cand])
+        sims = sims * (0.5 + 0.5 * idf)
+    if gen_weight and corpus_centroid is not None:
+        sims = sims - gen_weight * cosine_similarity([corpus_centroid], embs)[0]
+    if diversity > 0 and len(embs) > 1:                            # MMR penalty
+        generic = cosine_similarity(embs.mean(axis=0, keepdims=True), embs)[0]
+        score = (1.0 - diversity) * sims - diversity * generic
+    else:
+        score = sims
+    return cand[int(np.argmax(score))].title()
+
+
+def _keybert_candidates(member_texts, ancestor_words=None, used_labels=None,
+                        max_words=3, cap=500):
+    """
+    Extract the KeyBERT CANDIDATE phrases from a cluster's member descriptions —
+    the same generation logic as _keybert_label but returns the full candidate list
+    (un-ranked) so the caller can score them with the title-seeded scorer. Phrases
+    are noun phrases (USE_NOUN_PHRASES=True) or n-grams, with ancestor/task words,
+    pure numbers, used labels and immediate repeats filtered out.
+    """
+    ancestor_words = ancestor_words or set()
+    used = {str(u).lower() for u in (used_labels or [])}
+    block = _STOP | ancestor_words | _LABEL_BOILERPLATE   # boilerplate/web/Likert tokens out
+    cand = set()
+    for t in member_texts:
+        raw = _URL_RE.sub(' ', re.sub(r'\([^)]*\)', ' ', str(t)))
+        nps = _noun_phrases(raw, max_words) if USE_NOUN_PHRASES else []
+        if nps:
+            for p in nps:
+                toks = [w for w in p.lower().split() if w not in block]
+                if toks:
+                    cand.add(' '.join(toks))
+        else:
+            toks = [w for w in re.findall(r'[a-z][a-z\-]+', raw.lower()) if w not in block]
+            for nlen in range(1, max_words + 1):
+                for i in range(len(toks) - nlen + 1):
+                    cand.add(' '.join(toks[i:i + nlen]))
+
+    def _ok(c):
+        words = c.split()
+        if len(c) < 4 or c.lower() in used or c.replace(' ', '').isdigit():
+            return False
+        if re.search(r'\b(\w+)\s+\1\b', c.lower()):        # adjacent word repeat
+            return False
+        if len(words) == 4 and words[:2] == words[2:]:     # phrase repeat "x y x y"
+            return False
+        if len(words) == 1 and (len(c) <= 3 or _is_acronym(c)):  # bare fragment/acronym
+            return False
+        return True
+    return [c for c in cand if _ok(c)][:cap]
+
+
 def _concept_title(text):
     """
     Extract the human-written concept TITLE from a metadata description.
@@ -1900,9 +2072,10 @@ def _title_cluster_label(member_titles, sibling_title_lists, ancestor_words=None
     used_labels    = {str(u).lower() for u in (used_labels or [])}
 
     def _phrases(title):
-        t = re.sub(r'\([^)]*\)', ' ', title.lower())      # drop parenthetical conditions
+        t = _URL_RE.sub(' ', re.sub(r'\([^)]*\)', ' ', title.lower()))   # drop parens + URLs
         toks = [w for w in re.findall(r'[a-z][a-z\-]{1,}', t)
-                if w not in _STOP and w not in ancestor_words]
+                if w not in _STOP and w not in ancestor_words
+                and w not in _LABEL_BOILERPLATE]                          # web/Likert out
         out = set()
         for nlen in range(1, max_words + 1):
             for i in range(len(toks) - nlen + 1):
@@ -1951,9 +2124,10 @@ def _raw_title(text):
 def _label_from_own_title(title, ancestor_words, max_words=4):
     """[Fix5] Label a singleton variable from its OWN title (minus ancestor/task
     words and parentheticals). Returns '' for sentence-like / empty titles."""
-    t = re.sub(r'\([^)]*\)', ' ', str(title).lower())
+    t = _URL_RE.sub(' ', re.sub(r'\([^)]*\)', ' ', str(title).lower()))
     toks = [w for w in re.findall(r'[a-z][a-z\-]+', t)
-            if w not in _STOP and w not in ancestor_words]
+            if w not in _STOP and w not in ancestor_words
+            and w not in _LABEL_BOILERPLATE]
     if not toks or len(toks) > 7:          # >7 words ⇒ prose, not a concept title
         return ''
     return ' '.join(toks[:max_words]).title()
@@ -2092,11 +2266,18 @@ def _cluster_and_label(tdf, path_prefix, nodes, leaf_to_id, embedder,
     _aw_base = set(re.findall(r'[a-z]{3,}', ' '.join(ancestor_names).lower())) | _top_level_tasks
 
     if n < 3 or concept_embs is None or len(concept_table) == 0:
-        # Too few variables to cluster — label each from its own title [Fix5];
-        # ensure_path merges it into an existing concept of the same name.
+        # Too few variables to cluster — label each from its own title [Fix5], or
+        # KeyBERT over its description when no title exists. ensure_path merges it
+        # into an existing concept of the same name.
         pid = ensure_path_fn(path_prefix)
+        _small = embedder.encode(texts) if texts else None
         for i, (_, row) in enumerate(tdf.iterrows()):
             lbl = _label_from_own_title(titles[i], _aw_base)
+            if not lbl and _small is not None:
+                lbl = _keybert_label([texts[i]], _small[i], embedder,
+                                     ancestor_words=_aw_base, used_labels=set(),
+                                     max_words=2, gen_weight=0.3,
+                                     diversity=KEYBERT_DIVERSITY)
             tgt = ensure_path_fn(path_prefix + [lbl]) if lbl and lbl.lower() not in \
                   {a.lower() for a in ancestor_names} else pid
             add_child(nodes, tgt, leaf_to_id[row['_leaf_id']])
@@ -2174,6 +2355,14 @@ def _cluster_and_label(tdf, path_prefix, nodes, leaf_to_id, embedder,
         if len(cluster_idxs) == 1:
             _, row = rows_list[cluster_idxs[0]]
             lbl = _label_from_own_title(titles[cluster_idxs[0]], _aw_base)
+            src = 'singleton_title'
+            if not lbl and cluster_emb is not None:
+                lbl = _keybert_label([cluster_texts_k[0]], cluster_emb, embedder,
+                                     ancestor_words=_aw_base,
+                                     used_labels=used_sibling_labels,
+                                     max_words=2, gen_weight=0.3,
+                                     diversity=KEYBERT_DIVERSITY)
+                src = 'singleton_keybert'
             if lbl and lbl.lower() not in {a.lower() for a in ancestor_names}:
                 tgt = ensure_path_fn(path_prefix + [lbl], relation='belongs_to')
                 can.at[row.name, '_concept_label'] = lbl
@@ -2182,7 +2371,7 @@ def _cluster_and_label(tdf, path_prefix, nodes, leaf_to_id, embedder,
                 can.at[row.name, '_concept_label'] = path_prefix[-1] if path_prefix else 'root'
             add_child(nodes, tgt, leaf_to_id[row['_leaf_id']])
             can.at[row.name, '_concept_score']  = 0.0
-            can.at[row.name, '_concept_source'] = 'singleton_title'
+            can.at[row.name, '_concept_source'] = src
             continue
 
         if cluster_emb is not None:
@@ -2201,32 +2390,100 @@ def _cluster_and_label(tdf, path_prefix, nodes, leaf_to_id, embedder,
         else:
             scores = []
 
-        # PRIMARY LABEL = the concept shared by the cluster's member TITLES, chosen
-        # contrastively against siblings (tree-based local-IDF). Reads the data's own
-        # human-written names — never the boilerplate definition text — so
-        # "Calculated Assessed Trials" can no longer be a label. No hardcoding.
+        # ── TITLE-SEEDED LABEL SELECTION (Guided KeyBERT) ─────────────────────
+        # The label is FORMED FROM THE DESCRIPTIONS: candidates are KeyBERT phrases
+        # extracted from the cluster's member descriptions (+ scored concept-table
+        # entries). The pre-colon TITLE does NOT override — it is a ranking SEED:
+        #   score = α·cos(cand, cluster centroid)   # description fit
+        #         + β·cos(cand, title embedding)     # title INFLUENCE (LABEL_W_TITLE)
+        #         + γ·contrast(vs siblings)
+        #         + δ·external grounding
+        # So the displayed label is always a description-derived phrase, pulled toward
+        # the human-canonical title phrasing. Set LABEL_W_TITLE=0 for a pure-description
+        # ablation. The title phrase is also added as ONE candidate so a clean title can
+        # still win on merit (it is usually present verbatim in the descriptions anyway).
         ancestor_words = set(re.findall(r'[a-z]{3,}',
                                         ' '.join(ancestor_names).lower())) | _top_level_tasks
         member_titles_k     = [titles[i] for i in cluster_idxs]
         sibling_title_lists = [all_cluster_titles[j] for j in range(n_clust) if j != k]
-        title_label = _title_cluster_label(member_titles_k, sibling_title_lists,
-                                            ancestor_words=ancestor_words,
-                                            used_labels=used_sibling_labels)
+        sibling_texts       = [all_cluster_texts[j] for j in range(n_clust) if j != k]
 
-        # The TITLE wins whenever it exists. External enrichment only attaches a
-        # definition to a metadata candidate — it does NOT give it a cleaner NAME,
-        # so a 'cognitive_atlas'-sourced candidate can still be boilerplate like
-        # "Calculated Assessed Trials". Scored candidates are therefore only a
-        # FALLBACK used when the cluster has no shared title concept at all.
-        sibling_texts  = [all_cluster_texts[j] for j in range(n_clust) if j != k]
+        # Pre-colon title → used only as the SEED ANCHOR (and one candidate), never a
+        # direct override.
+        title_label = _title_cluster_label(member_titles_k, sibling_title_lists,
+                                           ancestor_words=ancestor_words,
+                                           used_labels=used_sibling_labels)
+        title_emb = (embedder.encode([title_label])[0]
+                     if title_label else None)
+
+        # Candidate phrases drawn ONLY from the cluster's DESCRIPTIONS (KeyBERT) plus
+        # the pre-colon title. External ontology sources (Cognitive Atlas / Wikidata /
+        # WordNet / PubMed) are deliberately NOT candidates — per design they inform the
+        # embedding space / semantic understanding only, and must never name a node.
+        kb_cands = _keybert_candidates(cluster_texts_k, ancestor_words=ancestor_words,
+                                       used_labels=used_sibling_labels, max_words=3)
+        pool_src = [(c, 'keybert') for c in kb_cands]
+        if title_label:
+            pool_src.append((title_label, 'description_title'))
+        # Dedup; title's source tag takes priority over keybert when the phrase matches.
+        seen_pool = {}
+        for lbl, src in pool_src:
+            key = lbl.lower()
+            if key not in seen_pool or src == 'description_title':
+                seen_pool[key] = (lbl, src)
+        pool      = [v[0] for v in seen_pool.values()]
+        pool_srcs = [v[1] for v in seen_pool.values()]
+
+        keybert_label = kb_cands[0] if kb_cands else ''  # for fallback only
+
+        candidate_scores = []
+        if pool and cluster_emb is not None:
+            cand_embs = np.asarray(embedder.encode(pool), dtype=float)
+            relevance = cosine_similarity([cluster_emb], cand_embs)[0]
+            # c-TF-IDF: down-weight dataset-wide boilerplate (low corpus IDF) so generic
+            # phrases ("test", "description", "measure", "scores") lose to distinctive ones.
+            if USE_CTFIDF and _CORPUS_IDF:
+                _mx  = max(_CORPUS_IDF.values()) or 1.0
+                _idf = np.array([min(1.0, _CORPUS_IDF.get(c.lower(), _mx) / _mx) for c in pool])
+                relevance = relevance * (0.5 + 0.5 * _idf)
+            if sibling_centroids:
+                sib_sim  = cosine_similarity(cand_embs,
+                                             np.asarray(sibling_centroids, dtype=float)).max(axis=1)
+                contrast = np.clip(relevance - sib_sim, 0.0, 1.0)
+            else:
+                contrast = np.zeros(len(pool))
+            # Title SEED: cosine of each description-derived candidate to the title.
+            if title_emb is not None:
+                title_sim = cosine_similarity(cand_embs, [title_emb])[:, 0]
+            else:
+                title_sim = np.zeros(len(pool))
+            for i, cand in enumerate(pool):
+                hyb = (LABEL_W_RELEVANCE * float(relevance[i])
+                       + LABEL_W_TITLE    * float(title_sim[i])
+                       + LABEL_W_CONTRAST * float(contrast[i]))
+                candidate_scores.append({
+                    'label':             cand,
+                    'score':             hyb,
+                    'embedding_sim':     float(relevance[i]),
+                    'coverage':          float(relevance[i]),
+                    'contrast':          float(contrast[i]),
+                    'specificity':       0.0,
+                    'string_sim':        float(title_sim[i]),  # title seed alignment
+                    'source':            pool_srcs[i],
+                    'broader_relations': [],
+                    '_emb':              cand_embs[i],
+                })
+            candidate_scores.sort(key=lambda x: -x['score'])
+
         fallback_label = (title_label
+                          or keybert_label
                           or get_discriminative_tfidf_label(cluster_texts_k, sibling_texts)
                           or f'Group {k+1}')
-        candidate_scores = [] if title_label else scores
 
         label, provenance = assign_concept_label(
             candidate_scores,
             fallback=fallback_label,
+            min_score=0.0,
             ancestor_names=ancestor_names,
             used_sibling_labels=used_sibling_labels,
             top_level_tasks=_top_level_tasks,
@@ -2282,24 +2539,24 @@ def _cluster_and_label(tdf, path_prefix, nodes, leaf_to_id, embedder,
         pid = ensure_path_fn(path_prefix + [label],
                               relation='belongs_to', provenance=provenance)
 
-        # Store concept assignment on can (needed by Castanet facets later)
+        # Store concept assignment on can (needed by Castanet facets later).
+        # Provenance reflects the HYBRID winner (title / keybert / concept_table),
+        # not the old semantic-only scorer — so the exported labels CSV is accurate.
         for ci in cluster_idxs:
             _, row = rows_list[ci]
             can.at[row.name, '_concept_label']  = label
-            can.at[row.name, '_concept_score']  = round(scores[0]['score'], 3) if scores else 0.0
-            can.at[row.name, '_concept_source'] = scores[0]['source'] if scores else 'fallback'
+            can.at[row.name, '_concept_score']  = provenance.get('confidence', 0.0)
+            can.at[row.name, '_concept_source'] = (provenance.get('source_evidence') or ['fallback'])[0]
 
-        # [F4][CAS][HIE] Facet-guided sub-splitting: Statistic → Condition tiers.
-        # NOTE: this uses a small hardcoded statistic/condition word list
-        # (precompute_stat_cond_facets). Removing it measurably degraded the
-        # structure (it is what separates Mean/Median/SD), so it is kept. The
-        # parent-duplicate guard inside prevents redundant "Total > Total" tiers.
-        cluster_idx_list = [rows_list[ci][0] for ci in cluster_idxs]
-        cluster_can      = can.loc[cluster_idx_list]
-        _do_facet_subsplit(
-            cluster_can, pid, path_prefix + [label],
-            nodes, leaf_to_id, ensure_path_fn
-        )
+        # Attach the cluster's variables directly under the concept node. The former
+        # Statistic/Condition facet sub-split is removed: the statistic tier came from
+        # a hardcoded vocabulary (now produced data-drivenly by _nest_by_measure), and
+        # the numeric Condition tier produced bare-digit nodes (0/4/12) that inflated
+        # singleton%/n_agg and moved the tree away from gold. Castanet's Condition facet
+        # still exists as a separate parallel view via detect_facets() — not a tier.
+        for ci in cluster_idxs:
+            _, row = rows_list[ci]
+            add_child(nodes, pid, leaf_to_id[row['_leaf_id']])
 
 
 def _remove_phrase(tokens, phrase_tokens):
@@ -2511,6 +2768,43 @@ def _prune_empty_aggregations(nodes):
     return nodes
 
 
+def _dissolve_facet_singletons(nodes):
+    """
+    Dissolve FACET tier nodes (Statistic / Condition) that wrap a single variable.
+    A condition or statistic node with exactly one leaf child carries no grouping
+    value — e.g. `Standard Deviation > 0 > DMSL0SD`. We remove such nodes and
+    reattach their single child to the node's parent, keeping siblings together.
+
+    Scope is deliberately narrow: only nodes whose relation_type is 'has_condition'
+    or 'is_statistic_of' are touched, so genuine single-member CONCEPT nodes that
+    carry a distinctive name are preserved (per the chosen policy).
+    """
+    _FACET_RELS = {'has_condition', 'is_statistic_of'}
+    changed = True
+    while changed:
+        changed = False
+        pm = build_parent_map(nodes)
+        m  = nmap(nodes)
+        for n in list(nodes):
+            if n.get('type') != 'aggregation':
+                continue
+            if n['info'].get('relation_type') not in _FACET_RELS:
+                continue
+            nid      = int(n['id'])
+            children = [int(c) for c in n.get('related', [])]
+            # "Single variable" = exactly one child and that child is a leaf attribute.
+            if len(children) == 1 and m.get(children[0], {}).get('type') == 'attribute':
+                parent = pm.get(nid)
+                if parent is None:
+                    continue
+                add_child(nodes, parent, children[0])
+                remove_child(nodes, parent, nid)
+                nodes[:] = [x for x in nodes if int(x['id']) != nid]
+                changed = True
+                break
+    return nodes
+
+
 def build_concept_hierarchy(can, embedder, concept_table, project='metadata_project',
                              n_clusters_per_group=8):
     """
@@ -2550,6 +2844,27 @@ def build_concept_hierarchy(can, embedder, concept_table, project='metadata_proj
     # is discriminative; one close to ALL of them is boilerplate. corpus_centroid
     # is the global mean (generic = central). Both are derived purely from data.
     sem_col_all = '_semantic_text' if '_semantic_text' in can.columns else '_text'
+
+    # Active domain — used by the hybrid label scorer's external-grounding signal.
+    global _ACTIVE_DOMAIN
+    _ACTIVE_DOMAIN = detect_domain(can)
+
+    # Corpus IDF over description n-grams — KeyBERT c-TF-IDF distinctiveness weight
+    # (only consulted when USE_CTFIDF=True). Data-derived, dataset-agnostic.
+    global _CORPUS_IDF
+    _CORPUS_IDF = {}
+    try:
+        from sklearn.feature_extraction.text import CountVectorizer as _CV
+        _docs = can[sem_col_all].fillna('').astype(str).tolist()
+        _cv = _CV(ngram_range=(1, 3), binary=True, lowercase=True,
+                  token_pattern=r'[a-z][a-z\-]+')
+        _dt = _cv.fit_transform(_docs)
+        _dfa = np.asarray(_dt.sum(axis=0)).ravel(); _N = _dt.shape[0]
+        _CORPUS_IDF = {p: float(np.log((_N + 1) / (_dfa[i] + 1)) + 1.0)
+                       for p, i in _cv.vocabulary_.items()}
+    except Exception:
+        _CORPUS_IDF = {}
+
     ref_centroids = corpus_centroid = None
     try:
         all_var_embs = embedder.encode(can[sem_col_all].fillna('').astype(str).tolist())
@@ -2647,6 +2962,9 @@ def build_concept_hierarchy(can, embedder, concept_table, project='metadata_proj
     _subsplit_concept_by_title(nodes)
     # Remove empty concept nodes (no variables) — meaningless and they break the
     # branchvalues='total' sunburst (parent value < sum of children → blank render).
+    _prune_empty_aggregations(nodes)
+    # Dissolve 1-variable Statistic/Condition facet nodes (no grouping value).
+    _dissolve_facet_singletons(nodes)
     _prune_empty_aggregations(nodes)
     # NOTE: a head-noun "category" tier (Errors/Correct) was tried and reverted —
     # it regressed setOverlap (0.914→0.836: mis-grouping) and added depth beyond gold.
@@ -3745,13 +4063,13 @@ if uploads:
             # [F3][F5][CAS] These columns are needed inside _cluster_and_label
             # for facet sub-splitting. They must be computed BEFORE Step G.
             # detect_facets / build_castanet_facets runs AFTER hierarchy build
-            # (Step I), so we pre-compute only _facet_stat and _facet_cond here.
-            with st.spinner('Pre-computing Statistic and Condition facets [CAS]...'):
+            # (Step I), so we pre-compute only _facet_cond here. The statistic tier
+            # is produced data-drivenly later by _nest_by_measure (no hardcoded vocab).
+            with st.spinner('Pre-computing Condition facets [CAS]...'):
                 can = precompute_stat_cond_facets(can)
-                n_stat  = can['_facet_stat'].ne('').sum()
                 n_cond  = can['_facet_cond'].ne('').sum()
-                st.info(f'Facet pre-computation: {n_stat} variables with Statistic, '
-                        f'{n_cond} with Condition.')
+                st.info(f'Facet pre-computation: {n_cond} variables with Condition. '
+                        f'Statistic depth is derived from concept titles (_nest_by_measure).')
 
             # ── Step G: Build concept hierarchy (N×M alignment) ──────────────
             with st.spinner('Building concept hierarchy via N×M alignment [GON][TAX]...'):
@@ -3768,6 +4086,16 @@ if uploads:
                 else:
                     c_embs = None
                 nodes, report = run_hiexpan(nodes, can, emb, concept_table, c_embs)
+                # HiExpan's width/global passes MOVE leaves between concepts; a concept
+                # that loses all its leaves becomes empty. build_concept_hierarchy prunes
+                # internally, but that runs BEFORE HiExpan — so re-prune here, else empty
+                # nodes break the Plotly branchvalues='total' sunburst/treemap (parent
+                # value < sum(children) → blank render; node-link is unaffected).
+                _prune_empty_aggregations(nodes)
+                _alive = {int(n['id']) for n in nodes}
+                for _n in nodes:
+                    _n['related'] = [x for x in dict.fromkeys(int(c) for c in _n.get('related', []))
+                                     if x in _alive]
                 st.session_state.hiexpan_report = report
                 wmoves = report.get('width_expansion_moves', 0)
                 dexp   = report.get('depth_expansion_nodes', 0)

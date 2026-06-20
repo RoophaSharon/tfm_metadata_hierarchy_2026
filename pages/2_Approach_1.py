@@ -121,7 +121,7 @@ _STOP = {
 USE_NOUN_PHRASES  = False
 # USE_CTFIDF — True: multiply KeyBERT cosine relevance by corpus IDF so dataset-wide
 #   boilerplate (low IDF) is down-weighted; False: plain cosine-to-centroid.
-USE_CTFIDF        = False
+USE_CTFIDF        = True
 # KEYBERT_DIVERSITY — MMR redundancy penalty weight. 0 = pure argmax cosine-to-centroid
 #   (pick the single most relevant phrase); 0.5 = standard MMR diversification.
 KEYBERT_DIVERSITY = 0
@@ -147,6 +147,20 @@ _CORPUS_IDF: dict = {}
 # Active dataset domain; set in build_concept_hierarchy(), read by the hybrid label
 # scorer's external-grounding signal (Cognitive Atlas vs Wikidata routing).
 _ACTIVE_DOMAIN: str = 'general'
+
+# Label boilerplate: web/URL artifacts and Likert response-scale tokens that leak from
+# data-dictionary descriptions (e.g. HCP FreeSurfer rows embed Neurolex URLs; survey rows
+# embed "strongly agree" scales). These are stripped from KeyBERT candidates AND from the
+# embedding text so they can neither name a node nor distort clustering. Domain-agnostic
+# documentation/scale tokens only — not concept vocabulary.
+_LABEL_BOILERPLATE = {
+    'http', 'https', 'href', 'www', 'org', 'com', 'net', 'wiki', 'url', 'link',
+    'neurolex', 'connectomedb', 'humanconnectome', 'definition', 'category',
+    'sa', 'sd', 'strongly', 'agree', 'disagree', 'neither', 'somewhat',
+}
+# Inline URLs in free text (http://…, www.…/…) — removed from the embedding text.
+_URL_RE = re.compile(r'(https?://\S+|www\.\S+|\b\w+\.(?:org|com|net|gov|edu)\b/?\S*)',
+                     re.IGNORECASE)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # FILE LOADING
@@ -345,6 +359,9 @@ def build_canonical(df, cfg, source):
         if not sem_parts:
             sem_parts = list(leaf_parts) if leaf_parts else []
         semantic_text = ' '.join(sem_parts) if sem_parts else text
+        # Strip inline URLs (HCP FreeSurfer rows embed Neurolex links) so web tokens
+        # cannot dominate either the embedding (clustering) or the KeyBERT label.
+        semantic_text = _URL_RE.sub(' ', semantic_text)
         rows.append({
             '_source_file':    source,
             '_row_index':      int(i),
@@ -1983,26 +2000,34 @@ def _keybert_candidates(member_texts, ancestor_words=None, used_labels=None,
     """
     ancestor_words = ancestor_words or set()
     used = {str(u).lower() for u in (used_labels or [])}
+    block = _STOP | ancestor_words | _LABEL_BOILERPLATE   # boilerplate/web/Likert tokens out
     cand = set()
     for t in member_texts:
-        raw = re.sub(r'\([^)]*\)', ' ', str(t))
+        raw = _URL_RE.sub(' ', re.sub(r'\([^)]*\)', ' ', str(t)))
         nps = _noun_phrases(raw, max_words) if USE_NOUN_PHRASES else []
         if nps:
             for p in nps:
-                toks = [w for w in p.lower().split()
-                        if w not in _STOP and w not in ancestor_words]
+                toks = [w for w in p.lower().split() if w not in block]
                 if toks:
                     cand.add(' '.join(toks))
         else:
-            toks = [w for w in re.findall(r'[a-z][a-z\-]+', raw.lower())
-                    if w not in _STOP and w not in ancestor_words]
+            toks = [w for w in re.findall(r'[a-z][a-z\-]+', raw.lower()) if w not in block]
             for nlen in range(1, max_words + 1):
                 for i in range(len(toks) - nlen + 1):
                     cand.add(' '.join(toks[i:i + nlen]))
-    cand = [c for c in cand if len(c) >= 4 and c.lower() not in used
-            and not c.replace(' ', '').isdigit()
-            and not re.search(r'\b(\w+)\s+\1\b', c.lower())]
-    return cand[:cap]
+
+    def _ok(c):
+        words = c.split()
+        if len(c) < 4 or c.lower() in used or c.replace(' ', '').isdigit():
+            return False
+        if re.search(r'\b(\w+)\s+\1\b', c.lower()):        # adjacent word repeat
+            return False
+        if len(words) == 4 and words[:2] == words[2:]:     # phrase repeat "x y x y"
+            return False
+        if len(words) == 1 and (len(c) <= 3 or _is_acronym(c)):  # bare fragment/acronym
+            return False
+        return True
+    return [c for c in cand if _ok(c)][:cap]
 
 
 def _concept_title(text):
@@ -2047,9 +2072,10 @@ def _title_cluster_label(member_titles, sibling_title_lists, ancestor_words=None
     used_labels    = {str(u).lower() for u in (used_labels or [])}
 
     def _phrases(title):
-        t = re.sub(r'\([^)]*\)', ' ', title.lower())      # drop parenthetical conditions
+        t = _URL_RE.sub(' ', re.sub(r'\([^)]*\)', ' ', title.lower()))   # drop parens + URLs
         toks = [w for w in re.findall(r'[a-z][a-z\-]{1,}', t)
-                if w not in _STOP and w not in ancestor_words]
+                if w not in _STOP and w not in ancestor_words
+                and w not in _LABEL_BOILERPLATE]                          # web/Likert out
         out = set()
         for nlen in range(1, max_words + 1):
             for i in range(len(toks) - nlen + 1):
@@ -2098,9 +2124,10 @@ def _raw_title(text):
 def _label_from_own_title(title, ancestor_words, max_words=4):
     """[Fix5] Label a singleton variable from its OWN title (minus ancestor/task
     words and parentheticals). Returns '' for sentence-like / empty titles."""
-    t = re.sub(r'\([^)]*\)', ' ', str(title).lower())
+    t = _URL_RE.sub(' ', re.sub(r'\([^)]*\)', ' ', str(title).lower()))
     toks = [w for w in re.findall(r'[a-z][a-z\-]+', t)
-            if w not in _STOP and w not in ancestor_words]
+            if w not in _STOP and w not in ancestor_words
+            and w not in _LABEL_BOILERPLATE]
     if not toks or len(toks) > 7:          # >7 words ⇒ prose, not a concept title
         return ''
     return ' '.join(toks[:max_words]).title()
@@ -2413,6 +2440,12 @@ def _cluster_and_label(tdf, path_prefix, nodes, leaf_to_id, embedder,
         if pool and cluster_emb is not None:
             cand_embs = np.asarray(embedder.encode(pool), dtype=float)
             relevance = cosine_similarity([cluster_emb], cand_embs)[0]
+            # c-TF-IDF: down-weight dataset-wide boilerplate (low corpus IDF) so generic
+            # phrases ("test", "description", "measure", "scores") lose to distinctive ones.
+            if USE_CTFIDF and _CORPUS_IDF:
+                _mx  = max(_CORPUS_IDF.values()) or 1.0
+                _idf = np.array([min(1.0, _CORPUS_IDF.get(c.lower(), _mx) / _mx) for c in pool])
+                relevance = relevance * (0.5 + 0.5 * _idf)
             if sibling_centroids:
                 sib_sim  = cosine_similarity(cand_embs,
                                              np.asarray(sibling_centroids, dtype=float)).max(axis=1)
@@ -4053,6 +4086,16 @@ if uploads:
                 else:
                     c_embs = None
                 nodes, report = run_hiexpan(nodes, can, emb, concept_table, c_embs)
+                # HiExpan's width/global passes MOVE leaves between concepts; a concept
+                # that loses all its leaves becomes empty. build_concept_hierarchy prunes
+                # internally, but that runs BEFORE HiExpan — so re-prune here, else empty
+                # nodes break the Plotly branchvalues='total' sunburst/treemap (parent
+                # value < sum(children) → blank render; node-link is unaffected).
+                _prune_empty_aggregations(nodes)
+                _alive = {int(n['id']) for n in nodes}
+                for _n in nodes:
+                    _n['related'] = [x for x in dict.fromkeys(int(c) for c in _n.get('related', []))
+                                     if x in _alive]
                 st.session_state.hiexpan_report = report
                 wmoves = report.get('width_expansion_moves', 0)
                 dexp   = report.get('depth_expansion_nodes', 0)

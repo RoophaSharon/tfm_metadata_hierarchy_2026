@@ -1645,7 +1645,7 @@
       115,
       116,
       117,
-      146
+      145
     ],
     "type": "aggregation",
     "info": {
@@ -1687,16 +1687,19 @@
     "recover": true,
     "concept_provenance": {
       "node_label": "Total Correct",
-      "confidence": 0.0,
-      "alternatives": [],
-      "source_evidence": [
-        "tfidf_fallback"
+      "confidence": 0.507,
+      "alternatives": [
+        "correct total",
+        "correct total times"
       ],
-      "embedding_sim": 0.0,
-      "string_sim": 0.0,
-      "coverage": 0.0,
-      "contrast": 0.0,
-      "specificity": 0.0
+      "source_evidence": [
+        "description_title"
+      ],
+      "embedding_sim": 0.319,
+      "coverage": 0.319,
+      "contrast": 0.086,
+      "specificity": 0.0,
+      "string_sim": 1.0
     }
   },
   {
@@ -1722,21 +1725,65 @@
     "recover": true,
     "concept_provenance": {
       "node_label": "Error",
-      "confidence": 0.0,
-      "alternatives": [],
-      "source_evidence": [
-        "tfidf_fallback"
+      "confidence": 0.447,
+      "alternatives": [
+        "error times subject",
+        "error times",
+        "failed"
       ],
-      "embedding_sim": 0.0,
-      "string_sim": 0.0,
-      "coverage": 0.0,
+      "source_evidence": [
+        "description_title"
+      ],
+      "embedding_sim": 0.216,
+      "coverage": 0.216,
       "contrast": 0.0,
-      "specificity": 0.0
+      "specificity": 0.0,
+      "string_sim": 1.0
+    }
+  },
+  {
+    "id": 112,
+    "name": "Mean Latency",
+    "related": [
+      14,
+      18,
+      19,
+      152,
+      153,
+      154
+    ],
+    "type": "aggregation",
+    "info": {
+      "operation": "concat",
+      "usedAttributes": [],
+      "formula": "",
+      "exec": "",
+      "relation_type": "belongs_to",
+      "relation_label": "belongs to"
+    },
+    "isShown": true,
+    "desc": "Concept group: DMS > Correct Latency Mean",
+    "dtype": "determine",
+    "recover": true,
+    "concept_provenance": {
+      "node_label": "Correct Latency Mean",
+      "confidence": 0.625,
+      "alternatives": [
+        "latency mean"
+      ],
+      "source_evidence": [
+        "keybert"
+      ],
+      "embedding_sim": 0.676,
+      "coverage": 0.676,
+      "contrast": 0.076,
+      "specificity": 0.0,
+      "string_sim": 0.884
     }
   },
   {
     "id": 113,
-    "name": "Total Errors",
+    "name": "Errors Total",
     "related": [
       34,
       35
@@ -1751,21 +1798,24 @@
       "relation_label": "belongs to"
     },
     "isShown": true,
-    "desc": "Concept group: DMS > Total Errors",
+    "desc": "Concept group: DMS > Errors Total",
     "dtype": "determine",
     "recover": true,
     "concept_provenance": {
-      "node_label": "Total Errors",
-      "confidence": 0.0,
-      "alternatives": [],
-      "source_evidence": [
-        "tfidf_fallback"
+      "node_label": "Errors Total",
+      "confidence": 0.604,
+      "alternatives": [
+        "errors total times",
+        "Total Errors"
       ],
-      "embedding_sim": 0.0,
-      "string_sim": 0.0,
-      "coverage": 0.0,
-      "contrast": 0.0,
-      "specificity": 0.0
+      "source_evidence": [
+        "keybert"
+      ],
+      "embedding_sim": 0.543,
+      "coverage": 0.543,
+      "contrast": 0.125,
+      "specificity": 0.0,
+      "string_sim": 0.974
     }
   },
   {
@@ -1794,21 +1844,24 @@
     "recover": true,
     "concept_provenance": {
       "node_label": "Correct Latency Standard Deviation",
-      "confidence": 0.0,
-      "alternatives": [],
-      "source_evidence": [
-        "tfidf_fallback"
+      "confidence": 0.687,
+      "alternatives": [
+        "latency standard deviation",
+        "deviation response latencies"
       ],
-      "embedding_sim": 0.0,
-      "string_sim": 0.0,
-      "coverage": 0.0,
-      "contrast": 0.0,
-      "specificity": 0.0
+      "source_evidence": [
+        "description_title"
+      ],
+      "embedding_sim": 0.684,
+      "coverage": 0.684,
+      "contrast": 0.193,
+      "specificity": 0.0,
+      "string_sim": 1.0
     }
   },
   {
     "id": 115,
-    "name": "Probability Error",
+    "name": "Probability Error Occurring",
     "related": [
       26,
       27
@@ -1823,26 +1876,30 @@
       "relation_label": "belongs to"
     },
     "isShown": true,
-    "desc": "Concept group: DMS > Probability Error",
+    "desc": "Concept group: DMS > Probability Error Occurring",
     "dtype": "determine",
     "recover": true,
     "concept_provenance": {
-      "node_label": "Probability Error",
-      "confidence": 0.0,
-      "alternatives": [],
-      "source_evidence": [
-        "tfidf_fallback"
+      "node_label": "Probability Error Occurring",
+      "confidence": 0.619,
+      "alternatives": [
+        "Probability Error",
+        "probability error made",
+        "reports probability error"
       ],
-      "embedding_sim": 0.0,
-      "string_sim": 0.0,
-      "coverage": 0.0,
-      "contrast": 0.0,
-      "specificity": 0.0
+      "source_evidence": [
+        "keybert"
+      ],
+      "embedding_sim": 0.578,
+      "coverage": 0.578,
+      "contrast": 0.142,
+      "specificity": 0.0,
+      "string_sim": 0.966
     }
   },
   {
     "id": 116,
-    "name": "Percent Correct",
+    "name": "Percent Correct Percentage",
     "related": [
       20,
       21,
@@ -1861,21 +1918,25 @@
       "relation_label": "belongs to"
     },
     "isShown": true,
-    "desc": "Concept group: DMS > Percent Correct",
+    "desc": "Concept group: DMS > Percent Correct Percentage",
     "dtype": "determine",
     "recover": true,
     "concept_provenance": {
-      "node_label": "Percent Correct",
-      "confidence": 0.0,
-      "alternatives": [],
-      "source_evidence": [
-        "tfidf_fallback"
+      "node_label": "Percent Correct Percentage",
+      "confidence": 0.54,
+      "alternatives": [
+        "correct percentage assessment",
+        "correct percentage",
+        "Percent Correct"
       ],
-      "embedding_sim": 0.0,
-      "string_sim": 0.0,
-      "coverage": 0.0,
-      "contrast": 0.0,
-      "specificity": 0.0
+      "source_evidence": [
+        "keybert"
+      ],
+      "embedding_sim": 0.473,
+      "coverage": 0.473,
+      "contrast": 0.156,
+      "specificity": 0.0,
+      "string_sim": 0.868
     }
   },
   {
@@ -1941,11 +2002,11 @@
     "recover": true,
     "concept_provenance": {
       "node_label": "Latency Display Stimulus",
-      "confidence": 0.678,
+      "confidence": 0.418,
       "alternatives": [
-        "Mean Latency",
-        "Latency",
-        "Response Latency"
+        "mean latency display",
+        "standard deviation latency",
+        "deviation latency calculated"
       ],
       "source_evidence": [
         "keybert"
@@ -1953,7 +2014,7 @@
       "embedding_sim": 0.732,
       "coverage": 0.732,
       "contrast": 0.595,
-      "specificity": 1.0,
+      "specificity": 0.0,
       "string_sim": 0.0
     }
   },
@@ -1979,10 +2040,11 @@
     "recover": true,
     "concept_provenance": {
       "node_label": "Total Assessment Trials",
-      "confidence": 0.534,
+      "confidence": 0.313,
       "alternatives": [
-        "Assessment Trials",
-        "Assessed Trials Simultaneous"
+        "assessment trials subject",
+        "trials subject failed",
+        "trials subject"
       ],
       "source_evidence": [
         "keybert"
@@ -1990,7 +2052,7 @@
       "embedding_sim": 0.629,
       "coverage": 0.629,
       "contrast": 0.204,
-      "specificity": 1.0,
+      "specificity": 0.0,
       "string_sim": 0.0
     }
   },
@@ -1998,11 +2060,10 @@
     "id": 121,
     "name": "PAL",
     "related": [
-      122,
       123,
-      124,
       125,
       126,
+      146,
       147
     ],
     "type": "aggregation",
@@ -2021,7 +2082,7 @@
   },
   {
     "id": 122,
-    "name": "Total Attempts Patterns",
+    "name": "Attempts Patterns",
     "related": [
       49,
       50,
@@ -2040,21 +2101,24 @@
       "relation_label": "belongs to"
     },
     "isShown": true,
-    "desc": "Concept group: PAL > Total Attempts Patterns",
+    "desc": "Concept group: PAL > Attempts Patterns Total",
     "dtype": "determine",
     "recover": true,
     "concept_provenance": {
-      "node_label": "Total Attempts Patterns",
-      "confidence": 0.0,
-      "alternatives": [],
-      "source_evidence": [
-        "tfidf_fallback"
+      "node_label": "Attempts Patterns Total",
+      "confidence": 0.633,
+      "alternatives": [
+        "patterns total attempts",
+        "Total Attempts Patterns"
       ],
-      "embedding_sim": 0.0,
-      "string_sim": 0.0,
-      "coverage": 0.0,
-      "contrast": 0.0,
-      "specificity": 0.0
+      "source_evidence": [
+        "keybert"
+      ],
+      "embedding_sim": 0.598,
+      "coverage": 0.598,
+      "contrast": 0.151,
+      "specificity": 0.0,
+      "string_sim": 0.975
     }
   },
   {
@@ -2079,7 +2143,7 @@
   },
   {
     "id": 124,
-    "name": "Errors Patterns Total",
+    "name": "Errors Patterns",
     "related": [
       55,
       56,
@@ -2103,11 +2167,11 @@
     "recover": true,
     "concept_provenance": {
       "node_label": "Errors Patterns Total",
-      "confidence": 0.507,
+      "confidence": 0.296,
       "alternatives": [
-        "Correct Box Attempt",
-        "Subject Revisits Box",
-        "Box Attempt"
+        "box stimulus assessment",
+        "stimulus assessment problems",
+        "incorrect box stimulus"
       ],
       "source_evidence": [
         "keybert"
@@ -2115,7 +2179,7 @@
       "embedding_sim": 0.619,
       "coverage": 0.619,
       "contrast": 0.115,
-      "specificity": 1.0,
+      "specificity": 0.0,
       "string_sim": 0.0
     }
   },
@@ -2184,16 +2248,20 @@
     "recover": true,
     "concept_provenance": {
       "node_label": "Include Total Errors Shapes",
-      "confidence": 0.0,
-      "alternatives": [],
-      "source_evidence": [
-        "tfidf_fallback"
+      "confidence": 0.609,
+      "alternatives": [
+        "total errors shapes",
+        "errors shapes times",
+        "errors shapes"
       ],
-      "embedding_sim": 0.0,
-      "string_sim": 0.0,
-      "coverage": 0.0,
-      "contrast": 0.0,
-      "specificity": 0.0
+      "source_evidence": [
+        "description_title"
+      ],
+      "embedding_sim": 0.549,
+      "coverage": 0.549,
+      "contrast": 0.08,
+      "specificity": 0.0,
+      "string_sim": 1.0
     }
   },
   {
@@ -2220,10 +2288,14 @@
   },
   {
     "id": 130,
-    "name": "Correct Latency",
+    "name": "Latency Immediate Standard",
     "related": [
-      152,
-      153
+      67,
+      68,
+      69,
+      70,
+      71,
+      72
     ],
     "type": "aggregation",
     "info": {
@@ -2235,21 +2307,25 @@
       "relation_label": "belongs to"
     },
     "isShown": true,
-    "desc": "Concept group: PRM > Correct Latency",
+    "desc": "Concept group: PRM > Latency Immediate Standard",
     "dtype": "determine",
     "recover": true,
     "concept_provenance": {
-      "node_label": "Correct Latency",
-      "confidence": 0.0,
-      "alternatives": [],
-      "source_evidence": [
-        "tfidf_fallback"
+      "node_label": "Latency Immediate Standard",
+      "confidence": 0.653,
+      "alternatives": [
+        "correct latency immediate",
+        "latency immediate",
+        "correct latency delayed"
       ],
-      "embedding_sim": 0.0,
-      "string_sim": 0.0,
-      "coverage": 0.0,
-      "contrast": 0.0,
-      "specificity": 0.0
+      "source_evidence": [
+        "keybert"
+      ],
+      "embedding_sim": 0.715,
+      "coverage": 0.715,
+      "contrast": 0.34,
+      "specificity": 0.0,
+      "string_sim": 0.801
     }
   },
   {
@@ -2274,7 +2350,7 @@
   },
   {
     "id": 132,
-    "name": "Percent Correct",
+    "name": "Percent Correct Immediate",
     "related": [
       73,
       74
@@ -2289,21 +2365,25 @@
       "relation_label": "belongs to"
     },
     "isShown": true,
-    "desc": "Concept group: PRM > Percent Correct",
+    "desc": "Concept group: PRM > Percent Correct Immediate",
     "dtype": "determine",
     "recover": true,
     "concept_provenance": {
-      "node_label": "Percent Correct",
-      "confidence": 0.0,
-      "alternatives": [],
-      "source_evidence": [
-        "tfidf_fallback"
+      "node_label": "Percent Correct Immediate",
+      "confidence": 0.596,
+      "alternatives": [
+        "Percent Correct",
+        "key percent correct",
+        "percent correct delayed"
       ],
-      "embedding_sim": 0.0,
-      "string_sim": 0.0,
-      "coverage": 0.0,
-      "contrast": 0.0,
-      "specificity": 0.0
+      "source_evidence": [
+        "keybert"
+      ],
+      "embedding_sim": 0.671,
+      "coverage": 0.671,
+      "contrast": 0.245,
+      "specificity": 0.0,
+      "string_sim": 0.735
     }
   },
   {
@@ -2353,21 +2433,24 @@
     "recover": true,
     "concept_provenance": {
       "node_label": "Total",
-      "confidence": 0.0,
-      "alternatives": [],
-      "source_evidence": [
-        "tfidf_fallback"
+      "confidence": 0.407,
+      "alternatives": [
+        "total hits",
+        "hits total"
       ],
-      "embedding_sim": 0.0,
-      "string_sim": 0.0,
-      "coverage": 0.0,
-      "contrast": 0.0,
-      "specificity": 0.0
+      "source_evidence": [
+        "description_title"
+      ],
+      "embedding_sim": 0.111,
+      "coverage": 0.111,
+      "contrast": 0.05,
+      "specificity": 0.0,
+      "string_sim": 1.0
     }
   },
   {
     "id": 135,
-    "name": "Response Latency",
+    "name": "Response Latency Mean",
     "related": [
       77,
       78,
@@ -2383,21 +2466,25 @@
       "relation_label": "belongs to"
     },
     "isShown": true,
-    "desc": "Concept group: RVP > Response Latency",
+    "desc": "Concept group: RVP > Response Latency Mean",
     "dtype": "determine",
     "recover": true,
     "concept_provenance": {
-      "node_label": "Response Latency",
-      "confidence": 0.0,
-      "alternatives": [],
-      "source_evidence": [
-        "tfidf_fallback"
+      "node_label": "Response Latency Mean",
+      "confidence": 0.676,
+      "alternatives": [
+        "Response Latency",
+        "response latency trials",
+        "latency mean response"
       ],
-      "embedding_sim": 0.0,
-      "string_sim": 0.0,
-      "coverage": 0.0,
-      "contrast": 0.0,
-      "specificity": 0.0
+      "source_evidence": [
+        "keybert"
+      ],
+      "embedding_sim": 0.683,
+      "coverage": 0.683,
+      "contrast": 0.311,
+      "specificity": 0.0,
+      "string_sim": 0.92
     }
   },
   {
@@ -2426,9 +2513,9 @@
     "related": [
       140,
       141,
+      142,
       143,
       144,
-      145,
       148
     ],
     "type": "aggregation",
@@ -2446,8 +2533,49 @@
     "recover": true
   },
   {
+    "id": 138,
+    "name": "Times Errors",
+    "related": [
+      85,
+      86,
+      87,
+      88,
+      89
+    ],
+    "type": "aggregation",
+    "info": {
+      "operation": "concat",
+      "usedAttributes": [],
+      "formula": "",
+      "exec": "",
+      "relation_type": "belongs_to",
+      "relation_label": "belongs to"
+    },
+    "isShown": true,
+    "desc": "Concept group: SWM > Errors Boxes Times",
+    "dtype": "determine",
+    "recover": true,
+    "concept_provenance": {
+      "node_label": "Errors Boxes Times",
+      "confidence": 0.515,
+      "alternatives": [
+        "Errors Boxes",
+        "key errors boxes",
+        "errors times"
+      ],
+      "source_evidence": [
+        "keybert"
+      ],
+      "embedding_sim": 0.447,
+      "coverage": 0.447,
+      "contrast": 0.0,
+      "specificity": 0.0,
+      "string_sim": 0.896
+    }
+  },
+  {
     "id": 140,
-    "name": "Strategy",
+    "name": "Strategy High",
     "related": [
       96,
       97,
@@ -2463,21 +2591,25 @@
       "relation_label": "belongs to"
     },
     "isShown": true,
-    "desc": "Concept group: SWM > Strategy",
+    "desc": "Concept group: SWM > Strategy High",
     "dtype": "determine",
     "recover": true,
     "concept_provenance": {
-      "node_label": "Strategy",
-      "confidence": 0.0,
-      "alternatives": [],
-      "source_evidence": [
-        "tfidf_fallback"
+      "node_label": "Strategy High",
+      "confidence": 0.569,
+      "alternatives": [
+        "Strategy",
+        "strategy finding",
+        "high strategy"
       ],
-      "embedding_sim": 0.0,
-      "string_sim": 0.0,
-      "coverage": 0.0,
-      "contrast": 0.0,
-      "specificity": 0.0
+      "source_evidence": [
+        "keybert"
+      ],
+      "embedding_sim": 0.509,
+      "coverage": 0.509,
+      "contrast": 0.362,
+      "specificity": 0.0,
+      "string_sim": 0.814
     }
   },
   {
@@ -2501,8 +2633,47 @@
     "recover": true
   },
   {
+    "id": 142,
+    "name": "Within Errors",
+    "related": [
+      104,
+      105,
+      107,
+      108,
+      106
+    ],
+    "type": "aggregation",
+    "info": {
+      "operation": "concat",
+      "usedAttributes": [],
+      "formula": "",
+      "exec": "",
+      "relation_type": "belongs_to",
+      "relation_label": "belongs to"
+    },
+    "isShown": true,
+    "desc": "Concept group: SWM > Within Errors",
+    "dtype": "determine",
+    "recover": true,
+    "concept_provenance": {
+      "node_label": "Within Errors",
+      "confidence": 0.412,
+      "alternatives": [
+        "boxes times subject"
+      ],
+      "source_evidence": [
+        "keybert"
+      ],
+      "embedding_sim": 0.303,
+      "coverage": 0.303,
+      "contrast": 0.0,
+      "specificity": 0.0,
+      "string_sim": 0.787
+    }
+  },
+  {
     "id": 143,
-    "name": "Total Errors",
+    "name": "Errors Total",
     "related": [
       99,
       100,
@@ -2520,49 +2691,28 @@
       "relation_label": "belongs to"
     },
     "isShown": true,
-    "desc": "Concept group: SWM > Total Errors",
+    "desc": "Concept group: SWM > Errors Total",
     "dtype": "determine",
     "recover": true,
     "concept_provenance": {
-      "node_label": "Total Errors",
-      "confidence": 0.0,
-      "alternatives": [],
-      "source_evidence": [
-        "tfidf_fallback"
+      "node_label": "Errors Total",
+      "confidence": 0.593,
+      "alternatives": [
+        "errors total times",
+        "Total Errors"
       ],
-      "embedding_sim": 0.0,
-      "string_sim": 0.0,
-      "coverage": 0.0,
-      "contrast": 0.0,
-      "specificity": 0.0
+      "source_evidence": [
+        "keybert"
+      ],
+      "embedding_sim": 0.537,
+      "coverage": 0.537,
+      "contrast": 0.07,
+      "specificity": 0.0,
+      "string_sim": 0.974
     }
   },
   {
     "id": 144,
-    "name": "Within Errors",
-    "related": [
-      106,
-      104,
-      105,
-      107,
-      108
-    ],
-    "type": "aggregation",
-    "info": {
-      "operation": "concat",
-      "usedAttributes": [],
-      "formula": "",
-      "exec": "",
-      "relation_type": "belongs_to",
-      "relation_label": "belongs to"
-    },
-    "isShown": true,
-    "desc": "Concept group: SWM > Within Errors",
-    "dtype": "determine",
-    "recover": true
-  },
-  {
-    "id": 145,
     "name": "Double Errors",
     "related": [
       92,
@@ -2586,14 +2736,11 @@
     "recover": true
   },
   {
-    "id": 146,
+    "id": 145,
     "name": "Correct Latency",
     "related": [
-      114,
-      154,
-      155,
-      156,
-      157
+      112,
+      114
     ],
     "type": "aggregation",
     "info": {
@@ -2606,6 +2753,27 @@
     },
     "isShown": true,
     "desc": "Measure: Correct Latency",
+    "dtype": "determine",
+    "recover": true
+  },
+  {
+    "id": 146,
+    "name": "Patterns Total",
+    "related": [
+      122,
+      124
+    ],
+    "type": "aggregation",
+    "info": {
+      "operation": "concat",
+      "usedAttributes": [],
+      "formula": "",
+      "exec": "",
+      "relation_type": "belongs_to",
+      "relation_label": "belongs to"
+    },
+    "isShown": true,
+    "desc": "Measure: Patterns Total",
     "dtype": "determine",
     "recover": true
   },
@@ -2634,11 +2802,7 @@
     "id": 148,
     "name": "Errors Boxes",
     "related": [
-      85,
-      86,
-      87,
-      88,
-      89
+      138
     ],
     "type": "aggregation",
     "info": {
@@ -2719,50 +2883,6 @@
   },
   {
     "id": 152,
-    "name": "Delayed",
-    "related": [
-      67,
-      69,
-      71
-    ],
-    "type": "aggregation",
-    "info": {
-      "operation": "concat",
-      "usedAttributes": [],
-      "formula": "",
-      "exec": "",
-      "relation_type": "belongs_to",
-      "relation_label": "belongs to"
-    },
-    "isShown": true,
-    "desc": "Sub-group: Delayed",
-    "dtype": "determine",
-    "recover": true
-  },
-  {
-    "id": 153,
-    "name": "Immediate",
-    "related": [
-      72,
-      68,
-      70
-    ],
-    "type": "aggregation",
-    "info": {
-      "operation": "concat",
-      "usedAttributes": [],
-      "formula": "",
-      "exec": "",
-      "relation_type": "belongs_to",
-      "relation_label": "belongs to"
-    },
-    "isShown": true,
-    "desc": "Sub-group: Immediate",
-    "dtype": "determine",
-    "recover": true
-  },
-  {
-    "id": 154,
     "name": "Median Seconds Delay",
     "related": [
       9,
@@ -2784,8 +2904,8 @@
     "recover": true
   },
   {
-    "id": 155,
-    "name": "Mean Seconds Delay",
+    "id": 153,
+    "name": "Seconds Delay",
     "related": [
       16,
       17,
@@ -2801,12 +2921,12 @@
       "relation_label": "belongs to"
     },
     "isShown": true,
-    "desc": "Sub-group: Mean Seconds Delay",
+    "desc": "Sub-group: Seconds Delay",
     "dtype": "determine",
     "recover": true
   },
   {
-    "id": 156,
+    "id": 154,
     "name": "Median",
     "related": [
       8,
@@ -2824,28 +2944,6 @@
     },
     "isShown": true,
     "desc": "Sub-group: Median",
-    "dtype": "determine",
-    "recover": true
-  },
-  {
-    "id": 157,
-    "name": "Mean",
-    "related": [
-      18,
-      19,
-      14
-    ],
-    "type": "aggregation",
-    "info": {
-      "operation": "concat",
-      "usedAttributes": [],
-      "formula": "",
-      "exec": "",
-      "relation_type": "belongs_to",
-      "relation_label": "belongs to"
-    },
-    "isShown": true,
-    "desc": "Sub-group: Mean",
     "dtype": "determine",
     "recover": true
   }
