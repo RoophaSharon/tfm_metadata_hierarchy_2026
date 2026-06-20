@@ -57,7 +57,7 @@ except Exception:
 
 warnings.filterwarnings('ignore')
 
-st.set_page_config(page_title='Metadata Hierarchy — Approach 1', page_icon='🌳', layout='wide')
+# set_page_config handled by the navigation router (demo.py)
 st.title('Metadata Hierarchy Builder — Approach 1')
 st.caption(
     'Automatic concept-label extraction from metadata text + HiExpan refinement + Castanet facets. '
@@ -3876,7 +3876,7 @@ if uploads:
                 if warn:
                     st.warning('Looked like raw data — columns converted to metadata rows.')
                 st.write(f'Rows: **{len(df):,}**, Columns: **{len(df.columns)}**')
-                st.dataframe(df.head(10), use_container_width=True)
+                st.dataframe(df.head(10), width='stretch')
         except Exception as e:
             st.error(f'Failed to load {p.name}: {e}')
 
@@ -3902,7 +3902,7 @@ if uploads:
                                         key=f'meta_{name}')
             prev = list(dict.fromkeys(leaf + group + text + meta))
             if prev:
-                st.dataframe(df[prev].head(6), use_container_width=True)
+                st.dataframe(df[prev].head(6), width='stretch')
             configs[name] = {'leaf_cols': leaf, 'group_cols': group,
                              'text_cols': text, 'metadata_cols': meta}
 
@@ -4202,12 +4202,12 @@ with tabs[0]:
 
     if viz_mode == 'Sunburst (drill-down)':
         st.caption('Hover for concept provenance (confidence, source, alternatives). Click to drill down.')
-        st.plotly_chart(plot_sunburst(nodes, depth), use_container_width=True)
+        st.plotly_chart(plot_sunburst(nodes, depth), width='stretch')
     elif viz_mode == 'Treemap':
-        st.plotly_chart(plot_treemap(nodes), use_container_width=True)
+        st.plotly_chart(plot_treemap(nodes), width='stretch')
     else:
         st.plotly_chart(plot_node_link(nodes, depth, show_hidden, show_leaf_labels),
-                        use_container_width=True)
+                        width='stretch')
     pr  = path_rows(nodes)
     max_d = max((r['depth'] for r in pr), default=0)
     c1, c2, c3 = st.columns(3)
@@ -4225,7 +4225,7 @@ with tabs[0]:
             exp_rows = [{'Segment': seg, 'Expansion': v['expansion'],
                          'Evidence': ', '.join(v['evidence'])}
                         for seg, v in code_exp.items()]
-            st.dataframe(pd.DataFrame(exp_rows), use_container_width=True)
+            st.dataframe(pd.DataFrame(exp_rows), width='stretch')
 
     # Concept label provenance for internal nodes
     prov_rows = []
@@ -4241,7 +4241,7 @@ with tabs[0]:
             })
     if prov_rows:
         with st.expander('Concept label provenance for internal nodes', expanded=False):
-            st.dataframe(pd.DataFrame(prov_rows), use_container_width=True)
+            st.dataframe(pd.DataFrame(prov_rows), width='stretch')
 
 # ── Tab 1: Faceted view ───────────────────────────────────────────────────────
 with tabs[1]:
@@ -4251,11 +4251,11 @@ with tabs[1]:
         'Concept facet uses automatically assigned labels from embedding alignment.'
     )
     if facet_trees:
-        st.plotly_chart(plot_facets_parallel(facet_trees), use_container_width=True)
+        st.plotly_chart(plot_facets_parallel(facet_trees), width='stretch')
         st.markdown('### Per-facet detail')
         sel_facet = st.selectbox('Inspect facet tree', list(facet_trees.keys()))
         ft = facet_trees[sel_facet]
-        st.plotly_chart(plot_sunburst(ft, max_depth=3), use_container_width=True)
+        st.plotly_chart(plot_sunburst(ft, max_depth=3), width='stretch')
         n_groups = len([n for n in ft if n.get('type') == 'aggregation'])
         st.info(f'Facet **{sel_facet}**: {n_groups} groups, '
                 f'{len([n for n in ft if n.get("type")=="attribute"])} variables')
@@ -4273,11 +4273,11 @@ with tabs[2]:
         st.markdown('### Sibling coherence — before refinement (worst first)')
         before = hiexpan_report.get('coherence_before', [])
         if before:
-            st.dataframe(pd.DataFrame(before), use_container_width=True)
+            st.dataframe(pd.DataFrame(before), width='stretch')
         st.markdown('### Sibling coherence — after refinement')
         after = hiexpan_report.get('coherence_after', [])
         if after:
-            st.dataframe(pd.DataFrame(after), use_container_width=True)
+            st.dataframe(pd.DataFrame(after), width='stretch')
             b_mean = np.mean([r['coherence_score'] for r in before]) if before else float('nan')
             a_mean = np.mean([r['coherence_score'] for r in after])
             st.metric('Mean coherence improvement',
@@ -4324,7 +4324,7 @@ with tabs[3]:
     if can is not None:
         conflict_df = compute_conflict_table(can, nodes)
         if len(conflict_df):
-            st.dataframe(conflict_df, use_container_width=True)
+            st.dataframe(conflict_df, width='stretch')
         else:
             st.success('No low-confidence placements detected.')
     else:
@@ -4393,7 +4393,7 @@ with tabs[4]:
                                  'type': c.get('type'),
                                  'relation': c.get('info', {}).get('relation_label', ''),
                                  'desc': str(c.get('desc', ''))[:120]}
-                                for c in cns if c]), use_container_width=True)
+                                for c in cns if c]), width='stretch')
 
 # ── Tab 5: Search ─────────────────────────────────────────────────────────────
 with tabs[5]:
@@ -4407,14 +4407,14 @@ with tabs[5]:
                          'relation': n.get('info', {}).get('relation_label', ''),
                          'n_children': len(n.get('related', [])),
                          'desc': str(n.get('desc', ''))[:200]})
-    st.dataframe(pd.DataFrame(out_), use_container_width=True)
+    st.dataframe(pd.DataFrame(out_), width='stretch')
 
 # ── Tab 6: Semantic map ───────────────────────────────────────────────────────
 with tabs[6]:
     if can is None or len(can) < 3:
         st.info('Semantic map available after build.')
     else:
-        st.plotly_chart(semantic_map(can), use_container_width=True)
+        st.plotly_chart(semantic_map(can), width='stretch')
 
 # ── Tab 7: Metadata ───────────────────────────────────────────────────────────
 with tabs[7]:
@@ -4422,7 +4422,7 @@ with tabs[7]:
         st.info('Available after build.')
     else:
         show_cols = [c for c in can.columns if c != '_raw']
-        st.dataframe(can[show_cols], use_container_width=True)
+        st.dataframe(can[show_cols], width='stretch')
 
 # ── Tab 8: Export ─────────────────────────────────────────────────────────────
 with tabs[8]:
@@ -4438,7 +4438,7 @@ with tabs[8]:
             data=json.dumps(nodes, indent=2, ensure_ascii=False).encode('utf-8'),
             file_name=f'{_base}_approach1_hierarchy.json',
             mime='application/json',
-            use_container_width=True,
+            width='stretch',
         )
     with col2:
         if facet_trees:
@@ -4447,7 +4447,7 @@ with tabs[8]:
                 data=json.dumps(facet_trees, indent=2, ensure_ascii=False).encode('utf-8'),
                 file_name=f'{_base}_approach1_facets.json',
                 mime='application/json',
-                use_container_width=True,
+                width='stretch',
             )
 
     col3, col4 = st.columns(2)
@@ -4458,7 +4458,7 @@ with tabs[8]:
                 data=can.drop(columns=['_raw'], errors='ignore').to_csv(index=False).encode('utf-8'),
                 file_name=f'{_base}_approach1_canonical.csv',
                 mime='text/csv',
-                use_container_width=True,
+                width='stretch',
             )
     with col4:
         _prov_df = st.session_state.get('prov_df', pd.DataFrame())
@@ -4468,7 +4468,7 @@ with tabs[8]:
                 data=_prov_df.to_csv(index=False).encode('utf-8'),
                 file_name=f'{_base}_approach1_concept_labels.csv',
                 mime='text/csv',
-                use_container_width=True,
+                width='stretch',
             )
 
     st.divider()
@@ -4481,7 +4481,7 @@ with tabs[8]:
         'dataset name — convenient for `evaluate_all.py`.'
     )
     if st.button('💾 Save all to outputs/approach_1/', type='primary',
-                 use_container_width=True):
+                 width='stretch'):
         try:
             _out_dir.mkdir(parents=True, exist_ok=True)
             saved = []

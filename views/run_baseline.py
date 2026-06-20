@@ -40,7 +40,7 @@ from sklearn.preprocessing import LabelEncoder
 
 warnings.filterwarnings('ignore')
 
-st.set_page_config(page_title='Metadata Hierarchy — Baseline', page_icon='🌿', layout='wide')
+# set_page_config handled by the navigation router (demo.py)
 st.title('Metadata Hierarchy Builder — Baseline (Taxonomizer)')
 st.caption(
     'Pure Taxonomizer baseline: TF-IDF text objects + recursive agglomerative '
@@ -562,11 +562,11 @@ with st.spinner('Loading file…'):
 st.subheader('Step 1 — File preview')
 with st.expander(f'📄 {uploaded.name}  ({len(df):,} rows, {len(df.columns)} columns)',
                  expanded=False):
-    st.dataframe(df.head(10), use_container_width=True)
+    st.dataframe(df.head(10), width='stretch')
     score_cols = [c for c in ['column', 'leaf_score', 'group_score', 'text_score', 'metadata_score']
                   if c in prof.columns]
     st.dataframe(prof[score_cols].sort_values('leaf_score', ascending=False),
-                 use_container_width=True)
+                 width='stretch')
 
 st.subheader('Step 2 — Confirm column roles')
 cols = list(df.columns)
@@ -639,11 +639,11 @@ c4.metric('Avg branching', _sm['avg_branching_factor'])
 tabs = st.tabs(['Sunburst', 'Treemap', 'Node detail', 'Canonical table', 'Export', '📊 Evaluation'])
 
 with tabs[0]:
-    st.plotly_chart(plot_sunburst(nodes, max_depth=display_depth), use_container_width=True)
+    st.plotly_chart(plot_sunburst(nodes, max_depth=display_depth), width='stretch')
     st.caption('Green = Baseline. Click a sector to drill down; click the centre to go back.')
 
 with tabs[1]:
-    st.plotly_chart(plot_treemap(nodes), use_container_width=True)
+    st.plotly_chart(plot_treemap(nodes), width='stretch')
 
 with tabs[2]:
     nm = _nmap(nodes)
@@ -661,10 +661,10 @@ with tabs[2]:
             sub = can[can['_leaf_id'].isin(leaf_ids_set)]
             st.write(f'**{len(lids)} variables** under "{sel_node["name"]}"')
             st.dataframe(sub[['_leaf_label', '_group_path', '_text']].reset_index(drop=True),
-                         use_container_width=True)
+                         width='stretch')
 
 with tabs[3]:
-    st.dataframe(can, use_container_width=True)
+    st.dataframe(can, width='stretch')
 
 with tabs[4]:
     _base = safe_name(project_name)
@@ -675,7 +675,7 @@ with tabs[4]:
             data=json.dumps(nodes, indent=2, ensure_ascii=False).encode('utf-8'),
             file_name=f'{_base}_baseline_hierarchy.json',
             mime='application/json',
-            use_container_width=True,
+            width='stretch',
         )
     with col2:
         st.download_button(
@@ -683,7 +683,7 @@ with tabs[4]:
             data=can.to_csv(index=False).encode('utf-8'),
             file_name=f'{_base}_baseline_canonical.csv',
             mime='text/csv',
-            use_container_width=True,
+            width='stretch',
         )
 
     st.divider()
@@ -696,7 +696,7 @@ with tabs[4]:
         'dataset name — convenient for `evaluate_all.py`.'
     )
     if st.button('💾 Save all to outputs/baseline/', type='primary',
-                 use_container_width=True):
+                 width='stretch'):
         try:
             _out_dir.mkdir(parents=True, exist_ok=True)
             (_out_dir / f'{_base}_baseline_hierarchy.json').write_text(

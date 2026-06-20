@@ -3467,8 +3467,7 @@ def plot_node_link(nodes: list, max_depth: int = 4,
 # ──────────────────────────────────────────────────────────────────────────────
 # STREAMLIT APP
 # ──────────────────────────────────────────────────────────────────────────────
-st.set_page_config(page_title='Approach 2 — Multi-Aspect Hierarchy', page_icon='🔬',
-                   layout='wide')
+# set_page_config handled by the navigation router (demo.py)
 st.title('🔬 Approach 2 — Role-Decomposed Metadata Hierarchy')
 st.caption('Group anchoring → LLM role extraction → role-nested LoD tree. '
            'Full method details and citations in the Method tab.')
@@ -3613,7 +3612,7 @@ if uploads:
             cfg_by[f.name] = detect_roles(df)
             with st.expander(f'📄 {f.name}', expanded=False):
                 st.write(f'Rows: **{len(df):,}**  Columns: **{len(df.columns)}**')
-                st.dataframe(df.head(8), use_container_width=True)
+                st.dataframe(df.head(8), width='stretch')
         except Exception as e:
             st.error(f'Could not load {f.name}: {e}')
 
@@ -3813,13 +3812,13 @@ with tabs[0]:
 
     if viz_mode == 'Sunburst (drill-down)':
         st.plotly_chart(plot_sunburst(display_nodes, max_depth=depth_display),
-                        use_container_width=True)
+                        width='stretch')
     elif viz_mode == 'Treemap':
-        st.plotly_chart(plot_treemap(display_nodes), use_container_width=True)
+        st.plotly_chart(plot_treemap(display_nodes), width='stretch')
     else:
         st.plotly_chart(plot_node_link(display_nodes, depth_display,
                                         show_hidden, show_leaf_labels),
-                        use_container_width=True)
+                        width='stretch')
 
     n_l = len([n for n in nodes if n.get('type') == 'attribute'])
     n_i = len([n for n in nodes if n.get('type') == 'aggregation'])
@@ -3912,7 +3911,7 @@ with tabs[1]:
             W_df  = pd.DataFrame(
                 W, columns=[f'Aspect {k+1}: {alabs[k][:30]}' for k in range(W.shape[1])])
             W_df.insert(0, 'Variable', can['_label'].tolist())
-            st.dataframe(W_df.round(4), use_container_width=True)
+            st.dataframe(W_df.round(4), width='stretch')
 
 with tabs[2]:
     st.markdown('### Role decomposition')
@@ -3935,7 +3934,7 @@ with tabs[2]:
         if reg_rows:
             reg_df = pd.DataFrame(reg_rows).sort_values(
                 'Regularity', ascending=False, na_position='last')
-            st.dataframe(reg_df, use_container_width=True, hide_index=True)
+            st.dataframe(reg_df, width='stretch', hide_index=True)
 
         # ── Per-variable role table ───────────────────────────────────────────
         st.markdown('#### Per-variable role table')
@@ -3996,7 +3995,7 @@ with tabs[2]:
 
         if role_rows:
             role_df = pd.DataFrame(role_rows)
-            st.dataframe(role_df, use_container_width=True, hide_index=True)
+            st.dataframe(role_df, width='stretch', hide_index=True)
             st.download_button(
                 '⬇️ Download per-variable role CSV',
                 data=role_df.to_csv(index=False).encode('utf-8'),
@@ -4021,7 +4020,7 @@ with tabs[2]:
                     'Reasons':       ', '.join(f'{k}:{v}' for k, v in
                                                 (a.get('summary', {}) or {}).items()),
                 })
-            st.dataframe(pd.DataFrame(sum_rows), use_container_width=True,
+            st.dataframe(pd.DataFrame(sum_rows), width='stretch',
                           hide_index=True)
 
             # Drill-down per group
@@ -4050,7 +4049,7 @@ with tabs[2]:
                         })
                     if row_rows:
                         st.dataframe(pd.DataFrame(row_rows),
-                                      use_container_width=True, hide_index=True)
+                                      width='stretch', hide_index=True)
                         # Download as CSV for offline analysis
                         csv_bytes = pd.DataFrame(row_rows).to_csv(index=False).encode('utf-8')
                         st.download_button(
@@ -4129,16 +4128,16 @@ with tabs[3]:
                               & (prov_df['LLM proposed'].astype(str).str.len() > 0)]
                 if len(rej):
                     st.dataframe(rej[['Node', 'LLM proposed', 'LLM reason']],
-                                  use_container_width=True, hide_index=True)
+                                  width='stretch', hide_index=True)
 
         # ── Full provenance table ─────────────────────────────────────────────
         st.write('**Full per-node provenance**')
-        st.dataframe(prov_df, use_container_width=True, hide_index=True)
+        st.dataframe(prov_df, width='stretch', hide_index=True)
 
 with tabs[4]:
     if can is not None:
         st.dataframe(can.drop(columns=['_row'], errors='ignore'),
-                     use_container_width=True)
+                     width='stretch')
 
 with tabs[5]:
     # ── derive a per-CSV base name from the uploaded files ────────────────────
@@ -4169,7 +4168,7 @@ with tabs[5]:
                 data=json.dumps(nodes, indent=2, ensure_ascii=False).encode(),
                 file_name=f'{csv_basis}_approach2_lod.json',
                 mime='application/json',
-                use_container_width=True,
+                width='stretch',
             )
     with col2:
         if can is not None:
@@ -4178,7 +4177,7 @@ with tabs[5]:
                 data=can.to_csv(index=False).encode('utf-8'),
                 file_name=f'{csv_basis}_approach2_canonical.csv',
                 mime='text/csv',
-                use_container_width=True,
+                width='stretch',
             )
 
     st.divider()
@@ -4191,7 +4190,7 @@ with tabs[5]:
         'dataset name — convenient for `evaluate_all.py`.'
     )
     if st.button('💾 Save all to outputs/approach_2/', type='primary',
-                 use_container_width=True):
+                 width='stretch'):
         try:
             _out_dir.mkdir(parents=True, exist_ok=True)
             saved = []
