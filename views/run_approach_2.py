@@ -36,7 +36,7 @@
 #   [TraCo]    Wu et al. (2024). AAAI.          Affinity + diversity metrics
 #   [TICL]     Kejriwal et al. (2022). EAAI.    NMI/ARI/Purity evaluation
 #   [BISE-26]  Motamedi et al. (2026). BISE.    Group-anchored entry validation
-#   [IE-Slot]  IE / slot-induction literature (surveyed ACM CSUR 2022).
+#   [IE-Slot]  IE / slot-induction literature (surveyed Xu et al., FCS 2024).
 
 from __future__ import annotations
 import json
@@ -2251,7 +2251,7 @@ def build_slot_hierarchy(vi_list: list,
     # whose role name is broadly "measure-like" (base concept) over
     # "statistic/condition/subtype" (modifiers).  This is generic English
     # vocabulary, not domain knowledge — same heuristic used by IE slot-
-    # induction work (cf. ACM CSUR 2022 IE survey).
+    # induction work (cf. Xu et al., FCS 2024 IE survey).
     slot_source = slot_result.get('slot_source', 'mutual_exclusion')
     _MEASURE_LIKE = {'measure', 'outcome', 'metric', 'variable', 'quantity'}
     _STATISTIC_LIKE = {'statistic', 'stat', 'aggregate', 'summary'}

@@ -16,11 +16,13 @@
 #   7. Export VIANNA-compatible JSON + canonical CSV
 #
 # Papers:
-#   [TAX] Taxonomizer (Sultanum et al.) — leaf=attribute, internal=abstract group
+#   [TAX] Taxonomizer (Mahmood & Mueller, IEEE TVCG) — leaf=attribute, internal=abstract group
 #         built bottom-up by recursively clustering item feature vectors and
 #         labelling each internal node with its members' shared/discriminative terms
 #   [GON] Goncalves et al. — TF-IDF text objects + cosine distance
-#   [HIE] HiExpan (adapted) — discriminative-term node labelling
+#   NB: discriminative-term labelling here is Taxonomizer's own contrastive
+#       in-vs-sibling term scoring; HiExpan refinement is NOT used in the baseline
+#       (it is introduced in Approach 1).
 
 from __future__ import annotations
 import csv, json, re, warnings
@@ -536,8 +538,8 @@ if not uploaded:
     |------|--------|-------|
     | Text object | Concatenate all metadata fields per variable | Goncalves et al. |
     | Representation | TF-IDF (generic English stop-words only) | Goncalves et al. |
-    | Hierarchy construction | Recursive agglomerative clustering (cosine), #clusters chosen by silhouette | Taxonomizer (Sultanum et al.) |
-    | Node labelling | Most discriminative terms of each cluster vs its siblings | Taxonomizer / HiExpan |
+    | Hierarchy construction | Recursive agglomerative clustering (cosine), #clusters chosen by silhouette | Taxonomizer (Mahmood & Mueller, IEEE TVCG) |
+    | Node labelling | Most discriminative terms of each cluster vs its siblings | Taxonomizer |
 
     The group column is **not** used for construction, so the recovered taxonomy
     can be fairly evaluated against it (NMI / ARI / Purity in the Evaluation tab).

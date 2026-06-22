@@ -15,7 +15,7 @@
 #
 # Papers:
 #   [GON] Gonçalves et al. — biomedical metadata alignment via N×M concept similarity matrix
-#   [TAX] Taxonomizer (Sultanum et al.) — leaf=attribute, internal node=abstract group
+#   [TAX] Taxonomizer (Mahmood & Mueller, IEEE TVCG) — leaf=attribute, internal node=abstract group
 #   [HIE] HiExpan (Shen et al.) — width/depth expansion, sibling coherence, global opt
 #   [CAS] Castanet — parallel faceted hierarchies over the same variable set
 
@@ -748,7 +748,7 @@ def extract_candidate_concepts_from_metadata(can, max_concepts=150):
     # [FIX4][TAX] Taxonomizer: "text before first colon" is the concept anchor
     # ONLY when a genuine colon separates label from explanation, e.g.
     # "Reaction Time: time from stimulus to response" → anchor = "Reaction Time".
-    # [Sultanum & Mueller, IEEE TVCG 2019]; [Lobo et al., ISWC 2023]
+    # [Mahmood & Mueller, IEEE TVCG 2019]; [Lobo et al., ISWC 2023]
     #
     # [FIX-R1] Cross-task leakage fix:
     # CANTAB/AI-Mind descriptions have NO colon — they are plain text like
