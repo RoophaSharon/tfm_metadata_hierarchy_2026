@@ -13,7 +13,7 @@ import streamlit as st
 
 st.set_page_config(
     page_title="Metadata Hierarchy Explorer",
-    page_layout="wide",
+    layout="wide",
 )
 
 # ── Pages ────────────────────────────────────────────────────────────────────
