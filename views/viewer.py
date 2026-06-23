@@ -480,20 +480,12 @@ with st.expander("Build summary", expanded=False):
     )
 
 # ── Downloads ────────────────────────────────────────────────────────────────
-d1, d2, d3 = st.columns(3)
+d1, d2 = st.columns(2)
 with d1:
     st.download_button("Hierarchy JSON", data=_read_bytes(str(hier_path)),
                        file_name=hier_path.name, mime="application/json",
                        width='stretch')
 with d2:
-    if facet_path is not None and facet_path.exists():
-        st.download_button("Facets JSON", data=_read_bytes(str(facet_path)),
-                           file_name=facet_path.name, mime="application/json",
-                           width='stretch')
-    else:
-        st.button("Facets JSON", disabled=True, width='stretch',
-                  help="This approach/dataset has no facet tree.")
-with d3:
     st.download_button("All outputs (ZIP)", data=_outputs_zip(str(ROOT)),
                        file_name="metadata_hierarchy_outputs.zip",
                        mime="application/zip", width='stretch')
