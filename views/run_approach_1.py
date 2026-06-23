@@ -10,7 +10,7 @@
 #   7. Score concept assignment: embedding + string + frequency + source + hierarchy
 #   8. Build task/group-first hierarchy using automatically assigned concept labels
 #   9. HiExpan refinement: sibling coherence, width expansion, depth expansion, global opt
-#  10. VIANNA LoD tree + Castanet parallel facets
+#  10. LoD tree + Castanet parallel facets
 #  11. Export with label provenance
 #
 # Papers:

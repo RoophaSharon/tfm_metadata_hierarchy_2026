@@ -163,7 +163,7 @@ Sample data is in `data/`:
 
 ## Outputs
 
-- **Baseline / Approach 1** export two JSON files compatible with the VIANNA viewer:
+- **Baseline / Approach 1** export two JSON files for visualization:
   - `*_lod.json` — primary LoD tree
   - `*_facets.json` — parallel Castanet facet trees
 

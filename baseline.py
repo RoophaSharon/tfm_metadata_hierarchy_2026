@@ -13,7 +13,7 @@
 #      abstract-to-concrete taxonomy; internal-node labels are the most
 #      discriminative terms of each cluster — derived from the data, not hardcoded
 #   6. Visualise (Sunburst / Treemap)
-#   7. Export VIANNA-compatible JSON + canonical CSV
+#   7. Export visualization-ready JSON + canonical CSV
 #
 # Papers:
 #   [TAX] Taxonomizer (Mahmood & Mueller, IEEE TVCG) — leaf=attribute, internal=abstract group
