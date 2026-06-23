@@ -92,9 +92,9 @@ def main() -> int:
             # Do NOT use CREATE_NEW_PROCESS_GROUP — it breaks taskkill /T
             p = subprocess.Popen(cmd)
             procs.append(p)
-            print(f'  ✓ {label:<12} pid={p.pid:<6} → http://localhost:{port}')
+            print(f'  {label:<12} pid={p.pid:<6} → http://localhost:{port}')
         except Exception as e:
-            print(f'  ✗ FAILED {label}: {e}')
+            print(f'  FAILED {label}: {e}')
 
     if not procs:
         print('Nothing started.')
@@ -105,11 +105,11 @@ def main() -> int:
     for _, port, label in JOBS:
         for _ in range(STARTUP_WAIT_SECS * 2):
             if _port_in_use(port):
-                print(f'  ✓ {label} ready')
+                print(f'  {label} ready')
                 break
             time.sleep(0.5)
         else:
-            print(f'  ⚠ {label} did not respond in time — opening anyway')
+            print(f'  {label} did not respond in time — opening anyway')
 
     if OPEN_BROWSER:
         print('\nOpening browser tabs…')

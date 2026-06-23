@@ -428,7 +428,7 @@ with st.sidebar:
     st.markdown("---")
     st.caption("Results are pre-built from the thesis experiments. To run on your "
                "own data, clone the repository and run the individual apps.")
-    st.markdown("[📦 GitHub Repository]"
+    st.markdown("[GitHub Repository]"
                 "(https://github.com/RoophaSharon/tfm_metadata_hierarchy_2026)")
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -437,7 +437,7 @@ with st.sidebar:
 cfg = CONFIG[approach]
 color = cfg["color"]
 
-st.title(f"📊 {approach} — {dataset} Dataset")
+st.title(f"{approach} — {dataset} Dataset")
 st.markdown(f"> {APPROACH_DESC[approach]}")
 
 paths = PREBUILT[approach][dataset]
@@ -463,7 +463,7 @@ if facet_path is not None and facet_path.exists():
     except Exception:
         n_facets = None
 
-with st.expander("ℹ️ Build summary", expanded=False):
+with st.expander("Build summary", expanded=False):
     bs1, bs2, bs3, bs4 = st.columns(4)
     bs1.metric("Variables", leaves)
     bs2.metric("Internal nodes", aggs)
@@ -482,19 +482,19 @@ with st.expander("ℹ️ Build summary", expanded=False):
 # ── Downloads ────────────────────────────────────────────────────────────────
 d1, d2, d3 = st.columns(3)
 with d1:
-    st.download_button("⬇️ Hierarchy JSON", data=_read_bytes(str(hier_path)),
+    st.download_button("Hierarchy JSON", data=_read_bytes(str(hier_path)),
                        file_name=hier_path.name, mime="application/json",
                        width='stretch')
 with d2:
     if facet_path is not None and facet_path.exists():
-        st.download_button("⬇️ Facets JSON", data=_read_bytes(str(facet_path)),
+        st.download_button("Facets JSON", data=_read_bytes(str(facet_path)),
                            file_name=facet_path.name, mime="application/json",
                            width='stretch')
     else:
-        st.button("⬇️ Facets JSON", disabled=True, width='stretch',
+        st.button("Facets JSON", disabled=True, width='stretch',
                   help="This approach/dataset has no facet tree.")
 with d3:
-    st.download_button("⬇️ All outputs (ZIP)", data=_outputs_zip(str(ROOT)),
+    st.download_button("All outputs (ZIP)", data=_outputs_zip(str(ROOT)),
                        file_name="metadata_hierarchy_outputs.zip",
                        mime="application/zip", width='stretch')
 
@@ -547,7 +547,7 @@ else:
 # ── Facets (Approach 1 only) ─────────────────────────────────────────────────
 if facet_path is not None and facet_path.exists():
     st.markdown("---")
-    st.subheader("🔀 Parallel facets")
+    st.subheader("Parallel facets")
     facets = _load_json(str(facet_path))
     names = list(facets.keys())
     if not names:

@@ -3872,7 +3872,7 @@ if uploads:
                 df = raw_to_metadata(df); warn = True
             cfg, prof = detect_roles(df)
             raw_by[p.name] = df; cfg_by[p.name] = cfg; prof_by[p.name] = prof
-            with st.expander(f'📄 {p.name}', expanded=False):
+            with st.expander(f'{p.name}', expanded=False):
                 if warn:
                     st.warning('Looked like raw data — columns converted to metadata rows.')
                 st.write(f'Rows: **{len(df):,}**, Columns: **{len(df.columns)}**')
@@ -3883,7 +3883,7 @@ if uploads:
     st.subheader('Step 2 — Confirm column roles')
     configs = {}
     for name, df in raw_by.items():
-        with st.expander(f'⚙️ {name}', expanded=True):
+        with st.expander(f'{name}', expanded=True):
             cols = list(df.columns); auto = cfg_by[name]
             c1, c2 = st.columns(2)
             with c1:
@@ -3906,7 +3906,7 @@ if uploads:
             configs[name] = {'leaf_cols': leaf, 'group_cols': group,
                              'text_cols': text, 'metadata_cols': meta}
 
-    if st.button('🌳 Build Approach 1 hierarchy', type='primary'):
+    if st.button('Build Approach 1 hierarchy', type='primary'):
         try:
             # ── Step A: Build canonical schemas per file ───────────────────────
             cans = [build_canonical(df.head(max_rows), configs[name], name)
@@ -4178,10 +4178,10 @@ concept_table = st.session_state.concept_table or []
 # ─────────────────────────────────────────────────────────────────────────────
 # TABS
 # ─────────────────────────────────────────────────────────────────────────────
-tabs = st.tabs(['🌳 LoD tree', '🔲 Faceted view', '🧬 HiExpan report',
-                '⚠️ Conflicts', '✏️ Edit', '🔍 Search',
-                '🗺️ Semantic map', '📋 Metadata', '⬇️ Export', 'ℹ️ Method',
-                '📊 Evaluation'])
+tabs = st.tabs(['LoD tree', 'Faceted view', 'HiExpan report',
+                'Conflicts', 'Edit', 'Search',
+                'Semantic map', 'Metadata', 'Export', 'Method',
+                'Evaluation'])
 
 # ── Tab 0: LoD tree ───────────────────────────────────────────────────────────
 with tabs[0]:
@@ -4480,7 +4480,7 @@ with tabs[8]:
         f'restriction). This button instead writes the files into `{_out_dir}` with the '
         'dataset name — convenient for `evaluate_all.py`.'
     )
-    if st.button('💾 Save all to outputs/approach_1/', type='primary',
+    if st.button('Save all to outputs/approach_1/', type='primary',
                  width='stretch'):
         try:
             _out_dir.mkdir(parents=True, exist_ok=True)
@@ -4640,7 +4640,7 @@ with tabs[10]:
         # ── Group-structure self-consistency (descriptive, NOT accuracy) ───────
         st.markdown('#### Group-structure self-consistency *(descriptive — not accuracy)*')
         st.caption(
-            '⚠️ The group column is a **construction input** here, so this only confirms the '
+            'The group column is a **construction input** here, so this only confirms the '
             'hierarchy reflects its own input — expected high, NOT a quality signal and NOT '
             "comparable to the Baseline's held-out recovery."
         )

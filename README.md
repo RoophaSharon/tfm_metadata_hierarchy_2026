@@ -1,6 +1,5 @@
 ---
 title: Metadata Hierarchy Explorer
-emoji: 🌿
 colorFrom: green
 colorTo: blue
 sdk: docker
@@ -198,7 +197,7 @@ Existing output examples are in `outputs/approach 1/` and `outputs/approach 2/`.
 | `Ollama not reachable` in sidebar | Open the Ollama app from Start menu; the service runs in the system tray |
 | Model not found | `ollama pull qwen2.5:3b-instruct` |
 | Build very slow with LLM on | Expected for HCP — ~15–40 min on CPU with a 3B model. Disable LLM for fast iteration. |
-| `LLM-labeled nodes: 0/N` after build | The grounding check rejected every LLM proposal. Check the **🔍 Label Provenance** tab — counts under `llm_rejected = True` show what happened. |
+| `LLM-labeled nodes: 0/N` after build | The grounding check rejected every LLM proposal. Check the **Label Provenance** tab — counts under `llm_rejected = True` show what happened. |
 | Hierarchy too shallow | Increase `Max LoD tree depth` slider (top of sidebar in Approach 2) |
 
 ## License

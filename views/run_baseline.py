@@ -850,7 +850,7 @@ with st.spinner('Loading file…'):
     df, auto_cfg, prof = _load_profile(str(path))
 
 st.subheader('Step 1 — File preview')
-with st.expander(f'📄 {uploaded.name}  ({len(df):,} rows, {len(df.columns)} columns)',
+with st.expander(f'{uploaded.name}  ({len(df):,} rows, {len(df.columns)} columns)',
                  expanded=False):
     st.dataframe(df.head(10), width='stretch')
     score_cols = [c for c in ['column', 'leaf_score', 'group_score', 'text_score', 'metadata_score']
@@ -936,7 +936,7 @@ c2.metric('Aggregation nodes', n_internal)
 c3.metric('Max depth', _sm['max_depth'])
 c4.metric('Avg branching', _sm['avg_branching_factor'])
 
-tabs = st.tabs(['🌳 Visualization', 'Node detail', 'Canonical table', 'Export', '📊 Evaluation'])
+tabs = st.tabs(['Visualization', 'Node detail', 'Canonical table', 'Export', 'Evaluation'])
 
 with tabs[0]:
     # ── Visualization controls (above chart — matches Approach 1 / 2) ─────────
@@ -1017,7 +1017,7 @@ with tabs[3]:
         f'restriction). This button instead writes the files into `{_out_dir}` with the '
         'dataset name — convenient for `evaluate_all.py`.'
     )
-    if st.button('💾 Save all to outputs/baseline/', type='primary',
+    if st.button('Save all to outputs/baseline/', type='primary',
                  width='stretch'):
         try:
             _out_dir.mkdir(parents=True, exist_ok=True)

@@ -3467,9 +3467,9 @@ def plot_node_link(nodes: list, max_depth: int = 4,
 # ──────────────────────────────────────────────────────────────────────────────
 # STREAMLIT APP
 # ──────────────────────────────────────────────────────────────────────────────
-st.set_page_config(page_title='Approach 2 — Multi-Aspect Hierarchy', page_icon='🔬',
+st.set_page_config(page_title='Approach 2 — Multi-Aspect Hierarchy',
                    layout='wide')
-st.title('🔬 Approach 2 — Role-Decomposed Metadata Hierarchy')
+st.title('Approach 2 — Role-Decomposed Metadata Hierarchy')
 st.caption('Group anchoring → LLM role extraction → role-nested LoD tree. '
            'Full method details and citations in the Method tab.')
 
@@ -3611,7 +3611,7 @@ if uploads:
             df = load_any(p)
             raw_by[f.name] = df
             cfg_by[f.name] = detect_roles(df)
-            with st.expander(f'📄 {f.name}', expanded=False):
+            with st.expander(f'{f.name}', expanded=False):
                 st.write(f'Rows: **{len(df):,}**  Columns: **{len(df.columns)}**')
                 st.dataframe(df.head(8), use_container_width=True)
         except Exception as e:
@@ -3622,7 +3622,7 @@ if uploads:
     for name, df in raw_by.items():
         cols = list(df.columns)
         auto = cfg_by[name]
-        with st.expander(f'⚙️ {name}', expanded=True):
+        with st.expander(f'{name}', expanded=True):
             c1, c2 = st.columns(2)
             with c1:
                 leaf  = st.multiselect('Leaf variable column(s)', cols,
@@ -3641,7 +3641,7 @@ if uploads:
             configs[name] = {'leaf_cols': leaf, 'group_cols': group,
                              'text_cols': text,  'meta_cols':  meta}
 
-    if st.button('🚀 Build Approach 2 Hierarchy', type='primary'):
+    if st.button('Build Approach 2 Hierarchy', type='primary'):
         try:
             # Clear stale audit data from any previous build
             st.session_state.a2_per_row_audit = []
@@ -3764,7 +3764,7 @@ if uploads:
                 for r in (a.get('summary') or {})
             )
             if ran_out:
-                st.error(f'⚠️ Ran out of tokens on `{llm_model}`. '
+                st.error(f'Ran out of tokens on `{llm_model}`. '
                          f'Switch to another Groq model in the sidebar '
                          f'(e.g. llama-3.1-8b-instant) and rebuild.')
         except Exception as e:
@@ -3782,8 +3782,8 @@ nodes  = st.session_state.get('a2_nodes')
 can    = st.session_state.get('a2_can')
 meta   = st.session_state.get('a2_meta') or {}
 
-tabs = st.tabs(['🌳 LoD Tree', '📊 Evaluation', '🎭 Role Decomposition',
-                '🔍 Label Provenance', '📋 Metadata', '⬇️ Export', 'ℹ️ Method'])
+tabs = st.tabs(['LoD Tree', 'Evaluation', 'Role Decomposition',
+                'Label Provenance', 'Metadata', 'Export', 'Method'])
 
 with tabs[0]:
     # ── Visualization controls (above chart — easy to find, matches Approach 1.1) ─
@@ -3855,7 +3855,7 @@ with tabs[1]:
         # These use SBERT, which is slow to load. Computing them only on a button
         # click keeps the tree, sliders and Save button instant.
         st.markdown('#### Primary — reference-free hierarchy quality')
-        if st.button('▶️ Compute reference-free metrics', key='a2_eval_btn'):
+        if st.button('▶Compute reference-free metrics', key='a2_eval_btn'):
             with st.spinner('Computing reference-free metrics (loads SBERT once)…'):
                 tm   = he.traco_metrics(nodes)
                 npmi = he.npmi_coherence(nodes, can['_text'].tolist())
@@ -3901,7 +3901,7 @@ with tabs[1]:
         # ── Group-structure self-consistency (descriptive, NOT accuracy) ───────
         st.markdown('#### Group-structure self-consistency *(descriptive — not accuracy)*')
         st.caption(
-            '⚠️ The group column is a **construction input** (group-anchored L1/L2), so this '
+            'The group column is a **construction input** (group-anchored L1/L2), so this '
             'only confirms the NMF aspect partition reflects its own input — expected high, '
             "NOT a quality signal and NOT comparable to the Baseline's held-out recovery."
         )
@@ -4008,7 +4008,7 @@ with tabs[2]:
             role_df = pd.DataFrame(role_rows)
             st.dataframe(role_df, use_container_width=True, hide_index=True)
             st.download_button(
-                '⬇️ Download per-variable role CSV',
+                'Download per-variable role CSV',
                 data=role_df.to_csv(index=False).encode('utf-8'),
                 file_name=f'{safe_name(project_name)}_approach2_role_decomposition.csv',
                 mime='text/csv',
@@ -4064,7 +4064,7 @@ with tabs[2]:
                         # Download as CSV for offline analysis
                         csv_bytes = pd.DataFrame(row_rows).to_csv(index=False).encode('utf-8')
                         st.download_button(
-                            '⬇️ Download per-row audit for this group',
+                            'Download per-row audit for this group',
                             data=csv_bytes,
                             file_name=f'{safe_name(project_name)}_audit_{safe_name(sel_grp)}.csv',
                             mime='text/csv',
@@ -4200,7 +4200,7 @@ with tabs[5]:
         f'restriction). This button instead writes the files into `{_out_dir}` with the '
         'dataset name — convenient for `evaluate_all.py`.'
     )
-    if st.button('💾 Save all to outputs/approach_2/', type='primary',
+    if st.button('Save all to outputs/approach_2/', type='primary',
                  use_container_width=True):
         try:
             _out_dir.mkdir(parents=True, exist_ok=True)
