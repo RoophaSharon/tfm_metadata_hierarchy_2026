@@ -9,22 +9,29 @@ in Approach 2).  An input cannot also serve as the ground truth — measuring th
 hierarchy against the group column is therefore circular (for Approach 2 it is
 circular by design).  The defensible evaluation is reference-free.
 
-PRIMARY METRICS (no gold standard required)
+PRIMARY METRICS (no gold standard required) — fair cross-approach comparison
 -------------------------------------------
   • Parent–child coherence   — TraCo (Wu et al., AAAI 2024, arXiv:2401.14113)
   • Sibling diversity        — TraCo (same paper)
   • NPMI label coherence     — Lau et al., EACL 2014 (aclanthology.org/E14-1056);
                                orig. Mimno et al., EMNLP 2010
+  • Label quality            — interpretability proxies (concept-valid label %,
+                               sibling redundancy, avg label words).  Captures the
+                               dimension coherence misses (meaningful inner labels,
+                               Taxonomizer's stated goal).
   • Structural statistics    — HiExpan-style reporting (Shen et al., KDD 2018)
 
-SECONDARY (descriptive, explicitly caveated)
---------------------------------------------
-  • Group-structure preservation (NMI / ARI / Purity vs the group column).
-    Reported only as "how much the discovered hierarchy still reflects the
-    pre-existing group column that was used as input" — NOT an accuracy metric.
+All of the above use the SAME encoder/corpus for every approach, so the
+cross-approach comparison is fair.  NOTE: coherence (TraCo/NPMI) can favour the
+data-derived baseline, so interpretability + a human study are needed to show
+the approaches' advantage.
 
-All metrics are computed the same way for every approach, so cross-approach
-comparison is fair.
+GROUP-COLUMN METRICS (ARI / AMI / NMI / Purity) — meaning differs by approach
+-----------------------------------------------------------------------------
+  • Baseline: the group column is NOT used in construction → this is a VALID
+    held-out recovery score (headline ARI / AMI; NMI & Purity inflated).
+  • Approach 1 / 2: the group column is a construction input → circular, reported
+    only as a self-consistency check (expected high), NOT comparable to baseline.
 """
 from __future__ import annotations
 
@@ -259,11 +266,14 @@ def group_preservation(nodes: list, can) -> dict:
     CAVEAT: the group column is a construction input in every approach, so this
     is a descriptive 'structure preservation' figure, NOT an accuracy metric.
     """
-    from sklearn.metrics import normalized_mutual_info_score, adjusted_rand_score
+    from sklearn.metrics import (normalized_mutual_info_score, adjusted_rand_score,
+                                 adjusted_mutual_info_score)
     from sklearn.preprocessing import LabelEncoder
     import pandas as pd
 
-    y_true_raw = can['_group_path'].apply(
+    # group column robust to either canonical schema (_group_path or _group)
+    gcol = '_group_path' if '_group_path' in can.columns else '_group'
+    y_true_raw = can[gcol].apply(
         lambda x: str(x).split(' > ')[0].strip()
         if pd.notna(x) and str(x) not in ('', 'nan') else 'Ungrouped'
     ).tolist()
@@ -272,10 +282,75 @@ def group_preservation(nodes: list, can) -> dict:
     y_true = LabelEncoder().fit_transform(y_true_raw)
     y_pred = LabelEncoder().fit_transform(y_pred_raw)
     return {
+        # ARI and AMI are chance-corrected — the trustworthy numbers.
+        'ARI':    round(float(adjusted_rand_score(y_true, y_pred)), 4),
+        'AMI':    round(float(adjusted_mutual_info_score(y_true, y_pred)), 4),
+        # NMI and Purity are reported for completeness but are inflated by
+        # over-splitting (more clusters → higher), so they are NOT headline.
         'NMI':    round(float(normalized_mutual_info_score(
                      y_true, y_pred, average_method='arithmetic')), 4),
-        'ARI':    round(float(adjusted_rand_score(y_true, y_pred)), 4),
         'Purity': round(_purity(y_true_raw, y_pred_raw), 4),
+    }
+
+def label_quality(nodes: list) -> dict:
+    """Reference-free interpretability proxies for internal-node labels.
+
+    Captures the dimension Taxonomizer is *about* — meaningful inner-node labels —
+    which coherence metrics miss.  Fully automatic, no gold standard:
+
+      • concept_label_pct  — % of internal labels that read as a real concept:
+        a short phrase (<=3 words) whose head word is a known English noun
+        (WordNet).  Penalises '/'-joined contrastive term fragments.
+      • redundancy_pct     — % of internal labels that duplicate a sibling's
+        label (same normalised text under the same parent).
+      • avg_label_words    — mean label length in words (shorter = more name-like).
+    """
+    pm = build_parent_map(nodes)
+    internal = [n for n in nodes if n.get('type') == 'aggregation']
+    if not internal:
+        return {'concept_label_pct': 0.0, 'redundancy_pct': 0.0, 'avg_label_words': 0.0}
+
+    # WordNet noun check (optional; degrade gracefully if unavailable)
+    try:
+        from nltk.corpus import wordnet as wn
+        def _is_noun(w):
+            return bool(wn.synsets(w, pos=wn.NOUN))
+    except Exception:
+        def _is_noun(w):
+            return len(w) > 2  # fallback: any real-ish word
+
+    def _norm(s): return re.sub(r'[^a-z0-9]+', ' ', str(s).lower()).strip()
+
+    concept = 0
+    wordcounts = []
+    for n in internal:
+        raw = str(n.get('name', ''))
+        words = _norm(raw).split()
+        wordcounts.append(len(words))
+        # '/'-joined fragments are NOT concept labels
+        is_fragment = '/' in raw
+        head = words[-1] if words else ''
+        if (not is_fragment) and 1 <= len(words) <= 3 and head and _is_noun(head):
+            concept += 1
+
+    # sibling redundancy
+    by_parent: dict = {}
+    for n in internal:
+        p = pm.get(int(n['id']), -1)
+        by_parent.setdefault(p, []).append(_norm(n.get('name', '')))
+    redundant = 0
+    for sibs in by_parent.values():
+        seen = set()
+        for s in sibs:
+            if s in seen:
+                redundant += 1
+            seen.add(s)
+
+    n_int = len(internal)
+    return {
+        'concept_label_pct': round(100.0 * concept / n_int, 1),
+        'redundancy_pct':    round(100.0 * redundant / n_int, 1),
+        'avg_label_words':   round(float(np.mean(wordcounts)), 2),
     }
 
 

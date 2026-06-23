@@ -4615,6 +4615,18 @@ with tabs[10]:
             a3.metric('Fallback rate', f"{em.get('fallback_rate_pct', 0):.1f}%",
                       help='% of variables that used TF-IDF fallback instead of external concept')
 
+        # ── Label-quality proxies (interpretability) ──────────────────────────
+        st.markdown('#### Label quality *(interpretability — reference-free)*')
+        lq = he.label_quality(nodes_eval)
+        l1, l2, l3 = st.columns(3)
+        l1.metric('Concept-valid labels', f"{lq['concept_label_pct']}%",
+                  help='% of internal labels that read as a real concept (short noun '
+                       'phrase, WordNet head) rather than a "/"-joined term fragment.')
+        l2.metric('Sibling label redundancy', f"{lq['redundancy_pct']}%",
+                  help='% of internal labels duplicating a sibling label (lower is better).')
+        l3.metric('Avg label words', lq['avg_label_words'],
+                  help='Mean label length in words.')
+
         # ── Structural statistics ─────────────────────────────────────────────
         st.markdown('#### Structural statistics')
         sm = he.structural_stats(nodes_eval)
@@ -4625,12 +4637,12 @@ with tabs[10]:
         s4.metric('Avg branching',     sm['avg_branching_factor'])
         s5.metric('Singleton nodes',   f"{sm['singleton_nodes_%']}%")
 
-        # ── SECONDARY: group preservation (caveated) ──────────────────────────
-        st.markdown('#### Secondary — group-structure preservation *(descriptive)*')
+        # ── Group-structure self-consistency (descriptive, NOT accuracy) ───────
+        st.markdown('#### Group-structure self-consistency *(descriptive — not accuracy)*')
         st.caption(
-            '⚠️ The group column was an **input** to construction, so these are NOT accuracy '
-            'metrics — only how much the hierarchy still reflects the pre-existing group column.'
+            '⚠️ The group column is a **construction input** here, so this only confirms the '
+            'hierarchy reflects its own input — expected high, NOT a quality signal and NOT '
+            "comparable to the Baseline's held-out recovery."
         )
         gp = he.group_preservation(nodes_eval, can_eval)
-        g1, g2, g3 = st.columns(3)
-        g1.metric('NMI', gp['NMI']);  g2.metric('ARI', gp['ARI']);  g3.metric('Purity', gp['Purity'])
+        st.metric('ARI (self-consistency)', gp['ARI'])

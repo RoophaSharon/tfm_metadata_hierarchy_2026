@@ -3875,6 +3875,18 @@ with tabs[1]:
             st.info('Click the button above to compute coherence / diversity / NPMI '
                     '(takes a few seconds the first time while SBERT loads).')
 
+        # ── Label-quality proxies (interpretability) ──────────────────────────
+        st.markdown('#### Label quality *(interpretability — reference-free)*')
+        lq = he.label_quality(nodes)
+        l1, l2, l3 = st.columns(3)
+        l1.metric('Concept-valid labels', f"{lq['concept_label_pct']}%",
+                  help='% of internal labels that read as a real concept (short noun '
+                       'phrase, WordNet head) rather than a "/"-joined term fragment.')
+        l2.metric('Sibling label redundancy', f"{lq['redundancy_pct']}%",
+                  help='% of internal labels duplicating a sibling label (lower is better).')
+        l3.metric('Avg label words', lq['avg_label_words'],
+                  help='Mean label length in words.')
+
         # ── Structural statistics ─────────────────────────────────────────────
         st.markdown('#### Structural statistics')
         sm = he.structural_stats(nodes)
@@ -3885,21 +3897,19 @@ with tabs[1]:
         s4.metric('Avg branching',     sm['avg_branching_factor'])
         s5.metric('Singleton nodes',   f"{sm['singleton_nodes_%']}%")
 
-        # ── SECONDARY: group preservation (caveated) ──────────────────────────
-        st.markdown('#### Secondary — group-structure preservation *(descriptive)*')
+        # ── Group-structure self-consistency (descriptive, NOT accuracy) ───────
+        st.markdown('#### Group-structure self-consistency *(descriptive — not accuracy)*')
         st.caption(
-            '⚠️ The group column was an **input** to construction, so these are NOT accuracy '
-            'metrics — only how much the NMF aspect partition reflects the pre-existing group '
-            'column. High values are expected and not evidence of quality.'
+            '⚠️ The group column is a **construction input** (group-anchored L1/L2), so this '
+            'only confirms the NMF aspect partition reflects its own input — expected high, '
+            "NOT a quality signal and NOT comparable to the Baseline's held-out recovery."
         )
         true_labels = can['_group'].apply(
             lambda x: str(x).split(' > ')[0].strip()).tolist()
         W        = meta['W']
         pred_nmf = np.argmax(W, axis=1).tolist()
         metrics  = evaluate(true_labels, pred_nmf)
-        g1, g2, g3 = st.columns(3)
-        g1.metric('NMI', metrics['NMI']); g2.metric('ARI', metrics['ARI'])
-        g3.metric('Purity', metrics['Purity'])
+        st.metric('ARI (self-consistency)', metrics['ARI'])
 
         # ── legacy global aspect table (diagnostic only) ─────────────────────
         with st.expander('Legacy global NMF aspect table (diagnostic — not the '
