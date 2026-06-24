@@ -1958,6 +1958,33 @@ def enforce_single_parent(nodes: list) -> int:
                 removed += 1
     return removed
 
+def prune_empty_aggregations(nodes: list) -> int:
+    """
+    POST-BUILD PASS 5 — drop aggregation nodes that ended up with no children.
+
+    `enforce_single_parent` can empty a shallow aggregation when all of its
+    variables were kept under a deeper/sibling parent (e.g. 'RVP Response
+    Latency' losing every leaf to a more specific group).  An empty category
+    node is export noise — it renders as a blank sector and has no members.
+
+    Iteratively removes childless aggregation nodes and detaches them from
+    their parents (removal can empty a parent in turn).  Root and attribute
+    nodes are never touched.  Returns the number of nodes removed.
+    """
+    removed = 0
+    while True:
+        node_map = {int(n['id']): n for n in nodes}
+        empties = {int(n['id']) for n in nodes
+                   if n.get('type') == 'aggregation' and not n.get('related')}
+        if not empties:
+            break
+        nodes[:] = [n for n in nodes if int(n['id']) not in empties]
+        for n in nodes:
+            if any(int(c) in empties for c in n.get('related', [])):
+                n['related'] = [int(c) for c in n['related'] if int(c) not in empties]
+        removed += len(empties)
+    return removed
+
 def mine_phrase_slots(texts: list,
                        text_col_names: Optional[list] = None,
                        min_phrase_count: int = 2,
@@ -3037,6 +3064,12 @@ def build_dynamic_lod_tree(can: pd.DataFrame,
     except Exception:
         n_reparented = 0
 
+    # ── POST-BUILD PASS 5 — drop aggregation nodes left childless by PASS 4 ───
+    try:
+        n_empty_pruned = prune_empty_aggregations(nodes)
+    except Exception:
+        n_empty_pruned = 0
+
     # Annotate the root with post-build statistics
     if nodes and nodes[0].get('type') == 'root':
         nodes[0]['post_build_stats'] = {
@@ -3044,6 +3077,7 @@ def build_dynamic_lod_tree(can: pd.DataFrame,
             'low_quality_nodes_dissolved':   int(n_dissolved),
             'group_prefix_labels_stripped':  int(n_stripped),
             'dag_links_removed':             int(n_reparented),
+            'empty_aggregations_pruned':     int(n_empty_pruned),
         }
 
     # Deduplicate children

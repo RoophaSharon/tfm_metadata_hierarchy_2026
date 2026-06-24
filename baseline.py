@@ -5,7 +5,7 @@
 #
 # Pipeline:
 #   1. Load metadata file (CSV / TSV / XLSX / JSON)
-#   2. Detect column roles (leaf / group / text / meta) — same as Approach 1 / 2
+#   2. Detect column roles (leaf / context / text / meta) — same as Approach 1 / 2
 #   3. Build canonical schema (incl. _semantic_text = description values only)
 #   4. Embed each variable (code + description) via Word2Vec skip-gram and build
 #      the cosine-distance semantic space [TAX §3.2]
@@ -28,7 +28,7 @@
 #        the bare code goes out-of-vocabulary (a limitation the paper flags,
 #        e.g. "BP").  Taxonomizer embeds the NAME ("a few words"), not a
 #        paragraph; using the short name (not the full description prose) keeps
-#        task-distinctive words from being diluted by shared explanatory text.
+#        domain-specific words from being diluted by shared explanatory text.
 #     3. Fully-automatic labels — the paper's labelling is semi-automatic
 #        (human picks from suggestions); a baseline must be non-interactive, so
 #        we use data-driven contrastive terms from each cluster's members.
@@ -186,7 +186,7 @@ def detect_roles(df: pd.DataFrame) -> tuple:
     meta  = (prof[(prof.metadata_score >= 4) & (~prof.column.isin(text + leaf + group))]
              .sort_values('metadata_score', ascending=False)['column'].head(5).tolist())
     # Representation columns (decimal/precision/unit/type/format/…) must never
-    # become structural levels — force them out of group and into metadata. [GON][TAX]
+    # become structural levels; prefer them as metadata. [GON][TAX]
     _META_SUBSTR_BLOCK = {
         'decimal', 'precision', 'unit', 'dtype', 'type', 'format', 'scale',
         'values', 'range', 'min', 'max', 'coding', 'codebook', 'missing',
@@ -306,9 +306,9 @@ def attribute_name(text: str) -> str:
     paragraph.  Descriptions here are formatted '<name>: <full sentence>' (some
     prefixed with a marker like 'KEY: <name>: …'), so we take the first clause
     that is not a pure all-caps marker.  Embedding this short name — rather than
-    the full description prose — keeps the task-distinctive words from being
-    diluted by shared explanatory text, so the taxonomy groups far more by theme
-    (e.g. DMS / PAL / SWM) without ever touching the group column.
+    the full description prose — keeps the domain-specific words from being
+    diluted by shared explanatory text, so the taxonomy clusters more by theme
+    (e.g. DMS / PAL / SWM).
     """
     text = str(text)
     for clause in re.split(r'[:\n]', text):
@@ -470,7 +470,7 @@ def build_hierarchy(can: pd.DataFrame, w2v_model, project: str = 'project',
     average) — the name clause of the description, as Taxonomizer specifies.
     Recursively clusters via balanced Ward linkage — the semantic-space
     dendrogram.  Labels each internal node with the contrastive content terms of
-    its members (data-driven, fully automatic).  No group column, no hardcoding.
+    its members (data-driven, fully automatic). No hardcoding.
     """
     # ── leaf attribute nodes (ids 1..N) ──────────────────────────────────────
     nodes: list = [{'id': 0, 'name': project, 'type': 'root',
@@ -807,8 +807,8 @@ with st.sidebar:
     max_items     = st.slider('Maximum variables', 25, 1200, 900, 25,
                               help='Cap on variables included (lower only to speed up very large files). '
                                    'Default keeps full datasets like HCP (813).')
-    group_filter  = st.text_input('Group filter (optional)', value='',
-                                  help='Filter rows whose group path contains this text')
+    group_filter  = st.text_input('Row filter (optional)', value='',
+                                  help='Filter rows by contextual path text before building')
 
 # ─────────────────────────────────────────────────────────────────────────────
 # MAIN
@@ -829,8 +829,9 @@ if not uploaded:
     | Hierarchy construction | Agglomerative clustering (cosine, average-linkage), k by silhouette → dendrogram | Taxonomizer §4.2 |
     | Internal node labelling | **Data-driven contrastive terms** (paper's labelling is semi-automatic) | Taxonomizer §4.3 *(adapted)* |
 
-    The group column is **not** used for construction, so the recovered taxonomy
-    can be fairly evaluated against it (NMI / ARI / Purity in the Evaluation tab).
+    This page is the pure Taxonomizer-style semantic-space reference method:
+    variable meanings are embedded and recursively clustered into a hierarchy,
+    with node labels generated from contrastive terms.
 
     **Approach 1** adds SBERT embeddings + Wikidata/BioPortal enrichment + HiExpan refinement.
 
@@ -853,7 +854,7 @@ st.subheader('Step 1 — File preview')
 with st.expander(f'{uploaded.name}  ({len(df):,} rows, {len(df.columns)} columns)',
                  expanded=False):
     st.dataframe(df.head(10), use_container_width=True)
-    score_cols = [c for c in ['column', 'leaf_score', 'group_score', 'text_score', 'metadata_score']
+    score_cols = [c for c in ['column', 'leaf_score', 'text_score', 'metadata_score']
                   if c in prof.columns]
     st.dataframe(prof[score_cols].sort_values('leaf_score', ascending=False),
                  use_container_width=True)
@@ -869,8 +870,9 @@ with st.expander('Column configuration', expanded=True):
     with left:
         leaf_cols = st.multiselect('Leaf variable column(s)', cols,
             default=[c for c in auto_cfg.get('leaf_cols', []) if c in cols], key=f'leaf_{_fk}')
-        group_cols = st.multiselect('Group/task column(s)', cols,
-            default=[c for c in auto_cfg.get('group_cols', []) if c in cols], key=f'group_{_fk}')
+        group_cols = st.multiselect('Context column(s) (optional)', cols,
+            default=[c for c in auto_cfg.get('group_cols', []) if c in cols], key=f'group_{_fk}',
+            help='Optional contextual columns for display/filtering.')
     with right:
         text_cols = st.multiselect('Text/description column(s)', cols,
             default=[c for c in auto_cfg.get('text_cols', []) if c in cols], key=f'text_{_fk}')
@@ -982,11 +984,11 @@ with tabs[1]:
                             for i in lids if i in nm and 'metadata' in nm[i]}
             sub = can[can['_leaf_id'].isin(leaf_ids_set)]
             st.write(f'**{len(lids)} variables** under "{sel_node["name"]}"')
-            st.dataframe(sub[['_leaf_label', '_group_path', '_text']].reset_index(drop=True),
+            st.dataframe(sub[['_leaf_label', '_text']].reset_index(drop=True),
                          use_container_width=True)
 
 with tabs[2]:
-    st.dataframe(can, use_container_width=True)
+    st.dataframe(can.drop(columns=['_group_path'], errors='ignore'), use_container_width=True)
 
 with tabs[3]:
     _base = safe_name(project_name)
@@ -1035,9 +1037,9 @@ with tabs[4]:
 
     st.subheader('Hierarchy Quality Evaluation')
     st.caption(
-        'The group column is a *construction input* (Gonçalves text object), so it '
-        'cannot serve as ground truth. The primary metrics below are **reference-free** '
-        '— they assess the hierarchy itself, with no gold standard.'
+        'No manually curated reference taxonomy is available for this experiment. '
+        'The metrics below are reference-free: they assess hierarchy structure, '
+        'label coherence and interpretability directly.'
     )
 
     with st.spinner('Computing reference-free metrics…'):
@@ -1082,14 +1084,3 @@ with tabs[4]:
     s5.metric('Singleton nodes',   f"{sm['singleton_nodes_%']}%",
               help='Aggregation nodes with a single child (sparse-hierarchy indicator)')
 
-    # ── Held-out group recovery (VALID — group column not used in construction) ─
-    st.markdown('#### Held-out group recovery *(valid — group column not used)*')
-    st.caption(
-        'The baseline never uses the group column (it embeds only attribute '
-        'names), so this is a **valid held-out** recovery score. ARI and AMI are '
-        'chance-corrected; NMI and Purity are omitted as inflated by over-splitting.'
-    )
-    gp = he.group_preservation(nodes, can)
-    g1, g2 = st.columns(2)
-    g1.metric('ARI', gp['ARI'], help='Adjusted Rand Index (chance-corrected).')
-    g2.metric('AMI', gp['AMI'], help='Adjusted Mutual Information (chance-corrected).')

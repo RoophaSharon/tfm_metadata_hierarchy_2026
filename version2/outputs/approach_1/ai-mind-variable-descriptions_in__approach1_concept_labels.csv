@@ -1,0 +1,21 @@
+Node,Confidence,Source,Embedding sim,Alternatives
+Total Correct,0.507,description_title,0.319,"correct total, correct total times"
+Error,0.447,description_title,0.216,"error times subject, error times, failed"
+Mean Latency,0.625,keybert,0.676,latency mean
+Errors Total,0.604,keybert,0.543,"errors total times, Total Errors"
+Standard Deviation,0.687,description_title,0.684,"latency standard deviation, deviation response latencies"
+Probability Error Occurring,0.619,keybert,0.578,"Probability Error, probability error made, reports probability error"
+Percent Correct Percentage,0.54,keybert,0.473,"correct percentage assessment, correct percentage, Percent Correct"
+Latency Display Stimulus,0.418,keybert,0.732,"mean latency display, standard deviation latency, deviation latency calculated"
+Total Assessment Trials,0.313,keybert,0.629,"assessment trials subject, trials subject failed, trials subject"
+Total Attempts Made,0.605,keybert,0.535,attempts total
+Errors Patterns Total,0.296,keybert,0.619,"box stimulus assessment, stimulus assessment problems, incorrect box stimulus"
+Include Shapes,0.609,description_title,0.549,"total errors shapes, errors shapes times, errors shapes"
+Latency Immediate Standard,0.653,keybert,0.715,"correct latency immediate, latency immediate, correct latency delayed"
+Percent Correct Immediate,0.596,keybert,0.671,"Percent Correct, key percent correct, percent correct delayed"
+Total,0.407,description_title,0.111,"total hits, hits total"
+Response Latency Mean,0.676,keybert,0.683,"Response Latency, response latency trials, latency mean response"
+Times Errors,0.515,keybert,0.447,"Errors Boxes, key errors boxes, errors times"
+Strategy High,0.569,keybert,0.509,"Strategy, strategy finding, high strategy"
+Within Errors,0.412,keybert,0.303,boxes times subject
+Errors Total,0.593,keybert,0.537,"errors total times, Total Errors"

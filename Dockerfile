@@ -26,7 +26,7 @@ EXPOSE 7860
 
 # XSRF/CORS disabled so file uploads work behind the Hugging Face proxy/iframe
 # (otherwise the uploader returns "AxiosError: 403"). Standard for HF Spaces.
-CMD ["streamlit", "run", "demo.py", \
+CMD ["streamlit", "run", "version2/demo.py", \
      "--server.port=7860", "--server.address=0.0.0.0", \
      "--server.enableXsrfProtection=false", \
      "--server.enableCORS=false"]

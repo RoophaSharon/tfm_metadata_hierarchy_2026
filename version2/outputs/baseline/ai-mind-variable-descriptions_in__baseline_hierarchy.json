@@ -1,0 +1,1876 @@
+[
+  {
+    "id": 0,
+    "name": "ai-mind-variable-descriptions(in)",
+    "type": "root",
+    "dtype": "root",
+    "isShown": true,
+    "related": [
+      109,
+      114,
+      115,
+      122,
+      128,
+      132,
+      139,
+      140
+    ],
+    "desc": "Root node"
+  },
+  {
+    "id": 1,
+    "name": "DMSCC",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSCC | description: DMS Mean Choices to Correct: The mean number of choices that the subject made on each trial, including the correct choice. Calculated across all trials where the subject eventually made the correct choice (simultaneous and all delays). | Decimal Places: 2",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSCC",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 2,
+    "name": "DMSL0SD",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSL0SD | description: DMS Correct Latency Standard Deviation (SD) (0 second delay): The standard deviation of response latencies for trials containing a zero second delay between the presentation of target and response stimuli, where subjects selected the correct box on their first attempt. Calculated across all assessed trials containing a zero second delay. | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSL0SD",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 3,
+    "name": "DMSL12SD",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSL12SD | description: DMS Correct Latency Standard Deviation (SD) (12 second delay): The standard deviation of response latencies for trials containing a twelve second delay between the presentation of target and response stimuli, where subjects selected the correct box on their first attempt. Calculated across all assessed trials containing a twelve second delay. | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSL12SD",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 4,
+    "name": "DMSL4SD",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSL4SD | description: DMS Correct Latency Standard Deviation (SD) (4 second delay): The standard deviation of response latencies for trials containing a four second delay between the presentation of target and response stimuli, where subjects selected the correct box on their first attempt. Calculated across all assessed trials containing a four second delay. | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSL4SD",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 5,
+    "name": "DMSLADSD",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSLADSD | description: DMS Correct Latency Standard Deviation (SD) (all delays): The standard deviation of response latencies for trials containing a delay between the presentation of target stimulus and response stimuli, where subjects selected the correct box on their first attempt. Calculated across all assessed trials containing a delay. | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSLADSD",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 6,
+    "name": "DMSLSD",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSLSD | description: DMS Correct Latency Standard Deviation (SD): The standard deviation of response latencies for trials where subjects selected the correct box on their first attempt. Calculated across all correct assessed trials (simultaneous and all delays). | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSLSD",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 7,
+    "name": "DMSLSSD",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSLSSD | description: DMS Correct Latency Standard Deviation (SD) (simultaneous): The standard deviation of response latencies for trials containing a simultaneous presentation of target and response stimuli, where subjects selected the correct box on their first attempt. Calculated across all assessed trials containing simultaneous presentations. | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSLSSD",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 8,
+    "name": "DMSMDL",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSMDL | description: DMS Median Correct Latency: The median latency between the presentation of the response stimuli options and the subject selecting the correct box on their first attempt. Calculated across all correct assessed trials (simultaneous and all delays). | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSMDL",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 9,
+    "name": "DMSMDL0",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSMDL0 | description: DMS Median Correct Latency (0 seconds delay): The median latency between the presentation of the response stimuli options and the subject selecting the correct box on their first attempt for trials containing a zero second delay. Calculated across all assessed trials containing a zero second delay. | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSMDL0",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 10,
+    "name": "DMSMDL12",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSMDL12 | description: DMS Median Correct Latency (12 seconds delay): The median latency between the presentation of the response stimuli options and the subject selecting the correct box on their first attempt for trials containing a twelve second delay. Calculated across all assessed trials containing a twelve second delay. | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSMDL12",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 11,
+    "name": "DMSMDL4",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSMDL4 | description: DMS Median Correct Latency (4 seconds delay): The median latency between the presentation of the response stimuli options and the subject selecting the correct box on their first attempt for trials containing a four second delay. Calculated across all assessed trials containing a four second delay. | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSMDL4",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 12,
+    "name": "DMSMDLAD",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSMDLAD | description: DMS Median Correct Latency (all delays): The median latency between the presentation of the response stimuli options and the subject selecting the correct box on their first attempt for trials containing a delay between target and response stimuli presentation. Calculated across all assessed trials containing a delay. | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSMDLAD",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 13,
+    "name": "DMSMDLS",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSMDLS | description: DMS Median Correct Latency (simultaneous): The median latency between the presentation of the response stimuli options and the subject selecting the correct box on their first attempt for trials containing a simultaneous presentation of target and response stimuli. Calculated across all assessed trials containing simultaneous presentation. | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSMDLS",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 14,
+    "name": "DMSML",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSML | description: DMS Mean Correct Latency: The mean latency between the presentation of the response stimuli options and the subject selecting the correct box on their first attempt. Calculated across all correct assessed trials (simultaneous and all delays). | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSML",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 15,
+    "name": "DMSML0",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSML0 | description: DMS Mean Correct Latency (0 seconds delay): The mean latency between the presentation of the response stimuli options and the subject selecting the correct box on their first attempt for trials containing a zero second delay. Calculated across all assessed trials containing a zero second delay. | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSML0",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 16,
+    "name": "DMSML12",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSML12 | description: DMS Mean Correct Latency (12 seconds delay): The mean latency between the presentation of the response stimuli options and the subject selecting the correct box on their first attempt for trials containing a twelve second delay. Calculated across all assessed trials containing a twelve second delay. | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSML12",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 17,
+    "name": "DMSML4",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSML4 | description: DMS Mean Correct Latency (4 seconds delay): The mean latency between the presentation of the response stimuli options and the subject selecting the correct box on their first attempt for trials containing a four second delay. Calculated across all assessed trials containing a four second delay. | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSML4",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 18,
+    "name": "DMSMLAD",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSMLAD | description: DMS Mean Correct Latency (all delays): The mean latency between the presentation of the response stimuli options and the subject selecting the correct box on their first attempt for trials containing a delay between target and response stimuli presentation. Calculated across all assessed trials containing a delay. | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSMLAD",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 19,
+    "name": "DMSMLS",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSMLS | description: DMS Mean Correct Latency (simultaneous): The mean latency between the presentation of the response stimuli options and the subject selecting the correct box on their first attempt for trials containing a simultaneous presentation of target and response stimuli. Calculated across all assessed trials containing simultaneous presentation. | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSMLS",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 20,
+    "name": "DMSPC",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSPC | description: DMS Percent Correct: The percentage of assessment trials during which the subject chose the correct box on their first box choice. Calculated across all assessed trials (simultaneous presentation and all delays). | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSPC",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 21,
+    "name": "DMSPC0",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSPC0 | description: KEY: DMS Percent Correct (0 seconds delay): The percentage of assessment trials containing a zero second delay during which the subject chose the correct box on their first box choice. Calculated across all assessed trials containing a zero second delay. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSPC0",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 22,
+    "name": "DMSPC12",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSPC12 | description: KEY: DMS Percent Correct (12 second delay): The percentage of assessment trials containing a twelve second delay during which the subject chose the correct box on their first box choice. Calculated across all assessed trials containing a twelve second delay. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSPC12",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 23,
+    "name": "DMSPC4",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSPC4 | description: KEY: DMS Percent Correct (4 second delay): The percentage of assessment trials containing a four second delay during which the subject chose the correct box on their first box choice. Calculated across all assessed trials containing a four second delay. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSPC4",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 24,
+    "name": "DMSPCAD",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSPCAD | description: KEY: DMS Percent Correct (all delays): The percentage of assessment trials containing a delay during which the subject chose the correct box on their first box choice. Calculated across all assessed trials containing a delay. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSPCAD",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 25,
+    "name": "DMSPCS",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSPCS | description: KEY: DMS Percent Correct (simultaneous): The percentage of assessment trials where the target and response stimuli were presented simultaneously during which the subject chose the correct box on their first box choice. Calculated across all assessed trials containing the simultaneous presentation of stimuli. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSPCS",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 26,
+    "name": "DMSPEGC",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSPEGC | description: DMS Probability of Error Given Correct: This measure reports the probability of an error being made when the previous trial was responded to correctly by the subject. Calculated across all assessed trials (simultaneous and all delays). | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSPEGC",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 27,
+    "name": "DMSPEGE",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSPEGE | description: KEY: DMS Probability of Error Given Error: This measure reports the probability of an error occurring when the previous trial was responded to incorrectly. Calculated across all assessed trials (simultaneous and all delays). | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSPEGE",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 28,
+    "name": "DMSTC",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSTC | description: DMS Total Correct: The total number of times a subject chose the correct answer on their first box choice. Calculated across all assessed trials (simultaneous presentation and all delays). | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSTC",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 29,
+    "name": "DMSTC0",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSTC0 | description: DMS Total Correct (0 second delay): The total number of times a subject chose the correct answer on their first box choice for trials where the response stimuli appeared on screen after a 0 second delay after the target stimulus was shown. Calculated across all assessed trials which contained a delay of zero seconds. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSTC0",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 30,
+    "name": "DMSTC12",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSTC12 | description: DMS Total Correct (12 second delay): The total number of times a subject chose the correct answer on their first box choice for trials where the response stimuli appeared on screen after a 12 second delay after the target stimulus was shown. Calculated across all assessed trials which contained a delay of twelve seconds. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSTC12",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 31,
+    "name": "DMSTC4",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSTC4 | description: DMS Total Correct (4 second delay): The total number of times a subject chose the correct answer on their first box choice for trials where the response stimuli appeared on screen after a 4 second delay after the target stimulus was shown. Calculated across all assessed trials which contained a delay of four seconds. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSTC4",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 32,
+    "name": "DMSTCAD",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSTCAD | description: DMS Total Correct (all delays): The total number of times a subject chose the correct answer on their first box choice for all trials where the response stimuli were presented after a delay. Calculated across all assessed trials containing a delay. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSTCAD",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 33,
+    "name": "DMSTCS",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSTCS | description: DMS Total Correct (simultaneous): The total number of times a subject chose the correct answer on their first box choice for trials where the target stimulus and response stimuli appeared on screen simultaneously. Calculated across all assessed trials that included a simultaneous presentation (no delay) of target and response stimuli. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSTCS",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 34,
+    "name": "DMSTE",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSTE | description: DMS Total Errors: The total number of times a subject failed to choose the correct box on their first selection, thus making an error. Calculated across all assessed trials (simultaneous and all delays) regardless of which incorrect box (out of the 3 possible incorrect boxes) was chosen. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSTE",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 35,
+    "name": "DMSTEAD",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSTEAD | description: DMS Total Errors (all delays): The total number of times a subject failed to choose the correct box on their first selection for any trial containing a delay between the presentation of the target stimulus and response stimuli. Calculated across all assessed trials containing a delay component. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSTEAD",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 36,
+    "name": "DMSTEC",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSTEC | description: DMS Error (incorrect colour): The number of times that the subject failed to select the correct box on their first selection, and instead chose the distractor stimulus that contained the same pattern/ physical attributes, but different colours. Calculated across all assessed trials (simultaneous and all delays). | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSTEC",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 37,
+    "name": "DMSTECAD",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSTECAD | description: DMS Error (all delays, incorrect colour): The number of times that the subject failed to select the correct box on their first selection, and instead chose the distractor stimulus that contained the same colour elements, but different physical attributes. Calculated across all assessed trials which contained a delay component. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSTECAD",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 38,
+    "name": "DMSTED",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSTED | description: DMS Error (distractor): The number of times that the subject failed to select the correct box on their first selection, and instead chose the distractor stimulus that contained no common elements to the original target stimulus. Calculated across all assessed trials (simultaneous and all delays). | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSTED",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 39,
+    "name": "DMSTEDAD",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSTEDAD | description: DMS Error (all delays, distractor): The number of times that the subject failed to select the correct box on their first selection, and instead chose the distractor stimulus that contained no common elements to the original target stimulus. Calculated across all assessed trials which contained a delay component. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSTEDAD",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 40,
+    "name": "DMSTEP",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSTEP | description: DMS Error (incorrect pattern): The number of times that the subject failed to select the correct box on their first selection, and instead chose the distractor stimulus that contained the same colour elements, but different pattern/ physical attributes. Calculated across all assessed trials (simultaneous and all delays). | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSTEP",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 41,
+    "name": "DMSTEPAD",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: DMS | Variant: DMS Recommended Standard | name: DMSTEPAD | description: DMS Error (all delays, incorrect pattern): The number of times that the subject failed to select the correct box on their first selection, and instead chose the distractor stimulus that contained the same pattern/ physical attributes, but different colour elements. Calculated across all assessed trials which contained a delay component. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "DMS > DMS Recommended Standard.DMSTEPAD",
+      "group_path": "DMS > DMS Recommended Standard"
+    }
+  },
+  {
+    "id": 42,
+    "name": "MOTML",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: MOT | Variant: MOT Tone 2.0 | name: MOTML | description: The mean latency from the display of a stimulus to a correct response to that stimulus during assessment trials. | Decimal Places: 1",
+    "metadata": {
+      "leaf_id": "MOT > MOT Tone 2.0.MOTML",
+      "group_path": "MOT > MOT Tone 2.0"
+    }
+  },
+  {
+    "id": 43,
+    "name": "MOTSDL",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: MOT | Variant: MOT Tone 2.0 | name: MOTSDL | description: This is the standard deviation of the latency, calculated from the display of a stimulus to a correct response to that stimulus during assessment trials. | Decimal Places: 2",
+    "metadata": {
+      "leaf_id": "MOT > MOT Tone 2.0.MOTSDL",
+      "group_path": "MOT > MOT Tone 2.0"
+    }
+  },
+  {
+    "id": 44,
+    "name": "MOTTC",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: MOT | Variant: MOT Tone 2.0 | name: MOTTC | description: The total number of assessment trials on which the subject made a correct response. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "MOT > MOT Tone 2.0.MOTTC",
+      "group_path": "MOT > MOT Tone 2.0"
+    }
+  },
+  {
+    "id": 45,
+    "name": "MOTTE",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: MOT | Variant: MOT Tone 2.0 | name: MOTTE | description: The total number of assessment trials on which the subject failed to make a correct response. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "MOT > MOT Tone 2.0.MOTTE",
+      "group_path": "MOT > MOT Tone 2.0"
+    }
+  },
+  {
+    "id": 46,
+    "name": "PALFAMS28",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALFAMS28 | description: KEY: PAL First Attempt Memory Score: The number of times a subject chose the correct box on their first attempt when recalling the pattern locations. Calculated across assessed trials, omitting 12 box level to provide a direct comparison to Recommended Standard.. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALFAMS28",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 47,
+    "name": "PALMETS28",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALMETS28 | description: PAL Mean Errors to Success: The mean number of attempts made by a subject needed for them to successfully complete the stage.  Does not include 12 box level to provide a direct comparison to Recommended Standard. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALMETS28",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 48,
+    "name": "PALNPR28",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALNPR28 | description: PAL Number of Patterns Reached: The number of patterns presented to the subject on the last problem they reached. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALNPR28",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 49,
+    "name": "PALTA12",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALTA12 | description: PAL Total Attempts 12 Patterns: The total number of attempts made (but not necessarily completed) by the subject during assessment problems containing a total of 12 shapes to recall. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALTA12",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 50,
+    "name": "PALTA2",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALTA2 | description: PAL Total Attempts 2 Patterns: The total number of attempts made (but not necessarily completed) by the subject during assessment problems containing a total of 2 shapes to recall. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALTA2",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 51,
+    "name": "PALTA28",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALTA28 | description: PAL Total Attempts: The total number of attempts made (but not necessarily completed) by the subject during assessment problems.  Does not include 12 box level to provide a direct comparison to Recommended Standard. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALTA28",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 52,
+    "name": "PALTA4",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALTA4 | description: PAL Total Attempts 4 patterns: The total number of attempts made (but not necessarily completed) by the subject during assessment problems containing a total of 4 shapes to recall. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALTA4",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 53,
+    "name": "PALTA6",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALTA6 | description: PAL Total Attempts 6 Patterns: The total number of attempts made (but not necessarily completed) by the subject during assessment problems containing a total of 6 shapes to recall. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALTA6",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 54,
+    "name": "PALTA8",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALTA8 | description: PAL Total Attempts 8 Patterns: The total number of attempts made (but not necessarily completed) by the subject during assessment problems containing a total of 8 shapes to recall. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALTA8",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 55,
+    "name": "PALTE12",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALTE12 | description: PAL Total Errors 12 Patterns: The total number of times a subject selected an incorrect box when attempting to recall a pattern location on trials containing a total of 12 patterns. Calculated across all 12-pattern assessed trials. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALTE12",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 56,
+    "name": "PALTE2",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALTE2 | description: PAL Total Errors 2 Patterns: The total number of times a subject selected an incorrect box when attempting to recall a pattern location on trials containing a total of 2 patterns. Calculated across all 2-pattern assessed trials. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALTE2",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 57,
+    "name": "PALTE28",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALTE28 | description: PAL Total Errors: The total number of times a subject selected an incorrect box when attempting to recall a pattern location. Calculated across all assessed trials.  Does not include 12 box level to provide a direct comparison to Recommended Standard. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALTE28",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 58,
+    "name": "PALTE4",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALTE4 | description: PAL Total Errors 4 Patterns: The total number of times a subject selected an incorrect box when attempting to recall a pattern location on trials containing a total of 4 patterns. Calculated across all 4-pattern assessed trials. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALTE4",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 59,
+    "name": "PALTE6",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALTE6 | description: PAL Total Errors 6 Patterns: The total number of times a subject selected an incorrect box when attempting to recall a pattern location on trials containing a total of 6 patterns. Calculated across all 6-pattern assessed trials. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALTE6",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 60,
+    "name": "PALTE8",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALTE8 | description: PAL Total Errors 8 Patterns: The total number of times a subject selected an incorrect box when attempting to recall a pattern location on trials containing a total of 8 patterns. Calculated across all 8-pattern assessed trials. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALTE8",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 61,
+    "name": "PALTEA12",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALTEA12 | description: PAL Total Errors 12 Shapes (Adjusted): The number of times the subject chose the incorrect box for a stimulus on assessment problems, where the number of shapes was equal to 12 (PALTE12), plus an adjustment for the estimated number of errors they would have made on any other 12 pattern problems, attempts and recalls they did not reach. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALTEA12",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 62,
+    "name": "PALTEA2",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALTEA2 | description: PAL Total Errors 2 Shapes (Adjusted): The number of times the subject chose the incorrect box for a stimulus on assessment problems, where the number of shapes required to remember was equal to 2 (PALTE2), plus an adjustment for the estimated number of errors they would have made on any other 2 pattern problems, attempts and recalls they did not reach. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALTEA2",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 63,
+    "name": "PALTEA28",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALTEA28 | description: KEY: PAL Total Errors (Adjusted): The number of times the subject chose the incorrect box for a stimulus on assessment problems (PALTE), plus an adjustment for the estimated number of errors they would have made on any problems, attempts and recalls they did not reach. This measure allows you to compare performance on errors made across all subjects regardless of those who terminated early versus those completing the final stage of the task.  In this task variant PALTEA does not include 12 box level to provide a direct comparison to Recommended Standard. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALTEA28",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 64,
+    "name": "PALTEA4",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALTEA4 | description: PAL Total Errors 4 Shapes (Adjusted): The number of times the subject chose the incorrect box for a stimulus on assessment problems, where the number of shapes was equal to 4 (PALTE4), plus an adjustment for the estimated number of errors they would have made on any other 4 pattern problems, attempts and recalls they did not reach. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALTEA4",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 65,
+    "name": "PALTEA6",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALTEA6 | description: PAL Total Errors 6 Shapes (Adjusted): The number of times the subject chose the incorrect box for a stimulus on assessment problems, where the number of shapes was equal to 6 (PALTE6), plus an adjustment for the estimated number of errors they would have made on any other 6 pattern problems, attempts and recalls they did not reach. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALTEA6",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 66,
+    "name": "PALTEA8",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PAL | Variant: PAL Recommended Standard Extended | name: PALTEA8 | description: PAL Total Errors 8 Shapes (Adjusted): The number of times the subject chose the incorrect box for a stimulus on assessment problems, where the number of shapes was equal to 8 (PALTE8), plus an adjustment for the estimated number of errors they would have made on any other 8 pattern problems, attempts and recalls they did not reach. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "PAL > PAL Recommended Standard Extended.PALTEA8",
+      "group_path": "PAL > PAL Recommended Standard Extended"
+    }
+  },
+  {
+    "id": 67,
+    "name": "PRMCLSDD",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PRM | Variant: PRM Recommended Standard 18 Extended | name: PRMCLSDD | description: PRM Correct Latency (SD) Delayed: The standard deviation for the latency of a subject's response to correctly choose the appropriate pattern in the delayed forced-choice condition, measured in milliseconds. | Decimal Places: 2",
+    "metadata": {
+      "leaf_id": "PRM > PRM Recommended Standard 18 Extended.PRMCLSDD",
+      "group_path": "PRM > PRM Recommended Standard 18 Extended"
+    }
+  },
+  {
+    "id": 68,
+    "name": "PRMCLSDI",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PRM | Variant: PRM Recommended Standard 18 Extended | name: PRMCLSDI | description: PRM Correct Latency (SD) Immediate: The standard deviation for the latency of a subject's response to correctly select the appropriate pattern in the immediate forced-choice condition, measured in milliseconds. | Decimal Places: 2",
+    "metadata": {
+      "leaf_id": "PRM > PRM Recommended Standard 18 Extended.PRMCLSDI",
+      "group_path": "PRM > PRM Recommended Standard 18 Extended"
+    }
+  },
+  {
+    "id": 69,
+    "name": "PRMMCLD",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PRM | Variant: PRM Recommended Standard 18 Extended | name: PRMMCLD | description: PRM Mean Correct Latency Delayed: The mean latency for a subject to correctly select the appropriate pattern during the delayed forced-choice condition, measured in milliseconds. | Decimal Places: 2",
+    "metadata": {
+      "leaf_id": "PRM > PRM Recommended Standard 18 Extended.PRMMCLD",
+      "group_path": "PRM > PRM Recommended Standard 18 Extended"
+    }
+  },
+  {
+    "id": 70,
+    "name": "PRMMCLI",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PRM | Variant: PRM Recommended Standard 18 Extended | name: PRMMCLI | description: PRM Mean Correct Latency Immediate: The mean latency for a subject to correctly select the appropriate pattern during the immediate forced-choice condition, measured in milliseconds. | Decimal Places: 2",
+    "metadata": {
+      "leaf_id": "PRM > PRM Recommended Standard 18 Extended.PRMMCLI",
+      "group_path": "PRM > PRM Recommended Standard 18 Extended"
+    }
+  },
+  {
+    "id": 71,
+    "name": "PRMMDCLD",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PRM | Variant: PRM Recommended Standard 18 Extended | name: PRMMDCLD | description: PRM Median Correct Latency Delayed: The median latency for a subject to correctly select the appropriate pattern during the delayed forced-choice condition, measured in milliseconds. | Decimal Places: 2",
+    "metadata": {
+      "leaf_id": "PRM > PRM Recommended Standard 18 Extended.PRMMDCLD",
+      "group_path": "PRM > PRM Recommended Standard 18 Extended"
+    }
+  },
+  {
+    "id": 72,
+    "name": "PRMMDCLI",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PRM | Variant: PRM Recommended Standard 18 Extended | name: PRMMDCLI | description: PRM Median Correct Latency Immediate: The median latency for a subject to correctly select the appropriate pattern during the immediate forced-choice condition, measured in milliseconds. | Decimal Places: 2",
+    "metadata": {
+      "leaf_id": "PRM > PRM Recommended Standard 18 Extended.PRMMDCLI",
+      "group_path": "PRM > PRM Recommended Standard 18 Extended"
+    }
+  },
+  {
+    "id": 73,
+    "name": "PRMPCD",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PRM | Variant: PRM Recommended Standard 18 Extended | name: PRMPCD | description: KEY: PRM Percent Correct Delayed: The number of correct patterns selected by the subject in the delayed forced-choice condition, expressed as a percentage. | Decimal Places: 2",
+    "metadata": {
+      "leaf_id": "PRM > PRM Recommended Standard 18 Extended.PRMPCD",
+      "group_path": "PRM > PRM Recommended Standard 18 Extended"
+    }
+  },
+  {
+    "id": 74,
+    "name": "PRMPCI",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PRM | Variant: PRM Recommended Standard 18 Extended | name: PRMPCI | description: KEY: PRM Percent Correct Immediate: The number of correct patterns selected by the subject in the immediate forced-choice condition, expressed as a percentage. | Decimal Places: 2",
+    "metadata": {
+      "leaf_id": "PRM > PRM Recommended Standard 18 Extended.PRMPCI",
+      "group_path": "PRM > PRM Recommended Standard 18 Extended"
+    }
+  },
+  {
+    "id": 75,
+    "name": "PRMTSDSP",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: PRM | Variant: PRM Recommended Standard 18 Extended | name: PRMTSDSP | description: PRM Time Since Delayed Stimuli Presentation: The length of time between the end of the stimuli presentation for the delayed phase and the start of the delayed forced-choice condition. | Decimal Places: 2",
+    "metadata": {
+      "leaf_id": "PRM > PRM Recommended Standard 18 Extended.PRMTSDSP",
+      "group_path": "PRM > PRM Recommended Standard 18 Extended"
+    }
+  },
+  {
+    "id": 76,
+    "name": "RVPA",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: RVP | Variant: RVP 3 Targets | name: RVPA | description: KEY: RVP A?: A? (A prime) is the signal detection measure of a subject's sensitivity to the target sequence (string of three numbers), regardless of response tendency (the expected range is 0.00 to 1.00; bad to good). In essence, this metric is a measure of how good the subject is at detecting target sequences. | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "RVP > RVP 3 Targets.RVPA",
+      "group_path": "RVP > RVP 3 Targets"
+    }
+  },
+  {
+    "id": 77,
+    "name": "RVPLSD",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: RVP | Variant: RVP 3 Targets | name: RVPLSD | description: RVP Response Latency (SD): The standard deviation of response latency on trials where the subject responded correctly. Calculated across all assessed trials. | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "RVP > RVP 3 Targets.RVPLSD",
+      "group_path": "RVP > RVP 3 Targets"
+    }
+  },
+  {
+    "id": 78,
+    "name": "RVPMDL",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: RVP | Variant: RVP 3 Targets | name: RVPMDL | description: KEY: RVP Median Response Latency: The median response latency on trials where the subject responded correctly. Calculated across all assessed trials. | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "RVP > RVP 3 Targets.RVPMDL",
+      "group_path": "RVP > RVP 3 Targets"
+    }
+  },
+  {
+    "id": 79,
+    "name": "RVPML",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: RVP | Variant: RVP 3 Targets | name: RVPML | description: RVP Mean Response Latency: The mean response latency on trials where the subject responded correctly. Calculated across all assessed trials. | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "RVP > RVP 3 Targets.RVPML",
+      "group_path": "RVP > RVP 3 Targets"
+    }
+  },
+  {
+    "id": 80,
+    "name": "RVPPFA",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: RVP | Variant: RVP 3 Targets | name: RVPPFA | description: KEY: RVP Probability of False Alarm: The number of sequence presentations that were false alarms divided by the number of sequence presentations that were false alarms plus the number of sequence presentations that were correct rejections: (False Alarms ÷ (False Alarms + Correct Rejections)) | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "RVP > RVP 3 Targets.RVPPFA",
+      "group_path": "RVP > RVP 3 Targets"
+    }
+  },
+  {
+    "id": 81,
+    "name": "RVPPH",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: RVP | Variant: RVP 3 Targets | name: RVPPH | description: RVP Probability of Hit: The number of target sequences during assessment blocks that were correctly responded to within the time allowed, divided by the number of target sequences during assessment blocks (Correct hits ÷ total number of sequences) | Decimal Places: 4",
+    "metadata": {
+      "leaf_id": "RVP > RVP 3 Targets.RVPPH",
+      "group_path": "RVP > RVP 3 Targets"
+    }
+  },
+  {
+    "id": 82,
+    "name": "RVPTFA",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: RVP | Variant: RVP 3 Targets | name: RVPTFA | description: RVP Total False Alarms: The total number of stimulus presentations during assessment blocks that were false alarms. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "RVP > RVP 3 Targets.RVPTFA",
+      "group_path": "RVP > RVP 3 Targets"
+    }
+  },
+  {
+    "id": 83,
+    "name": "RVPTH",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: RVP | Variant: RVP 3 Targets | name: RVPTH | description: RVP Total Hits: The total number of target sequences that were correctly responded to (Correct Hits) within the allowed time during assessment sequence blocks. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "RVP > RVP 3 Targets.RVPTH",
+      "group_path": "RVP > RVP 3 Targets"
+    }
+  },
+  {
+    "id": 84,
+    "name": "RVPTM",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: RVP | Variant: RVP 3 Targets | name: RVPTM | description: RVP Total Misses: The total number of target sequences that were not responded to within the allowed time during assessment sequence blocks. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "RVP > RVP 3 Targets.RVPTM",
+      "group_path": "RVP > RVP 3 Targets"
+    }
+  },
+  {
+    "id": 85,
+    "name": "SWMBE12",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMBE12 | description: KEY: SWM Between errors 12 boxes: The number of times the subject revisits a box in which a token has previously been found. Calculated across all trials with 12 tokens only. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMBE12",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 86,
+    "name": "SWMBE4",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMBE4 | description: KEY: SWM Between errors 4 boxes: The number of times a subject revisits a box in which a token has previously been found. Calculated across all trials with 4 tokens only. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMBE4",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 87,
+    "name": "SWMBE468",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMBE468 | description: KEY: SWM Between Errors: The number of times the subject incorrectly revisits a box in which a token has previously been found. Calculated across all assessed four, six and eight token trials. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMBE468",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 88,
+    "name": "SWMBE6",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMBE6 | description: KEY: SWM Between errors 6 boxes: The number of times the subject revisits a box in which a token has previously been found. Calculated across all trials with 6 tokens only. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMBE6",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 89,
+    "name": "SWMBE8",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMBE8 | description: KEY: SWM Between errors 8 boxes: The number of times the subject revisits a box in which a token has previously been found. Calculated across all trials with 8 tokens only. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMBE8",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 90,
+    "name": "SWMDE12",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMDE12 | description: SWM Double errors 12 boxes: The number of times a subject commits an error that is both a within error and a between error. Calculated across all trials with 12 tokens only. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMDE12",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 91,
+    "name": "SWMDE4",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMDE4 | description: SWM Double errors 4 boxes: The number of times a subject commits an error that is both a within error and a between error. Calculated across all trials with 4 tokens only. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMDE4",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 92,
+    "name": "SWMDE468",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMDE468 | description: SWM Double Errors: The number of times a subject commits an error that is both a within error and a between error. Calculated across all assessed four, six and eight token trials. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMDE468",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 93,
+    "name": "SWMDE6",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMDE6 | description: SWM Double errors 6 boxes: The number of times a subject commits an error that is both a within error and a between error. Calculated across all trials with 6 tokens only. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMDE6",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 94,
+    "name": "SWMDE8",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMDE8 | description: SWM Double errors 8 boxes: The number of times a subject commits an error that is both a within error and a between error. Calculated across all trials with 8 tokens only. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMDE8",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 95,
+    "name": "SWMPR",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMPR | description: SWM Problem Reached: This measure reports the problem number that the subject reached, but did not necessarily complete. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMPR",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 96,
+    "name": "SWMS",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMS | description: KEY: SWM Strategy (6-8 boxes): The number of times a subject begins a new search pattern from the same box they started with previously. If they always begin a search from the same starting point we infer that the subject is employing a planned strategy for finding the tokens. Therefore a low score indicates high strategy use (1 = they always begin the search from the same box), a high score indicates that they are beginning their searches from many different boxes. Calculated across assessed trials with 6 tokens or 8 tokens. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMS",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 97,
+    "name": "SWMS6",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMS6 | description: SWM Strategy (6 box only): This measure computes the strategy score for the 6 box stage of the task only. The strategy score is calculated based on the number of times a subject begins a new search pattern from the same box they started with previously. If they always begin a search from the same starting point we infer that the subject is employing a planned strategy for finding the tokens. Therefore a low score indicates high strategy use (1 = they always begin the search from the same box), a high score indicates that they are beginning their searches from many different boxes. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMS6",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 98,
+    "name": "SWMSX",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMSX | description: SWM Strategy (6-12 boxes): The number of times a subject begins a new search pattern from the same box they started with previously. If they always begin a search from the same starting point we infer that the subject is employing a planned strategy for finding the tokens. Therefore a low score indicates high strategy use (1 = they always begin the search from the same box), a high score indicates that they are beginning their searches from many different boxes. Calculated across assessed trials with 6 tokens or more. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMSX",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 99,
+    "name": "SWMTE12",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMTE12 | description: SWM Total errors 12 boxes: The number of times a box is selected that is certain not to contain a token and therefore should not have been visited by the subject, i.e. between errors + within errors - double errors. Calculated across all trials with 12 tokens only. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMTE12",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 100,
+    "name": "SWMTE4",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMTE4 | description: SWM Total errors 4 boxes: The number of times a box is selected that is certain not to contain a token and therefore should not have been visited by the subject, i.e. between errors + within errors - double errors. Calculated across all trials with 4 tokens only. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMTE4",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 101,
+    "name": "SWMTE468",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMTE468 | description: SWM Total Errors: The total number of times a box is selected that is certain not to contain a token and therefore should not have been visited by the subject, i.e. between errors + within errors - double errors. Calculated across all assessed four, six and eight token trials. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMTE468",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 102,
+    "name": "SWMTE6",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMTE6 | description: SWM Total errors 6 boxes: The number of times a box is selected that is certain not to contain a token and therefore should not have been visited by the subject, i.e. between errors + within errors - double errors. Calculated across all trials with 6 tokens only. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMTE6",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 103,
+    "name": "SWMTE8",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMTE8 | description: SWM Total errors 8 boxes: The number of times a box is selected that is certain not to contain a token and therefore should not have been visited by the subject, i.e. between errors + within errors - double errors. Calculated across all trials with 8 tokens only. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMTE8",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 104,
+    "name": "SWMWE12",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMWE12 | description: SWM Within errors 12 boxes: The number of times a subject revisits a box already found to be empty during the same search. Calculated across all trials with 12 tokens only. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMWE12",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 105,
+    "name": "SWMWE4",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMWE4 | description: SWM Within errors 4 boxes: The number of times a subject revisits a box already found to be empty during the same search. Calculated across all trials with 4 tokens only. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMWE4",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 106,
+    "name": "SWMWE468",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMWE468 | description: SWM Within Errors: The number of times a subject revisits a box already shown to be empty during the same search. Calculated across all assessed four, six and eight token trials. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMWE468",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 107,
+    "name": "SWMWE6",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMWE6 | description: SWM Within errors 6 boxes: The number of times a subject revisits a box already found to be empty during the same search. Calculated across all trials with 6 tokens only. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMWE6",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 108,
+    "name": "SWMWE8",
+    "dtype": "determine",
+    "related": [],
+    "isShown": true,
+    "type": "attribute",
+    "desc": "Task: SWM | Variant: SWM Recommended Standard 2.0 Extended | name: SWMWE8 | description: SWM Within errors 8 boxes: The number of times a subject revisits a box already found to be empty during the same search. Calculated across all trials with 8 tokens only. | Decimal Places: 0",
+    "metadata": {
+      "leaf_id": "SWM > SWM Recommended Standard 2.0 Extended.SWMWE8",
+      "group_path": "SWM > SWM Recommended Standard 2.0 Extended"
+    }
+  },
+  {
+    "id": 109,
+    "name": "Pal / Total",
+    "related": [
+      110,
+      111,
+      112,
+      113,
+      46,
+      47,
+      48,
+      51
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 21 variables — label terms: Pal / Total",
+    "dtype": "determine"
+  },
+  {
+    "id": 110,
+    "name": "Errors / Adjusted",
+    "related": [
+      57,
+      63
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 2 variables — label terms: Errors / Adjusted",
+    "dtype": "determine"
+  },
+  {
+    "id": 111,
+    "name": "Shapes / Adjusted",
+    "related": [
+      61,
+      62,
+      64,
+      65,
+      66
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 5 variables — label terms: Shapes / Adjusted",
+    "dtype": "determine"
+  },
+  {
+    "id": 112,
+    "name": "Patterns / Errors",
+    "related": [
+      55,
+      56,
+      58,
+      59,
+      60
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 5 variables — label terms: Patterns / Errors",
+    "dtype": "determine"
+  },
+  {
+    "id": 113,
+    "name": "Attempts / Patterns",
+    "related": [
+      49,
+      50,
+      52,
+      53,
+      54
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 5 variables — label terms: Attempts / Patterns",
+    "dtype": "determine"
+  },
+  {
+    "id": 114,
+    "name": "Rvp / False",
+    "related": [
+      80,
+      81,
+      82,
+      83,
+      84
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 5 variables — label terms: Rvp / False",
+    "dtype": "determine"
+  },
+  {
+    "id": 115,
+    "name": "Latency / Correct",
+    "related": [
+      116,
+      117,
+      118,
+      119,
+      120,
+      121
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 28 variables — label terms: Latency / Correct",
+    "dtype": "determine"
+  },
+  {
+    "id": 116,
+    "name": "Mean / Dms",
+    "related": [
+      1,
+      14,
+      18,
+      19
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 4 variables — label terms: Mean / Dms",
+    "dtype": "determine"
+  },
+  {
+    "id": 117,
+    "name": "Median / Prm",
+    "related": [
+      8,
+      12,
+      13,
+      71,
+      72,
+      78
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 6 variables — label terms: Median / Prm",
+    "dtype": "determine"
+  },
+  {
+    "id": 118,
+    "name": "Prm / Delayed",
+    "related": [
+      67,
+      68,
+      69,
+      70
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 4 variables — label terms: Prm / Delayed",
+    "dtype": "determine"
+  },
+  {
+    "id": 119,
+    "name": "Seconds / Delay",
+    "related": [
+      9,
+      10,
+      11,
+      15,
+      16,
+      17
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 6 variables — label terms: Seconds / Delay",
+    "dtype": "determine"
+  },
+  {
+    "id": 120,
+    "name": "Standard / Deviation",
+    "related": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 6 variables — label terms: Standard / Deviation",
+    "dtype": "determine"
+  },
+  {
+    "id": 121,
+    "name": "Rvp / Response",
+    "related": [
+      77,
+      79
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 2 variables — label terms: Rvp / Response",
+    "dtype": "determine"
+  },
+  {
+    "id": 122,
+    "name": "Swm / Errors",
+    "related": [
+      123,
+      124,
+      125,
+      95,
+      126,
+      127,
+      101,
+      92
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 21 variables — label terms: Swm / Errors",
+    "dtype": "determine"
+  },
+  {
+    "id": 123,
+    "name": "Between / Within",
+    "related": [
+      87,
+      106
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 2 variables — label terms: Between / Within",
+    "dtype": "determine"
+  },
+  {
+    "id": 124,
+    "name": "Total / Boxes",
+    "related": [
+      99,
+      100,
+      102,
+      103
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 4 variables — label terms: Total / Boxes",
+    "dtype": "determine"
+  },
+  {
+    "id": 125,
+    "name": "Double / Boxes",
+    "related": [
+      90,
+      91,
+      93,
+      94
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 4 variables — label terms: Double / Boxes",
+    "dtype": "determine"
+  },
+  {
+    "id": 126,
+    "name": "Within / Boxes",
+    "related": [
+      104,
+      105,
+      107,
+      108
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 4 variables — label terms: Within / Boxes",
+    "dtype": "determine"
+  },
+  {
+    "id": 127,
+    "name": "Between / Boxes",
+    "related": [
+      85,
+      86,
+      88,
+      89
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 4 variables — label terms: Between / Boxes",
+    "dtype": "determine"
+  },
+  {
+    "id": 128,
+    "name": "Error / Dms",
+    "related": [
+      129,
+      130,
+      131
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 8 variables — label terms: Error / Dms",
+    "dtype": "determine"
+  },
+  {
+    "id": 129,
+    "name": "Distractor / Delays",
+    "related": [
+      38,
+      39
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 2 variables — label terms: Distractor / Delays",
+    "dtype": "determine"
+  },
+  {
+    "id": 130,
+    "name": "Incorrect / Colour",
+    "related": [
+      36,
+      37,
+      40,
+      41
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 4 variables — label terms: Incorrect / Colour",
+    "dtype": "determine"
+  },
+  {
+    "id": 131,
+    "name": "Probability / Given",
+    "related": [
+      26,
+      27
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 2 variables — label terms: Probability / Given",
+    "dtype": "determine"
+  },
+  {
+    "id": 132,
+    "name": "Dms / Correct",
+    "related": [
+      133,
+      134,
+      135,
+      136,
+      137,
+      138
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 16 variables — label terms: Dms / Correct",
+    "dtype": "determine"
+  },
+  {
+    "id": 133,
+    "name": "Percent / Dms",
+    "related": [
+      20,
+      24,
+      25
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 3 variables — label terms: Percent / Dms",
+    "dtype": "determine"
+  },
+  {
+    "id": 134,
+    "name": "Errors / Total",
+    "related": [
+      32,
+      34,
+      35
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 3 variables — label terms: Errors / Total",
+    "dtype": "determine"
+  },
+  {
+    "id": 135,
+    "name": "Delay / Percent",
+    "related": [
+      21,
+      22,
+      23
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 3 variables — label terms: Delay / Percent",
+    "dtype": "determine"
+  },
+  {
+    "id": 136,
+    "name": "Total / Simultaneous",
+    "related": [
+      28,
+      33
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 2 variables — label terms: Total / Simultaneous",
+    "dtype": "determine"
+  },
+  {
+    "id": 137,
+    "name": "Prm / Percent",
+    "related": [
+      73,
+      74
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 2 variables — label terms: Prm / Percent",
+    "dtype": "determine"
+  },
+  {
+    "id": 138,
+    "name": "Second / Delay",
+    "related": [
+      29,
+      30,
+      31
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 3 variables — label terms: Second / Delay",
+    "dtype": "determine"
+  },
+  {
+    "id": 139,
+    "name": "Strategy / Swm",
+    "related": [
+      96,
+      97,
+      98
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 3 variables — label terms: Strategy / Swm",
+    "dtype": "determine"
+  },
+  {
+    "id": 140,
+    "name": "Response / Trials",
+    "related": [
+      42,
+      43,
+      44,
+      45,
+      75,
+      76
+    ],
+    "type": "aggregation",
+    "isShown": true,
+    "desc": "Cluster of 6 variables — label terms: Response / Trials",
+    "dtype": "determine"
+  }
+]

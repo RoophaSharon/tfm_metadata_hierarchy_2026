@@ -3826,7 +3826,10 @@ with st.sidebar:
 
     st.header('2. Generation')
     project    = st.text_input('Root / project name', value='metadata_project')
-    max_rows   = st.slider('Max variables', 10, 3000, 600, 10)
+    max_rows   = st.slider('Max variables', 10, 3000, 3000, 10,
+                            help='Variables to build from (uses df.head). Default '
+                                 'covers full datasets like HCP (~813); lower it '
+                                 'only to sample a subset for speed.')
     merge_files = st.checkbox('Merge uploaded files', value=True)
     n_clusters = st.slider('Max clusters per group', 2, 16, 8, 1,
                             help='Maximum number of concept sub-groups per top-level group.')

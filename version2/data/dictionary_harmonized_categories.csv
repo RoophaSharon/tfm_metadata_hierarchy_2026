@@ -1,0 +1,571 @@
+,variable_codename_use,variable_description_use,harmonized_categories,harmonized_categories_description,in_dataset
+1,DMDBORN4,In what country {were you/was SP} born?,1,"Born in 50 US states or Washington, DC",Demographics
+2,DMDBORN4,In what country {were you/was SP} born?,2,Others,Demographics
+3,DMDBORN4,In what country {were you/was SP} born?,77,Refused,Demographics
+4,DMDBORN4,In what country {were you/was SP} born?,99,Don't Know,Demographics
+5,DMDEDUC2,Education level - Adults 20+,1,Less Than 9th Grade,Demographics
+6,DMDEDUC2,Education level - Adults 20+,2,9-11th Grade (Includes 12th grade with no diploma),Demographics
+7,DMDEDUC2,Education level - Adults 20+,3,High School Grad/GED or Equivalent,Demographics
+8,DMDEDUC2,Education level - Adults 20+,4,Some College or AA degree,Demographics
+9,DMDEDUC2,Education level - Adults 20+,5,College Graduate or above,Demographics
+10,DMDEDUC2,Education level - Adults 20+,7,Refused,Demographics
+11,DMDEDUC2,Education level - Adults 20+,9,Don't know,Demographics
+12,DMDEDUC3,Education level - Children/Youth 6-19,0,Never Attended / Kindergarten Only,Demographics
+13,DMDEDUC3,Education level - Children/Youth 6-19,1,1st Grade,Demographics
+14,DMDEDUC3,Education level - Children/Youth 6-19,2,2nd Grade,Demographics
+15,DMDEDUC3,Education level - Children/Youth 6-19,3,3rd Grade,Demographics
+16,DMDEDUC3,Education level - Children/Youth 6-19,4,4th Grade,Demographics
+17,DMDEDUC3,Education level - Children/Youth 6-19,5,5th Grade,Demographics
+18,DMDEDUC3,Education level - Children/Youth 6-19,6,6th Grade,Demographics
+19,DMDEDUC3,Education level - Children/Youth 6-19,7,7th Grade,Demographics
+20,DMDEDUC3,Education level - Children/Youth 6-19,8,8th Grade,Demographics
+21,DMDEDUC3,Education level - Children/Youth 6-19,9,9th Grade,Demographics
+22,DMDEDUC3,Education level - Children/Youth 6-19,10,10th Grade,Demographics
+23,DMDEDUC3,Education level - Children/Youth 6-19,11,11th Grade,Demographics
+24,DMDEDUC3,Education level - Children/Youth 6-19,12,"12th Grade, No Diploma",Demographics
+25,DMDEDUC3,Education level - Children/Youth 6-19,13,High School Graduate,Demographics
+26,DMDEDUC3,Education level - Children/Youth 6-19,14,GED or Equivalent,Demographics
+27,DMDEDUC3,Education level - Children/Youth 6-19,15,More than high school,Demographics
+28,DMDEDUC3,Education level - Children/Youth 6-19,55,Less Than 5th Grade,Demographics
+29,DMDEDUC3,Education level - Children/Youth 6-19,66,Less Than 9th Grade,Demographics
+30,DMDEDUC3,Education level - Children/Youth 6-19,77,Refused,Demographics
+31,DMDEDUC3,Education level - Children/Youth 6-19,99,Don't know,Demographics
+32,DMDFMSIZ,Total number of people in the Family,1,1,Demographics
+33,DMDFMSIZ,Total number of people in the Family,2,2,Demographics
+34,DMDFMSIZ,Total number of people in the Family,3,3,Demographics
+35,DMDFMSIZ,Total number of people in the Family,4,4,Demographics
+36,DMDFMSIZ,Total number of people in the Family,5,5,Demographics
+37,DMDFMSIZ,Total number of people in the Family,6,6,Demographics
+38,DMDFMSIZ,Total number of people in the Family,7,7 or more people in the Family,Demographics
+39,DMDHHSIZ,Total number of people in the Household,1,1,Demographics
+40,DMDHHSIZ,Total number of people in the Household,2,2,Demographics
+41,DMDHHSIZ,Total number of people in the Household,3,3,Demographics
+42,DMDHHSIZ,Total number of people in the Household,4,4,Demographics
+43,DMDHHSIZ,Total number of people in the Household,5,5,Demographics
+44,DMDHHSIZ,Total number of people in the Household,6,6,Demographics
+45,DMDHHSIZ,Total number of people in the Household,7,7 or more people in the Household,Demographics
+46,DMDHRAGE,Age in years of the household reference person at the time of HH screening.,1,<20 years,Demographics
+47,DMDHRAGE,Age in years of the household reference person at the time of HH screening.,2,20-39 years,Demographics
+48,DMDHRAGE,Age in years of the household reference person at the time of HH screening.,3,40-59 years,Demographics
+49,DMDHRAGE,Age in years of the household reference person at the time of HH screening.,4,60+ years,Demographics
+50,DMDYRSUS,Length of time the participant has been in the US.,1,Less than 1 year,Demographics
+51,DMDYRSUS,Length of time the participant has been in the US.,2,"1 yr., less than 5 yrs.",Demographics
+52,DMDYRSUS,Length of time the participant has been in the US.,3,"5 yrs., less than 10 yrs.",Demographics
+53,DMDYRSUS,Length of time the participant has been in the US.,4,"10 yrs., less than 15 yrs.",Demographics
+54,DMDHRBR4,HH reference person's country of birth,1,"Born in 50 US states or Washington, DC",Demographics
+55,DMDHRBR4,HH reference person's country of birth,2,Others,Demographics
+56,DMDHRBR4,HH reference person's country of birth,77,Refused,Demographics
+57,DMDHRBR4,HH reference person's country of birth,99,Don't Know,Demographics
+58,DMDHREDU,HH reference person's education level,1,Less than high school degree,Demographics
+59,DMDHREDU,HH reference person's education level,2,High school grad/GED or some college/AA degree,Demographics
+60,DMDHREDU,HH reference person's education level,3,College graduate or above,Demographics
+61,DMDHREDU,HH reference person's education level,7,Refused,Demographics
+62,DMDHREDU,HH reference person's education level,9,Don't know,Demographics
+63,DMDHREDU,HH reference person's education level,9,Don't Know,Demographics
+64,DMDHREDU,HH reference person's education level,3,High school grad/GED or some college/AA degree,Demographics
+65,DMDHRGND,Gender of the household reference person,1,Male,Demographics
+66,DMDHRGND,Gender of the household reference person,2,Female,Demographics
+67,DMDHRMAR,Marital Status of household reference person,1,Married/Living with partner,Demographics
+68,DMDHRMAR,Marital Status of household reference person,2,Widowed/Divorced/Separated,Demographics
+69,DMDHRMAR,Marital Status of household reference person,3,Never Married,Demographics
+70,DMDHRMAR,Marital Status of household reference person,77,Refused,Demographics
+71,DMDHRMAR,Marital Status of household reference person,99,Don't Know,Demographics
+72,DMDHSEDU,HH reference person's spouse's education level,1,Less than high school degree,Demographics
+73,DMDHSEDU,HH reference person's spouse's education level,2,High school grad/GED or some college/AA degree,Demographics
+74,DMDHSEDU,HH reference person's spouse's education level,3,College graduate or above,Demographics
+75,DMDHSEDU,HH reference person's spouse's education level,7,Refused,Demographics
+76,DMDHSEDU,HH reference person's spouse's education level,9,Don't Know,Demographics
+77,DMDMARTL,Marital status,1,Married,Demographics
+78,DMDMARTL,Marital status,2,Widowed,Demographics
+79,DMDMARTL,Marital status,3,Divorced,Demographics
+80,DMDMARTL,Marital status,4,Separated,Demographics
+81,DMDMARTL,Marital status,5,Never married,Demographics
+82,DMDMARTL,Marital status,6,Living with partner,Demographics
+83,DMDMARTL,Marital status,77,Refused,Demographics
+84,DMDMARTL,Marital status,99,Don't know,Demographics
+85,DMDYRSUS,Length of time the participant has been in the US.,5,"15 yrs., less than 20 yrs.",Demographics
+86,DMDYRSUS,Length of time the participant has been in the US.,6,"20 yrs., less than 30 yrs.",Demographics
+87,DMDYRSUS,Length of time the participant has been in the US.,7,"30 yrs., less than 40 yrs.",Demographics
+88,DMDYRSUS,Length of time the participant has been in the US.,8,"40 yrs., less than 50 yrs.",Demographics
+89,DMDYRSUS,Length of time the participant has been in the US.,9,50 years or more,Demographics
+90,DMDYRSUS,Length of time the participant has been in the US.,77,Refused,Demographics
+91,DMDYRSUS,Length of time the participant has been in the US.,99,Don't know,Demographics
+92,FIALANG,Language of the Family Interview Instrument,1,English,Demographics
+93,FIALANG,Language of the Family Interview Instrument,2,Spanish,Demographics
+94,FIALANG,Language of the Family Interview Instrument,3,Other,Demographics
+95,INDFMIN2,Total family income (reported as a range value in dollars),1,"$ 0 to $ 4,999",Demographics
+96,INDFMIN2,Total family income (reported as a range value in dollars),2,"$ 5,000 to $ 9,999",Demographics
+97,INDFMIN2,Total family income (reported as a range value in dollars),3,"$10,000 to $14,999",Demographics
+98,INDFMIN2,Total family income (reported as a range value in dollars),4,"$15,000 to $19,999",Demographics
+99,INDFMIN2,Total family income (reported as a range value in dollars),5,"$20,000 to $24,999",Demographics
+100,INDFMIN2,Total family income (reported as a range value in dollars),6,"$25,000 to $34,999",Demographics
+101,INDFMIN2,Total family income (reported as a range value in dollars),7,"$35,000 to $44,999",Demographics
+102,INDFMIN2,Total family income (reported as a range value in dollars),8,"$45,000 to $54,999",Demographics
+103,INDFMIN2,Total family income (reported as a range value in dollars),16,"$50,000 and over",Demographics
+104,INDFMIN2,Total family income (reported as a range value in dollars),99,Don't know,Demographics
+105,INDFMIN2,Total family income (reported as a range value in dollars),9,"$55,000 to $64,999",Demographics
+106,INDFMIN2,Total family income (reported as a range value in dollars),10,"$65,000 to $74,999",Demographics
+107,INDFMIN2,Total family income (reported as a range value in dollars),12,"$20,000 and Over",Demographics
+108,INDFMIN2,Total family income (reported as a range value in dollars),13,"Under $20,000",Demographics
+109,INDFMIN2,Total family income (reported as a range value in dollars),14,"$75,000 to $99,999",Demographics
+110,INDFMIN2,Total family income (reported as a range value in dollars),15,"$100,000 and Over",Demographics
+111,INDFMIN2,Total family income (reported as a range value in dollars),77,Refused,Demographics
+112,INDFMIN2,Total family income (reported as a range value in dollars),11,"$75,000 and Over",Demographics
+113,RIDRETH1,Recode of reported race and Hispanic origin information,1,Mexican American,Demographics
+114,RIDRETH1,Recode of reported race and Hispanic origin information,3,Non-Hispanic White,Demographics
+115,RIDRETH1,Recode of reported race and Hispanic origin information,4,Non-Hispanic Black,Demographics
+116,RIDRETH1,Recode of reported race and Hispanic origin information,5,Other Race - Including Multi-Racial,Demographics
+117,RIDRETH1,Recode of reported race and Hispanic origin information,2,Other Hispanic,Demographics
+118,RIDSTATR,Interview and Examination Status of the Sample Person.,1,Interviewed Only,Demographics
+119,RIDSTATR,Interview and Examination Status of the Sample Person.,2,Both Interviewed and MEC examined,Demographics
+120,MCD180B,Age when told you had congestive heart failure,16,16 years or younger,Questionnaire
+121,MCD180B,Age when told you had congestive heart failure,17-79,17-79 years old,Questionnaire
+122,MCD180B,Age when told you had congestive heart failure,17-84,17-84 years old,Questionnaire
+123,MCD180B,Age when told you had congestive heart failure,17-89,17-89 years old,Questionnaire
+124,MCD180B,Age when told you had congestive heart failure,18-79,18-79 years old,Questionnaire
+125,MCD180B,Age when told you had congestive heart failure,80,80 years or older,Questionnaire
+126,MCD180B,Age when told you had congestive heart failure,85,85 years or older,Questionnaire
+127,MCD180B,Age when told you had congestive heart failure,90,90 + years,Questionnaire
+128,MCD180B,Age when told you had congestive heart failure,99999,Don't know,Questionnaire
+129,MCD180B,Age when told you had congestive heart failure,77777,Refused,Questionnaire
+130,MCD180C,Age when told had coronary heart disease,16,16 years or younger,Questionnaire
+131,MCD180C,Age when told had coronary heart disease,17-79,17-79 years old,Questionnaire
+132,MCD180C,Age when told had coronary heart disease,17-84,17-84 years old,Questionnaire
+133,MCD180C,Age when told had coronary heart disease,20-79,20-79 years old,Questionnaire
+134,MCD180C,Age when told had coronary heart disease,80,80 years or older,Questionnaire
+135,MCD180C,Age when told had coronary heart disease,85,85 years or older,Questionnaire
+136,MCD180C,Age when told had coronary heart disease,99999,Don't know,Questionnaire
+137,MCD180C,Age when told had coronary heart disease,77777,Refused,Questionnaire
+138,MCD180D,Age when told you had angina pectoris,16,16 years or younger,Questionnaire
+139,MCD180D,Age when told you had angina pectoris,17-84,17-84 years old,Questionnaire
+140,MCD180D,Age when told you had angina pectoris,85,85 years or older,Questionnaire
+141,MCD180D,Age when told you had angina pectoris,99999,Don't know,Questionnaire
+142,MCD180D,Age when told you had angina pectoris,77777,Refused,Questionnaire
+143,MCD180D,Age when told you had angina pectoris,17-79,17-79 years old,Questionnaire
+144,MCD180D,Age when told you had angina pectoris,20-79,20-79 years old,Questionnaire
+145,MCD180D,Age when told you had angina pectoris,80,80 years or older,Questionnaire
+146,MCD180E,Age when told you had heart attack,16,16 years or younger,Questionnaire
+147,MCD180E,Age when told you had heart attack,17-79,17-79 years old,Questionnaire
+148,MCD180E,Age when told you had heart attack,17-84,17-84 years old,Questionnaire
+149,MCD180E,Age when told you had heart attack,17-88,17-88 years old,Questionnaire
+150,MCD180E,Age when told you had heart attack,19-79,19-79 years old,Questionnaire
+151,MCD180E,Age when told you had heart attack,80,80 years or older,Questionnaire
+152,MCD180E,Age when told you had heart attack,85,85 years or older,Questionnaire
+153,MCD180E,Age when told you had heart attack,90,90 + years,Questionnaire
+154,MCD180E,Age when told you had heart attack,99999,Don't know,Questionnaire
+155,MCD180E,Age when told you had heart attack,77777,Refused,Questionnaire
+156,MCD180F,Age when told you had a stroke,16,16 years or younger,Questionnaire
+157,MCD180F,Age when told you had a stroke,17-79,17-79 years old,Questionnaire
+158,MCD180F,Age when told you had a stroke,17-84,17-84 years old,Questionnaire
+159,MCD180F,Age when told you had a stroke,17-89,17-89 years old,Questionnaire
+160,MCD180F,Age when told you had a stroke,80,80 years or older,Questionnaire
+161,MCD180F,Age when told you had a stroke,85,85 years or older,Questionnaire
+162,MCD180F,Age when told you had a stroke,90,90 + years,Questionnaire
+163,MCD180F,Age when told you had a stroke,99999,Don't know,Questionnaire
+164,MCD180F,Age when told you had a stroke,77777,Refused,Questionnaire
+165,MCD180G,Age when told you had emphysema,16,16 years or younger,Questionnaire
+166,MCD180G,Age when told you had emphysema,17-79,17-79 years old,Questionnaire
+167,MCD180G,Age when told you had emphysema,17-84,17-84 years old,Questionnaire
+168,MCD180G,Age when told you had emphysema,17-89,17-89 years old,Questionnaire
+169,MCD180G,Age when told you had emphysema,80,80 years or older,Questionnaire
+170,MCD180G,Age when told you had emphysema,85,85 years or older,Questionnaire
+171,MCD180G,Age when told you had emphysema,90,90 + years,Questionnaire
+172,MCD180G,Age when told you had emphysema,99999,Don't know,Questionnaire
+173,MCD180G,Age when told you had emphysema,77777,Refused,Questionnaire
+174,MCD180K,Age when told you had chronic bronchitis,16,16 years or younger,Questionnaire
+175,MCD180K,Age when told you had chronic bronchitis,17-79,17-79 years old,Questionnaire
+176,MCD180K,Age when told you had chronic bronchitis,17-83,17-83 years old,Questionnaire
+177,MCD180K,Age when told you had chronic bronchitis,17-89,17-89 years old,Questionnaire
+178,MCD180K,Age when told you had chronic bronchitis,80,80 years or older,Questionnaire
+179,MCD180K,Age when told you had chronic bronchitis,85,85 years or older,Questionnaire
+180,MCD180K,Age when told you had chronic bronchitis,90,90 + years,Questionnaire
+181,MCD180K,Age when told you had chronic bronchitis,99999,Don't know,Questionnaire
+182,MCD180K,Age when told you had chronic bronchitis,77777,Refused,Questionnaire
+183,MCD180L,Age when told you had a liver condition,16,16 years or younger,Questionnaire
+184,MCD180L,Age when told you had a liver condition,17-78,17-78 years old,Questionnaire
+185,MCD180L,Age when told you had a liver condition,17-79,17-79 years old,Questionnaire
+186,MCD180L,Age when told you had a liver condition,17-83,17-83 years old,Questionnaire
+187,MCD180L,Age when told you had a liver condition,80,80 years or older,Questionnaire
+188,MCD180L,Age when told you had a liver condition,85,85 years or older,Questionnaire
+189,MCD180L,Age when told you had a liver condition,99999,Don't know,Questionnaire
+190,MCD180L,Age when told you had a liver condition,77777,Refused,Questionnaire
+191,MCQ180H,Age when told you had a goiter,16,16 years or younger,Questionnaire
+192,MCQ180H,Age when told you had a goiter,17-84,17-84 years old,Questionnaire
+193,MCQ180H,Age when told you had a goiter,90,90 + years,Questionnaire
+194,MCQ180H,Age when told you had a goiter,99999,Don't know,Questionnaire
+195,MCD180M,Age when told you had thyroid problem,17-89,17-89 years old,Questionnaire
+196,MCD180M,Age when told you had thyroid problem,16,16 years or younger,Questionnaire
+197,MCD180M,Age when told you had thyroid problem,99999,Don't know,Questionnaire
+198,MCD180M,Age when told you had thyroid problem,17-84,17-84 years old,Questionnaire
+199,MCD180M,Age when told you had thyroid problem,80,80 years or older,Questionnaire
+200,MCD180M,Age when told you had thyroid problem,85,85 years or older,Questionnaire
+201,MCD180M,Age when told you had thyroid problem,77777,Refused,Questionnaire
+202,MCD180M,Age when told you had thyroid problem,17-79,17-79 years old,Questionnaire
+203,MCD180N,Age when told you had gout,16,16 years or younger,Questionnaire
+204,MCD180N,Age when told you had gout,17-79,17-79 years old,Questionnaire
+205,MCD180N,Age when told you had gout,17-86,17-86 years old,Questionnaire
+206,MCD180N,Age when told you had gout,80,80 years or older,Questionnaire
+207,MCD180N,Age when told you had gout,99999,Don't know,Questionnaire
+208,MCD180N,Age when told you had gout,77777,Refused,Questionnaire
+209,MCQ025,Age when first had asthma,Jan-19,1-19 years old,Questionnaire
+210,MCQ025,Age when first had asthma,Jan-79,1-79 years old,Questionnaire
+211,MCQ025,Age when first had asthma,Jan-84,1-84 years old,Questionnaire
+212,MCQ025,Age when first had asthma,Jan-88,1-88 years old,Questionnaire
+213,MCQ025,Age when first had asthma,80,80 years or older,Questionnaire
+214,MCQ025,Age when first had asthma,85,85 years or older,Questionnaire
+215,MCQ025,Age when first had asthma,99999,Don't know,Questionnaire
+216,MCQ025,Age when first had asthma,1,Less than 1 year,Questionnaire
+217,MCQ025,Age when first had asthma,77777,Refused,Questionnaire
+218,MCD180A,Age when told you had arthritis,16,16 years or younger,Questionnaire
+219,MCD180A,Age when told you had arthritis,17-89,17-89 years old,Questionnaire
+220,MCD180A,Age when told you had arthritis,90,90 + years,Questionnaire
+221,MCD180A,Age when told you had arthritis,99999,Don't know,Questionnaire
+222,MCD180A,Age when told you had arthritis,17-79,17-79 years old,Questionnaire
+223,MCD180A,Age when told you had arthritis,80,80 years or older,Questionnaire
+224,MCD180A,Age when told you had arthritis,77777,Refused,Questionnaire
+225,MCD180A,Age when told you had arthritis,17-84,17-84 years old,Questionnaire
+226,MCD180A,Age when told you had arthritis,85,85 years or older,Questionnaire
+227,MCQ180H,Age when told you had a goiter,17-72,17-72 years old,Questionnaire
+228,MCQ180H,Age when told you had a goiter,85,85 years or older,Questionnaire
+229,MCQ180H,Age when told you had a goiter,77777,Refused,Questionnaire
+230,MCQ195,Which type of arthritis was it,9,Don't know,Questionnaire
+231,MCQ195,Which type of arthritis was it,2,Osteoarthritis or degenerative arthritis,Questionnaire
+232,MCQ195,Which type of arthritis was it,4,Other,Questionnaire
+233,MCQ195,Which type of arthritis was it,3,Psoriatic arthritis,Questionnaire
+234,MCQ195,Which type of arthritis was it,7,Refused,Questionnaire
+235,MCQ195,Which type of arthritis was it,1,Rheumatoid arthritis,Questionnaire
+236,MCQ240A,Age when bladder cancer first diagnosed,17-78,17-78 years old,Questionnaire
+237,MCQ240A,Age when bladder cancer first diagnosed,17-83,17-83 years old,Questionnaire
+238,MCQ240A,Age when bladder cancer first diagnosed,16,16 years or younger,Questionnaire
+239,MCQ240A,Age when bladder cancer first diagnosed,80,80 years or older,Questionnaire
+240,MCQ240A,Age when bladder cancer first diagnosed,85,85 years or older,Questionnaire
+241,MCQ240A,Age when bladder cancer first diagnosed,99999,Don't know,Questionnaire
+242,MCQ240A,Age when bladder cancer first diagnosed,77777,Refused,Questionnaire
+243,MCQ240B,Age when blood cancer was first diagnosed,16,16 years or younger,Questionnaire
+244,MCQ240B,Age when blood cancer was first diagnosed,17-66,17-66 years old,Questionnaire
+245,MCQ240B,Age when blood cancer was first diagnosed,17-70,17-70 years old,Questionnaire
+246,MCQ240B,Age when blood cancer was first diagnosed,80,80 years or older,Questionnaire
+247,MCQ240B,Age when blood cancer was first diagnosed,85,85 years or older,Questionnaire
+248,MCQ240B,Age when blood cancer was first diagnosed,99999,Don't know,Questionnaire
+249,MCQ240B,Age when blood cancer was first diagnosed,77777,Refused,Questionnaire
+250,MCQ240C,Age when bone cancer was first diagnosed,17-77,17-77 years old,Questionnaire
+251,MCQ240C,Age when bone cancer was first diagnosed,17-84,17-84 years old,Questionnaire
+252,MCQ240C,Age when bone cancer was first diagnosed,16,16 years or younger,Questionnaire
+253,MCQ240C,Age when bone cancer was first diagnosed,55-76,55-76 years old,Questionnaire
+254,MCQ240C,Age when bone cancer was first diagnosed,80,80 years or older,Questionnaire
+255,MCQ240C,Age when bone cancer was first diagnosed,85,85 years or older,Questionnaire
+256,MCQ240C,Age when bone cancer was first diagnosed,99999,Don't know,Questionnaire
+257,MCQ240C,Age when bone cancer was first diagnosed,77777,Refused,Questionnaire
+258,MCQ240CC,Age when uterine cancer was first diagnosed,16,16 years or younger,Questionnaire
+259,MCQ240CC,Age when uterine cancer was first diagnosed,17-77,17-77 years old,Questionnaire
+260,MCQ240CC,Age when uterine cancer was first diagnosed,17-84,17-84 years old,Questionnaire
+261,MCQ240CC,Age when uterine cancer was first diagnosed,20-72,20-72 years old,Questionnaire
+262,MCQ240CC,Age when uterine cancer was first diagnosed,80,80 years or older,Questionnaire
+263,MCQ240CC,Age when uterine cancer was first diagnosed,85,85 years or older,Questionnaire
+264,MCQ240CC,Age when uterine cancer was first diagnosed,99999,Don't know,Questionnaire
+265,MCQ240CC,Age when uterine cancer was first diagnosed,77777,Refused,Questionnaire
+266,MCQ240D,Age when brain cancer was first diagnosed,16,16 years or younger,Questionnaire
+267,MCQ240D,Age when brain cancer was first diagnosed,17-73,17-73 years old,Questionnaire
+268,MCQ240D,Age when brain cancer was first diagnosed,17-75,17-75 years old,Questionnaire
+269,MCQ240D,Age when brain cancer was first diagnosed,80,80 years or older,Questionnaire
+270,MCQ240D,Age when brain cancer was first diagnosed,85,85 years or older,Questionnaire
+271,MCQ240D,Age when brain cancer was first diagnosed,99999,Don't know,Questionnaire
+272,MCQ240D,Age when brain cancer was first diagnosed,77777,Refused,Questionnaire
+273,MCQ240DD,Age when some other type of cancer was first diagnosed,16,16 years or younger,Questionnaire
+274,MCQ240DD,Age when some other type of cancer was first diagnosed,17-77,17-77 years old,Questionnaire
+275,MCQ240DD,Age when some other type of cancer was first diagnosed,17-78,17-78 years old,Questionnaire
+276,MCQ240DD,Age when some other type of cancer was first diagnosed,17-83,17-83 years old,Questionnaire
+277,MCQ240DD,Age when some other type of cancer was first diagnosed,80,80 years or older,Questionnaire
+278,MCQ240DD,Age when some other type of cancer was first diagnosed,85,85 years or older,Questionnaire
+279,MCQ240DD,Age when some other type of cancer was first diagnosed,99999,Don't know,Questionnaire
+280,MCQ240DD,Age when some other type of cancer was first diagnosed,77777,Refused,Questionnaire
+281,MCQ240DK,Age when cancer was first diagnosed,20-80,20-80 years old,Questionnaire
+282,MCQ240DK,Age when cancer was first diagnosed,23-47,23-47 years old,Questionnaire
+283,MCQ240DK,Age when cancer was first diagnosed,80,80 years or older,Questionnaire
+284,MCQ240DK,Age when cancer was first diagnosed,85,85 years or older,Questionnaire
+285,MCQ240DK,Age when cancer was first diagnosed,99999,Don't know,Questionnaire
+286,MCQ240DK,Age when cancer was first diagnosed,77777,Refused,Questionnaire
+287,MCQ240E,Age when breast cancer was first diagnosed,16,16 years or younger,Questionnaire
+288,MCQ240E,Age when breast cancer was first diagnosed,17-78,17-78 years old,Questionnaire
+289,MCQ240E,Age when breast cancer was first diagnosed,17-79,17-79 years old,Questionnaire
+290,MCQ240E,Age when breast cancer was first diagnosed,17-84,17-84 years old,Questionnaire
+291,MCQ240E,Age when breast cancer was first diagnosed,80,80 years or older,Questionnaire
+292,MCQ240E,Age when breast cancer was first diagnosed,85,85 years or older,Questionnaire
+293,MCQ240E,Age when breast cancer was first diagnosed,99999,Don't know,Questionnaire
+294,MCQ240E,Age when breast cancer was first diagnosed,77777,Refused,Questionnaire
+295,MCQ240F,Age when cervical cancer was first diagnosed,16,16 years or younger,Questionnaire
+296,MCQ240F,Age when cervical cancer was first diagnosed,17-65,17-65 years old,Questionnaire
+297,MCQ240F,Age when cervical cancer was first diagnosed,17-73,17-73 years old,Questionnaire
+298,MCQ240F,Age when cervical cancer was first diagnosed,80,80 years or older,Questionnaire
+299,MCQ240F,Age when cervical cancer was first diagnosed,85,85 years or older,Questionnaire
+300,MCQ240F,Age when cervical cancer was first diagnosed,99999,Don't know,Questionnaire
+301,MCQ240F,Age when cervical cancer was first diagnosed,77777,Refused,Questionnaire
+302,MCQ240G,Age when colon cancer was first diagnosed,16,16 years or younger,Questionnaire
+303,MCQ240G,Age when colon cancer was first diagnosed,17-79,17-79 years old,Questionnaire
+304,MCQ240G,Age when colon cancer was first diagnosed,17-84,17-84 years old,Questionnaire
+305,MCQ240G,Age when colon cancer was first diagnosed,21-79,21-79 years old,Questionnaire
+306,MCQ240G,Age when colon cancer was first diagnosed,80,80 years or older,Questionnaire
+307,MCQ240G,Age when colon cancer was first diagnosed,85,85 years or older,Questionnaire
+308,MCQ240G,Age when colon cancer was first diagnosed,99999,Don't know,Questionnaire
+309,MCQ240G,Age when colon cancer was first diagnosed,77777,Refused,Questionnaire
+310,MCQ240L,Age when leukemia was first diagnosed,17-70,17-70 years old,Questionnaire
+311,MCQ240L,Age when leukemia was first diagnosed,17-75,17-75 years old,Questionnaire
+312,MCQ240L,Age when leukemia was first diagnosed,28-84,28-84 years old,Questionnaire
+313,MCQ240L,Age when leukemia was first diagnosed,16,16 years or younger,Questionnaire
+314,MCQ240L,Age when leukemia was first diagnosed,80,80 years or older,Questionnaire
+315,MCQ240L,Age when leukemia was first diagnosed,85,85 years or older,Questionnaire
+316,MCQ240L,Age when leukemia was first diagnosed,99999,Don't know,Questionnaire
+317,MCQ240L,Age when leukemia was first diagnosed,77777,Refused,Questionnaire
+318,MCQ240N,Age when lung cancer was first diagnosed,16,16 years or younger,Questionnaire
+319,MCQ240N,Age when lung cancer was first diagnosed,17-76,17-76 years old,Questionnaire
+320,MCQ240N,Age when lung cancer was first diagnosed,17-84,17-84 years old,Questionnaire
+321,MCQ240N,Age when lung cancer was first diagnosed,29-79,29-79 years old,Questionnaire
+322,MCQ240N,Age when lung cancer was first diagnosed,80,80 years or older,Questionnaire
+323,MCQ240N,Age when lung cancer was first diagnosed,85,85 years or older,Questionnaire
+324,MCQ240N,Age when lung cancer was first diagnosed,99999,Don't know,Questionnaire
+325,MCQ240N,Age when lung cancer was first diagnosed,77777,Refused,Questionnaire
+326,MCQ240O,Age when lymphoma or Hodgkin's Disease was first diagnosed,16,16 years or younger,Questionnaire
+327,MCQ240O,Age when lymphoma or Hodgkin's Disease was first diagnosed,17-76,17-76 years old,Questionnaire
+328,MCQ240O,Age when lymphoma or Hodgkin's Disease was first diagnosed,17-80,17-80 years old,Questionnaire
+329,MCQ240O,Age when lymphoma or Hodgkin's Disease was first diagnosed,19-79,19-79 years old,Questionnaire
+330,MCQ240O,Age when lymphoma or Hodgkin's Disease was first diagnosed,80,80 years or older,Questionnaire
+331,MCQ240O,Age when lymphoma or Hodgkin's Disease was first diagnosed,85,85 years or older,Questionnaire
+332,MCQ240O,Age when lymphoma or Hodgkin's Disease was first diagnosed,99999,Don't know,Questionnaire
+333,MCQ240O,Age when lymphoma or Hodgkin's Disease was first diagnosed,77777,Refused,Questionnaire
+334,MCQ240P,Age when melanoma was first diagnosed,16,16 years or younger,Questionnaire
+335,MCQ240P,Age when melanoma was first diagnosed,17-78,17-78 years old,Questionnaire
+336,MCQ240P,Age when melanoma was first diagnosed,17-79,17-79 years old,Questionnaire
+337,MCQ240P,Age when melanoma was first diagnosed,17-83,17-83 years old,Questionnaire
+338,MCQ240P,Age when melanoma was first diagnosed,80,80 years or older,Questionnaire
+339,MCQ240P,Age when melanoma was first diagnosed,85,85 years or older,Questionnaire
+340,MCQ240P,Age when melanoma was first diagnosed,99999,Don't know,Questionnaire
+341,MCQ240P,Age when melanoma was first diagnosed,77777,Refused,Questionnaire
+342,MCQ240Q,"Age when mouth, tongue, or lip cancer was first diagnosed",16,16 years or younger,Questionnaire
+343,MCQ240Q,"Age when mouth, tongue, or lip cancer was first diagnosed",17-79,17-79 years old,Questionnaire
+344,MCQ240Q,"Age when mouth, tongue, or lip cancer was first diagnosed",27-70,27-70 years old,Questionnaire
+345,MCQ240Q,"Age when mouth, tongue, or lip cancer was first diagnosed",30-70,30-70 years old,Questionnaire
+346,MCQ240Q,"Age when mouth, tongue, or lip cancer was first diagnosed",80,80 years or older,Questionnaire
+347,MCQ240Q,"Age when mouth, tongue, or lip cancer was first diagnosed",85,85 years or older,Questionnaire
+348,MCQ240Q,"Age when mouth, tongue, or lip cancer was first diagnosed",99999,Don't know,Questionnaire
+349,MCQ240Q,"Age when mouth, tongue, or lip cancer was first diagnosed",77777,Refused,Questionnaire
+350,MCQ240U,Age when prostate cancer was first diagnosed,17-79,17-79 years old,Questionnaire
+351,MCQ240U,Age when prostate cancer was first diagnosed,17-84,17-84 years old,Questionnaire
+352,MCQ240U,Age when prostate cancer was first diagnosed,16,16 years or younger,Questionnaire
+353,MCQ240U,Age when prostate cancer was first diagnosed,32-79,32-79 years old,Questionnaire
+354,MCQ240U,Age when prostate cancer was first diagnosed,80,80 years or older,Questionnaire
+355,MCQ240U,Age when prostate cancer was first diagnosed,85,85 years or older,Questionnaire
+356,MCQ240U,Age when prostate cancer was first diagnosed,99999,Don't know,Questionnaire
+357,MCQ240U,Age when prostate cancer was first diagnosed,77777,Refused,Questionnaire
+358,MCQ240W,Age when non-melanoma skin cancer was first diagnosed,16,16 years or younger,Questionnaire
+359,MCQ240W,Age when non-melanoma skin cancer was first diagnosed,17-78,17-78 years old,Questionnaire
+360,MCQ240W,Age when non-melanoma skin cancer was first diagnosed,17-79,17-79 years old,Questionnaire
+361,MCQ240W,Age when non-melanoma skin cancer was first diagnosed,17-84,17-84 years old,Questionnaire
+362,MCQ240W,Age when non-melanoma skin cancer was first diagnosed,80,80 years or older,Questionnaire
+363,MCQ240W,Age when non-melanoma skin cancer was first diagnosed,85,85 years or older,Questionnaire
+364,MCQ240W,Age when non-melanoma skin cancer was first diagnosed,99999,Don't know,Questionnaire
+365,MCQ240W,Age when non-melanoma skin cancer was first diagnosed,77777,Refused,Questionnaire
+366,MCQ240X,Age when the unknown kind of skin cancer was first diagnosed,16,16 years or younger,Questionnaire
+367,MCQ240X,Age when the unknown kind of skin cancer was first diagnosed,17-79,17-79 years old,Questionnaire
+368,MCQ240X,Age when the unknown kind of skin cancer was first diagnosed,17-84,17-84 years old,Questionnaire
+369,MCQ240X,Age when the unknown kind of skin cancer was first diagnosed,18-79,18-79 years old,Questionnaire
+370,MCQ240X,Age when the unknown kind of skin cancer was first diagnosed,80,80 years or older,Questionnaire
+371,MCQ240X,Age when the unknown kind of skin cancer was first diagnosed,85,85 years or older,Questionnaire
+372,MCQ240X,Age when the unknown kind of skin cancer was first diagnosed,99999,Don't know,Questionnaire
+373,MCQ240X,Age when the unknown kind of skin cancer was first diagnosed,77777,Refused,Questionnaire
+374,MCQ240Z,Age when stomach cancer was first diagnosed,16,16 years or younger,Questionnaire
+375,MCQ240Z,Age when stomach cancer was first diagnosed,17-79,17-79 years old,Questionnaire
+376,MCQ240Z,Age when stomach cancer was first diagnosed,22-82,22-82 years old,Questionnaire
+377,MCQ240Z,Age when stomach cancer was first diagnosed,32-76,32-76 years old,Questionnaire
+378,MCQ240Z,Age when stomach cancer was first diagnosed,80,80 years or older,Questionnaire
+379,MCQ240Z,Age when stomach cancer was first diagnosed,85,85 years or older,Questionnaire
+380,MCQ240Z,Age when stomach cancer was first diagnosed,99999,Don't know,Questionnaire
+381,MCQ240Z,Age when stomach cancer was first diagnosed,77777,Refused,Questionnaire
+382,MCQ280,About how old was she when she fractured her hip (the first time)?,1-101,1-101 years old,Questionnaire
+383,MCQ280,About how old was she when she fractured her hip (the first time)?,555,50 +,Questionnaire
+384,MCQ280,About how old was she when she fractured her hip (the first time)?,9-107,9-107 years old,Questionnaire
+385,MCQ280,About how old was she when she fractured her hip (the first time)?,99999,Don't know,Questionnaire
+386,MCQ280,About how old was she when she fractured her hip (the first time)?,77777,Refused,Questionnaire
+387,MCQ280,About how old was she when she fractured her hip (the first time)?,444,Under 50,Questionnaire
+388,MCQ320,How old {were you/was SP} when {you/he} first had {your/his} PSA test?,16,16 years or younger,Questionnaire
+389,MCQ320,How old {were you/was SP} when {you/he} first had {your/his} PSA test?,17-79,17-79 years old,Questionnaire
+390,MCQ320,How old {were you/was SP} when {you/he} first had {your/his} PSA test?,17-85,17-85 years old,Questionnaire
+391,MCQ320,How old {were you/was SP} when {you/he} first had {your/his} PSA test?,80,80 years or older,Questionnaire
+392,MCQ320,How old {were you/was SP} when {you/he} first had {your/his} PSA test?,999,Don't know,Questionnaire
+393,MCQ320,How old {were you/was SP} when {you/he} first had {your/his} PSA test?,777,Refused,Questionnaire
+394,MCQ570,How old {were you/was SP} when {you /s/he} first had gallbladder surgery?,Nov-99,11-99 years old,Questionnaire
+395,MCQ570,How old {were you/was SP} when {you /s/he} first had gallbladder surgery?,15-79,15-79 years old,Questionnaire
+396,MCQ570,How old {were you/was SP} when {you /s/he} first had gallbladder surgery?,20-87,20-87 years old,Questionnaire
+397,MCQ570,How old {were you/was SP} when {you /s/he} first had gallbladder surgery?,80,80 years or older,Questionnaire
+398,MCQ570,How old {were you/was SP} when {you /s/he} first had gallbladder surgery?,90,90 + years,Questionnaire
+399,MCQ570,How old {were you/was SP} when {you /s/he} first had gallbladder surgery?,99999,Don't know,Questionnaire
+400,MCQ570,How old {were you/was SP} when {you /s/he} first had gallbladder surgery?,77777,Refused,Questionnaire
+401,PAD120,"[Over the past 30 days], how often did {you/SP} do these tasks in or around {your/his/her} home or yard, that is tasks requiring at least moderate effort? [Such as raking leaves, mowing the lawn or heavy cleaning.]",Jan-95,1-95 times,Questionnaire
+402,PAD120,"[Over the past 30 days], how often did {you/SP} do these tasks in or around {your/his/her} home or yard, that is tasks requiring at least moderate effort? [Such as raking leaves, mowing the lawn or heavy cleaning.]",Jan-99,1-99 times,Questionnaire
+403,PAD120,"[Over the past 30 days], how often did {you/SP} do these tasks in or around {your/his/her} home or yard, that is tasks requiring at least moderate effort? [Such as raking leaves, mowing the lawn or heavy cleaning.]",100,100 +,Questionnaire
+404,PAD120,"[Over the past 30 days], how often did {you/SP} do these tasks in or around {your/his/her} home or yard, that is tasks requiring at least moderate effort? [Such as raking leaves, mowing the lawn or heavy cleaning.]",99999,Don't know,Questionnaire
+405,PAD120,"[Over the past 30 days], how often did {you/SP} do these tasks in or around {your/his/her} home or yard, that is tasks requiring at least moderate effort? [Such as raking leaves, mowing the lawn or heavy cleaning.]",77777,Refused,Questionnaire
+406,PAD460,"[Over the past 30 days], how often did {you/SP} do these physical activities? [Activities designed to strengthen {your/his/her} muscles such as lifting weights, push-ups or sit-ups.]",Jan-91,1-91 times,Questionnaire
+407,PAD460,"[Over the past 30 days], how often did {you/SP} do these physical activities? [Activities designed to strengthen {your/his/her} muscles such as lifting weights, push-ups or sit-ups.]",Jan-99,1-99 times,Questionnaire
+408,PAD460,"[Over the past 30 days], how often did {you/SP} do these physical activities? [Activities designed to strengthen {your/his/her} muscles such as lifting weights, push-ups or sit-ups.]",100,100 +,Questionnaire
+409,PAD460,"[Over the past 30 days], how often did {you/SP} do these physical activities? [Activities designed to strengthen {your/his/her} muscles such as lifting weights, push-ups or sit-ups.]",999,Don't know,Questionnaire
+410,PAD460,"[Over the past 30 days], how often did {you/SP} do these physical activities? [Activities designed to strengthen {your/his/her} muscles such as lifting weights, push-ups or sit-ups.]",777,Refused,Questionnaire
+411,PAQ050Q,"[Over the past 30 days], how often did {you/SP} do this? [Walk or bicycle as part of getting to and from work, or school, or to do errands.] PROBE: How many times per day, per week, or per month did {you/s/he} do these activities?",Jan-91,1-91 times,Questionnaire
+412,PAQ050Q,"[Over the past 30 days], how often did {you/SP} do this? [Walk or bicycle as part of getting to and from work, or school, or to do errands.] PROBE: How many times per day, per week, or per month did {you/s/he} do these activities?",Jan-99,1-99 times,Questionnaire
+413,PAQ050Q,"[Over the past 30 days], how often did {you/SP} do this? [Walk or bicycle as part of getting to and from work, or school, or to do errands.] PROBE: How many times per day, per week, or per month did {you/s/he} do these activities?",100,100 +,Questionnaire
+414,PAQ050Q,"[Over the past 30 days], how often did {you/SP} do this? [Walk or bicycle as part of getting to and from work, or school, or to do errands.] PROBE: How many times per day, per week, or per month did {you/s/he} do these activities?",99999,Don't know,Questionnaire
+415,PAQ050Q,"[Over the past 30 days], how often did {you/SP} do this? [Walk or bicycle as part of getting to and from work, or school, or to do errands.] PROBE: How many times per day, per week, or per month did {you/s/he} do these activities?",77777,Refused,Questionnaire
+416,BMIWAIST,Waist Circumference Comment,1,Could not obtain,Response
+417,NA,NA,1,Breakfast,Dietary
+418,NA,NA,2,Brunch,Dietary
+419,NA,NA,3,Lunch,Dietary
+420,NA,NA,4,Snack/beverage,Dietary
+421,NA,NA,5,Dinner/supper,Dietary
+422,NA,NA,6,Infant feeding,Dietary
+423,NA,NA,7,Extended consumption,Dietary
+424,NA,NA,8,Other,Dietary
+425,NA,NA,9,Desayuno (Spanish),Dietary
+426,NA,NA,10,Almuerzo (Spanish),Dietary
+427,NA,NA,11,Comida (Spanish),Dietary
+428,NA,NA,12,Merienda (Spanish),Dietary
+429,NA,NA,13,Cena (Spanish),Dietary
+430,NA,NA,14,Entre comida/bebida (Spanish),Dietary
+431,NA,NA,15,Bocadillo (Spanish),Dietary
+432,NA,NA,16,Botana (Spanish),Dietary
+433,NA,NA,99,Don't know,Dietary
+434,NA,NA,2,Lunch,Dietary
+435,NA,NA,3,Dinner/supper,Dietary
+436,NA,NA,5,Brunch,Dietary
+437,NA,NA,6,Snack/beverage,Dietary
+438,NA,NA,8,Infant feeding,Dietary
+439,NA,NA,9,Extended consumption,Dietary
+440,NA,NA,10,Desayano (Spanish),Dietary
+441,NA,NA,11,Almuerzo (Spanish),Dietary
+442,NA,NA,12,Comida (Spanish),Dietary
+443,NA,NA,13,Merienda (Spanish),Dietary
+444,NA,NA,14,Cena (Spanish),Dietary
+445,NA,NA,15,Entre comida/bebida/tentempie (Spanish),Dietary
+446,NA,NA,17,Bocadillo (Spanish),Dietary
+447,NA,NA,91,Other,Dietary
+448,NA,NA,3,Dinner,Dietary
+449,NA,NA,4,Supper,Dietary
+450,NA,NA,6,Snack,Dietary
+451,NA,NA,7,Drink,Dietary
+452,NA,NA,10,Desayano (breakfast),Dietary
+453,NA,NA,11,Almuerzo (breakfast),Dietary
+454,NA,NA,12,Comida (lunch),Dietary
+455,NA,NA,13,Merienda (snack),Dietary
+456,NA,NA,14,Cena (dinner),Dietary
+457,NA,NA,15,Entre comida (snack),Dietary
+458,NA,NA,16,Botana (snack),Dietary
+459,NA,NA,17,Bocadillo (snack),Dietary
+460,NA,NA,18,Tentempie (snack),Dietary
+461,NA,NA,19,Bebida (drink),Dietary
+462,NA,NA,0,Non-combination food,Dietary
+463,NA,NA,90,Other mixtures,Dietary
+464,NA,NA,9,Dried beans and vegetable w/ additions,Dietary
+465,NA,NA,1,Beverage w/ additions,Dietary
+466,NA,NA,3,Bread/baked products w/ additions,Dietary
+467,NA,NA,2,Cereal w/ additions,Dietary
+468,NA,NA,14,Chips w/ additions,Dietary
+469,NA,NA,12,"Meat, poultry, fish",Dietary
+470,NA,NA,7,Frozen meals,Dietary
+471,NA,NA,10,Fruit w/ additions,Dietary
+472,NA,NA,4,Salad,Dietary
+473,NA,NA,5,Sandwiches,Dietary
+474,NA,NA,6,Soup,Dietary
+475,NA,NA,11,Tortilla products,Dietary
+476,NA,NA,1,Beverage w/ adds,Dietary
+477,NA,NA,2,Cereal w/ adds,Dietary
+478,NA,NA,3,Bread/baked products w/ adds,Dietary
+479,NA,NA,8,Ice cream/frozen yogurt w/ additions,Dietary
+480,NA,NA,9,Dried beans and vegetable w/ adds,Dietary
+481,NA,NA,10,Fruit w/ adds,Dietary
+482,NA,NA,11,Tortilla Products,Dietary
+483,NA,NA,13,Lunchables,Dietary
+484,DRXDRSTZ,Dietary Recall Status,1,Reliable and met the minimum criteria,Dietary
+485,DRXDRSTZ,Dietary Recall Status,2,Not reliable or not met the minimum criteria,Dietary
+486,DRXDRSTZ,Dietary Recall Status,9,Interview lost due to computer malfunction or file transfer problem,Dietary
+487,DRXDRSTZ,Dietary Recall Status,4,Reported consuming breast-milk,Dietary
+488,DRXDRSTZ,Dietary Recall Status,88,Blank but applicable,Dietary
+489,DRXDRSTZ,Dietary Recall Status,5,Not done,Dietary
+490,NA,NA,2,No,Dietary
+491,NA,NA,1,Yes (home),Dietary
+492,NA,NA,7,Refused,Dietary
+493,NA,NA,9,Don't know,Dietary
+494,DRXTWSZ,Tap Water Source,1,Community supply,Dietary
+495,DRXTWSZ,Tap Water Source,91,Other,Dietary
+496,DRXTWSZ,Tap Water Source,4,Don't drink tap water,Dietary
+497,DRXTWSZ,Tap Water Source,99,Don't know,Dietary
+498,DBQ095Z,Type of salt you usually add at table,4,Doesn't use or add salt products at the table,Dietary
+499,DBQ095Z,Type of salt you usually add at table,1,"Ordinary salt [includes regular iodized salt, sea salt and seasoning salts made with regular salt]",Dietary
+500,DBQ095Z,Type of salt you usually add at table,2,Lite salt,Dietary
+501,DBQ095Z,Type of salt you usually add at table,3,Salt substitute,Dietary
+502,DBQ095Z,Type of salt you usually add at table,88,Blank but applicable,Dietary
+503,DBQ095Z,Type of salt you usually add at table,99,Don't know,Dietary
+504,DBQ095Z,Type of salt you usually add at table,7,Refused,Dietary
+505,DBQ095Z,Type of salt you usually add at table,91,Other,Dietary
+506,DRXHELP,Who helped in responding for this interview,1,SP,Dietary
+507,DRXHELP,Who helped in responding for this interview,4,Parent of SP,Dietary
+508,DRXHELP,Who helped in responding for this interview,5,Spouse of SP,Dietary
+509,DRXHELP,Who helped in responding for this interview,6,Child of SP,Dietary
+510,DRXHELP,Who helped in responding for this interview,7,Grandparent of SP,Dietary
+511,DRXHELP,Who helped in responding for this interview,8,"Friend, Partner, Non Relative",Dietary
+512,DRXHELP,Who helped in responding for this interview,9,"Translator, not a HH member",Dietary
+513,DRXHELP,Who helped in responding for this interview,10,"Child care provider, Caretaker",Dietary
+514,DRXHELP,Who helped in responding for this interview,11,Other Relative,Dietary
+515,DRXHELP,Who helped in responding for this interview,12,No One,Dietary
+516,DRXHELP,Who helped in responding for this interview,14,Other specify,Dietary
+517,DRXHELP,Who helped in responding for this interview,77,Refused,Dietary
+518,DRXHELP,Who helped in responding for this interview,99,Don't know,Dietary
+519,DRXMRESP,Who was the main respondent for this interview?,1,SP,Dietary
+520,DRXMRESP,Who was the main respondent for this interview?,97,Proxy,Dietary
+521,DRXMRESP,Who was the main respondent for this interview?,98,SP and proxy,Dietary
+522,DRXMRESP,Who was the main respondent for this interview?,88,Blank but applicable,Dietary
+523,DRXMRESP,Who was the main respondent for this interview?,2,Mother of SP,Dietary
+524,DRXMRESP,Who was the main respondent for this interview?,3,Father of SP,Dietary
+525,DRXMRESP,Who was the main respondent for this interview?,5,Spouse of SP,Dietary
+526,DRXMRESP,Who was the main respondent for this interview?,6,Child of SP,Dietary
+527,DRXMRESP,Who was the main respondent for this interview?,7,Grandparent of SP,Dietary
+528,DRXMRESP,Who was the main respondent for this interview?,8,"Friend, Partner, Non Relative",Dietary
+529,DRXMRESP,Who was the main respondent for this interview?,9,"Translator, not a HH member",Dietary
+530,DRXMRESP,Who was the main respondent for this interview?,10,"Child care provider, Caretaker",Dietary
+531,DRXMRESP,Who was the main respondent for this interview?,11,Other Relative,Dietary
+532,DRXMRESP,Who was the main respondent for this interview?,14,Other specify,Dietary
+533,DRXMRESP,Who was the main respondent for this interview?,77,Refused,Dietary
+534,DRXMRESP,Who was the main respondent for this interview?,99,Don't know,Dietary
+535,DRXTWSZ,Tap Water Source,1,Community supply,Dietary
+536,DRXTWSZ,Tap Water Source,91,Other,Dietary
+537,DRXTWSZ,Tap Water Source,4,Don't drink tap water,Dietary
+538,DRXTWSZ,Tap Water Source,99,Don't know,Dietary
+539,DRXHELP,Who helped in responding for this interview,1,SP,Dietary
+540,DRXHELP,Who helped in responding for this interview,4,Parent of SP,Dietary
+541,DRXHELP,Who helped in responding for this interview,5,Spouse of SP,Dietary
+542,DRXHELP,Who helped in responding for this interview,6,Child of SP,Dietary
+543,DRXHELP,Who helped in responding for this interview,7,Grandparent of SP,Dietary
+544,DRXHELP,Who helped in responding for this interview,8,"Friend, Partner, Non Relative",Dietary
+545,DRXHELP,Who helped in responding for this interview,9,"Translator, not a HH member",Dietary
+546,DRXHELP,Who helped in responding for this interview,10,"Child care provider, Caretaker",Dietary
+547,DRXHELP,Who helped in responding for this interview,11,Other Relative,Dietary
+548,DRXHELP,Who helped in responding for this interview,12,No One,Dietary
+549,DRXHELP,Who helped in responding for this interview,14,Other specify,Dietary
+550,DRXHELP,Who helped in responding for this interview,77,Refused,Dietary
+551,DRXHELP,Who helped in responding for this interview,99,Don't know,Dietary
+552,DRXMRESP,Who was the main respondent for this interview?,1,SP,Dietary
+553,DRXMRESP,Who was the main respondent for this interview?,2,Mother of SP,Dietary
+554,DRXMRESP,Who was the main respondent for this interview?,3,Father of SP,Dietary
+555,DRXMRESP,Who was the main respondent for this interview?,5,Spouse of SP,Dietary
+556,DRXMRESP,Who was the main respondent for this interview?,6,Child of SP,Dietary
+557,DRXMRESP,Who was the main respondent for this interview?,7,Grandparent of SP,Dietary
+558,DRXMRESP,Who was the main respondent for this interview?,8,"Friend, Partner, Non Relative",Dietary
+559,DRXMRESP,Who was the main respondent for this interview?,9,"Translator, not a HH member",Dietary
+560,DRXMRESP,Who was the main respondent for this interview?,10,"Child care provider, Caretaker",Dietary
+561,DRXMRESP,Who was the main respondent for this interview?,11,Other Relative,Dietary
+562,DRXMRESP,Who was the main respondent for this interview?,14,Other specify,Dietary
+563,DRXMRESP,Who was the main respondent for this interview?,77,Refused,Dietary
+564,DRXMRESP,Who was the main respondent for this interview?,99,Don't know,Dietary
+565,DBD100,How often {do you/does SP} add ordinary salt to {your/his/her/SP's} food at the table? Would you say . . .,1,Rarely,Dietary
+566,DBD100,How often {do you/does SP} add ordinary salt to {your/his/her/SP's} food at the table? Would you say . . .,2,Occasionally,Dietary
+567,DBD100,How often {do you/does SP} add ordinary salt to {your/his/her/SP's} food at the table? Would you say . . .,3,Very often,Dietary
+568,DBD100,How often {do you/does SP} add ordinary salt to {your/his/her/SP's} food at the table? Would you say . . .,88,Blank but applicable,Dietary
+569,DBD100,How often {do you/does SP} add ordinary salt to {your/his/her/SP's} food at the table? Would you say . . .,9,Don't know,Dietary
+570,DBD100,How often {do you/does SP} add ordinary salt to {your/his/her/SP's} food at the table? Would you say . . .,7,Refused,Dietary
