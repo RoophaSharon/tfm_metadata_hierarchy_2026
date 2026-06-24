@@ -598,6 +598,11 @@ view_options = ["Sunburst (drill-down)", "Treemap"]
 if cfg["node_link"]:
     view_options.append("Node-link tree")
 
+# Let the LoD slider reach the deepest leaf so the WHOLE tree is viewable —
+# the slider (not a silent performance cap) controls how many levels are drawn.
+_max_levels = _tree_depth(raw_nodes)
+_slider_max = max(9, _max_levels)
+
 if cfg["compress"]:
     vc1, vc2, vc3, vc4, vc5 = st.columns([2.4, 2, 1, 1, 1.2])
 else:
@@ -609,9 +614,10 @@ with vc1:
                         help="Sunburst best for large hierarchies [Taxonomizer]. "
                              "Node-link best for moderate-depth structure inspection.")
 with vc2:
-    depth = st.slider("Depth (Level of Detail)", 1, 9, DEFAULT_DEPTH, 1,
-                      help="Maximum tree levels shown. Set high to see the whole "
-                           "hierarchy, lower to peel back to the interior.")
+    depth = st.slider("Depth (Level of Detail)", 1, _slider_max,
+                      min(DEFAULT_DEPTH, _slider_max), 1,
+                      help="Maximum tree levels shown. Drag to the top to see the "
+                           "whole hierarchy; lower it to peel back to the interior.")
 with vc3:
     show_leaf_labels = st.checkbox("Leaf labels", value=False)
 with vc4:
@@ -628,11 +634,14 @@ else:
 st.divider()
 
 display_nodes = compress_one_child_chains(raw_nodes) if compress_chains else raw_nodes
-render_depth = safe_render_depth(display_nodes, depth)
-if render_depth < depth and viz_mode in {"Sunburst (drill-down)", "Treemap"}:
+# Honor the LoD slider directly — no silent depth cap (that made the slider
+# look broken on large trees like HCP). The user controls the depth.
+render_depth = depth
+if (len(_filter_dissolved(display_nodes)) > 400 and depth >= 6
+        and viz_mode in {"Sunburst (drill-down)", "Treemap"}):
     st.caption(
-        f"Initial render capped at depth {render_depth} for performance; "
-        "the chart remains drillable."
+        "Large hierarchy — if the chart looks blank at this depth, lower the "
+        "Level-of-Detail slider one step (Plotly can't draw too many sectors at once)."
     )
 
 if viz_mode == "Sunburst (drill-down)":
