@@ -820,28 +820,6 @@ with st.expander('Advanced settings', expanded=False):
 # ─────────────────────────────────────────────────────────────────────────────
 if not uploaded:
     st.info('Upload a metadata CSV / XLSX / JSON file to begin.')
-    st.markdown("""
-    ### Baseline algorithm — Taxonomizer (semantic space)
-
-    Based on **Mahmood & Mueller, IEEE TVCG 2019** (Taxonomizer), adapted to a
-    metadata-only setting. No hardcoded domain patterns, no external APIs.
-
-    | Step | Method | Paper |
-    |------|--------|-------|
-    | Variable representation | **short attribute name** (description's name clause; codes are OOV) | Taxonomizer §3.2 / §4.1 |
-    | Embedding | Word2Vec skip-gram — average of word vectors (`glove-wiki-gigaword-100`) | Taxonomizer §3.2 |
-    | Semantic space | Cosine-distance matrix (no data space — schema has no raw values) | Taxonomizer §3.2 *(adapted)* |
-    | Hierarchy construction | Agglomerative clustering (cosine, average-linkage), k by silhouette → dendrogram | Taxonomizer §4.2 |
-    | Internal node labelling | **Data-driven contrastive terms** (paper's labelling is semi-automatic) | Taxonomizer §4.3 *(adapted)* |
-
-    This page is the pure Taxonomizer-style semantic-space reference method:
-    variable meanings are embedded and recursively clustered into a hierarchy,
-    with node labels generated from contrastive terms.
-
-    **Approach 1** adds SBERT embeddings + Wikidata/BioPortal enrichment + HiExpan refinement.
-
-    **Approach 2** adds NMF/FASTopic aspect discovery + GMM clustering + optional LLM labels.
-    """)
     st.stop()
 
 path = save_upload(uploaded)
